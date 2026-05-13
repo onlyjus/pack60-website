@@ -2,7 +2,7 @@
 
 Potential domain options:
 
-- `pack60.org`
+- `pack60.org` selected
 - `pack60wv.org`
 - `cubpack60.org`
 

@@ -4,6 +4,10 @@ This repository contains the public static website for Cub Scout Pack 60, servin
 
 The site is designed as a public front door for prospective families and community members. It intentionally does not include private pack operations, rosters, payment records, advancement data, private meeting links, or personal information.
 
+Production domain target: `pack60.org`
+
+GitHub repository: `https://github.com/onlyjus/pack60-website`
+
 ## Technology Stack
 
 - Astro

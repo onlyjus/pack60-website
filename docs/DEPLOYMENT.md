@@ -2,6 +2,14 @@
 
 This site is compatible with Cloudflare Pages.
 
+GitHub repository:
+
+- `https://github.com/onlyjus/pack60-website`
+
+Production domain:
+
+- `pack60.org`
+
 ## Cloudflare Pages settings
 
 - Framework preset: Astro
