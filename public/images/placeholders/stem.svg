@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 400" role="img" aria-labelledby="title desc">
+  <title id="title">STEM placeholder</title>
+  <desc id="desc">Rocket and science shapes.</desc>
+  <rect width="640" height="400" fill="#f8fbf6"/>
+  <path d="M326 72c55 28 91 85 91 150v83H235v-83c0-65 36-122 91-150Z" fill="#fff" stroke="#123c2f" stroke-width="12"/>
+  <circle cx="326" cy="184" r="38" fill="#1f4f78"/>
+  <path d="M260 305 220 360h212l-40-55Z" fill="#f4c542" stroke="#123c2f" stroke-width="12"/>
+  <path d="M137 109h88M181 65v88" stroke="#1e5b45" stroke-width="14" stroke-linecap="round"/>
+  <circle cx="492" cy="112" r="38" fill="#f4c542"/>
+</svg>

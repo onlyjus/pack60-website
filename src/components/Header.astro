@@ -1,0 +1,171 @@
+---
+const navItems = [
+  { href: '/', label: 'Home' },
+  { href: '/join/', label: 'Join' },
+  { href: '/about/', label: 'About' },
+  { href: '/activities/', label: 'Activities' },
+  { href: '/dens/', label: 'Dens' },
+  { href: '/calendar/', label: 'Calendar' },
+  { href: '/resources/', label: 'Resources' },
+  { href: '/contact/', label: 'Contact' },
+];
+---
+
+<header class="site-header">
+  <div class="header-inner container">
+    <a class="brand" href="/" aria-label="Cub Scout Pack 60 home">
+      <img src="/favicon.svg" alt="" width="42" height="42" />
+      <span>
+        <strong>Pack 60</strong>
+        <small>Morgantown, WV area</small>
+      </span>
+    </a>
+    <button
+      class="menu-toggle"
+      type="button"
+      aria-label="Open menu"
+      aria-controls="site-nav"
+      aria-expanded="false"
+    >
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+    <nav id="site-nav" class="site-nav" aria-label="Main navigation">
+      {
+        navItems.map((item) => (
+          <a
+            href={item.href}
+            aria-current={Astro.url.pathname === item.href ? 'page' : undefined}
+          >
+            {item.label}
+          </a>
+        ))
+      }
+    </nav>
+  </div>
+</header>
+
+<script>
+  const toggle = document.querySelector<HTMLButtonElement>('.menu-toggle');
+  const nav = document.querySelector<HTMLElement>('#site-nav');
+
+  toggle?.addEventListener('click', () => {
+    const isOpen = toggle.getAttribute('aria-expanded') === 'true';
+    toggle.setAttribute('aria-expanded', String(!isOpen));
+    toggle.setAttribute('aria-label', isOpen ? 'Open menu' : 'Close menu');
+    nav?.classList.toggle('is-open', !isOpen);
+    document.body.classList.toggle('menu-open', !isOpen);
+  });
+</script>
+
+<style>
+  .site-header {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    border-bottom: 1px solid rgba(217, 226, 220, 0.9);
+    background: rgba(251, 247, 239, 0.94);
+    backdrop-filter: blur(12px);
+  }
+
+  .header-inner {
+    display: flex;
+    min-height: 78px;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+  }
+
+  .brand {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.65rem;
+    color: var(--color-green);
+    text-decoration: none;
+  }
+
+  .brand strong,
+  .brand small {
+    display: block;
+    line-height: 1.15;
+  }
+
+  .brand strong {
+    font-size: 1.05rem;
+  }
+
+  .brand small {
+    color: var(--color-muted);
+    font-size: 0.75rem;
+  }
+
+  .site-nav {
+    display: flex;
+    align-items: center;
+    gap: 0.15rem;
+  }
+
+  .site-nav a {
+    border-radius: 999px;
+    color: var(--color-text);
+    font-size: 0.94rem;
+    font-weight: 750;
+    padding: 0.5rem 0.7rem;
+    text-decoration: none;
+  }
+
+  .site-nav a:hover,
+  .site-nav a[aria-current='page'] {
+    background: var(--color-green);
+    color: #fff;
+  }
+
+  .menu-toggle {
+    display: none;
+    width: 44px;
+    height: 44px;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 5px;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius);
+    background: #fff;
+    color: var(--color-green);
+  }
+
+  .menu-toggle span {
+    display: block;
+    width: 22px;
+    height: 2px;
+    background: currentColor;
+  }
+
+  @media (max-width: 860px) {
+    .menu-toggle {
+      display: inline-flex;
+    }
+
+    .site-nav {
+      position: fixed;
+      inset: 78px 0 auto;
+      display: none;
+      flex-direction: column;
+      align-items: stretch;
+      gap: 0.25rem;
+      border-bottom: 1px solid var(--color-border);
+      background: var(--color-bg);
+      padding: 1rem;
+      box-shadow: var(--shadow);
+    }
+
+    .site-nav.is-open {
+      display: flex;
+    }
+
+    .site-nav a {
+      padding: 0.85rem 1rem;
+    }
+  }
+</style>

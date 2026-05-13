@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 400" role="img" aria-labelledby="title desc">
+  <title id="title">Service project placeholder</title>
+  <desc id="desc">Hands holding a sprouting plant.</desc>
+  <rect width="640" height="400" fill="#edf5ef"/>
+  <path d="M166 249c58 16 104 32 154 32s96-16 154-32" fill="none" stroke="#123c2f" stroke-width="28" stroke-linecap="round"/>
+  <path d="M320 260V138" stroke="#1e5b45" stroke-width="14" stroke-linecap="round"/>
+  <path d="M320 168c-62-14-86-50-92-90 56 4 92 31 92 90Z" fill="#1e5b45"/>
+  <path d="M322 190c67-19 103-57 112-112-61 6-105 39-112 112Z" fill="#f4c542"/>
+  <path d="M186 278h268" stroke="#f4c542" stroke-width="16" stroke-linecap="round"/>
+</svg>

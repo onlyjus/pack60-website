@@ -1,0 +1,45 @@
+---
+import { getCollection } from 'astro:content';
+import Layout from '../../layouts/Layout.astro';
+import Section from '../../components/Section.astro';
+import ActivityCard from '../../components/ActivityCard.astro';
+import CardGrid from '../../components/CardGrid.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+
+const activities = (
+  await getCollection('activities', ({ data }) => data.public)
+).sort((a, b) => (a.data.order ?? 99) - (b.data.order ?? 99));
+---
+
+<Layout
+  title="Activities"
+  description="Learn about public-safe Pack 60 activities, traditions, outings, service projects, and meetings."
+>
+  <header class="page-header">
+    <div class="prose">
+      <Breadcrumbs items={[{ href: '/activities/', label: 'Activities' }]} />
+      <p class="eyebrow">Pack 60 activities</p>
+      <h1>Activities</h1>
+      <p class="lead">
+        Cub Scouting is hands-on. Pack 60 activities help scouts try new skills,
+        spend time outdoors, serve the community, and celebrate progress
+        together.
+      </p>
+    </div>
+  </header>
+  <Section>
+    <CardGrid columns="three">
+      {
+        activities.map((activity) => (
+          <ActivityCard
+            title={activity.data.title}
+            description={activity.data.description}
+            href={`/activities/${activity.slug}/`}
+            season={activity.data.season}
+            image={activity.data.image}
+          />
+        ))
+      }
+    </CardGrid>
+  </Section>
+</Layout>

@@ -1,0 +1,52 @@
+---
+import { getCollection } from 'astro:content';
+import Layout from '../../layouts/Layout.astro';
+import Section from '../../components/Section.astro';
+import DenCard from '../../components/DenCard.astro';
+import CardGrid from '../../components/CardGrid.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import AlertBox from '../../components/AlertBox.astro';
+
+const dens = (await getCollection('dens', ({ data }) => data.public)).sort(
+  (a, b) => a.data.order - b.data.order,
+);
+---
+
+<Layout
+  title="Dens"
+  description="Learn how Pack 60 dens are organized by grade level."
+>
+  <header class="page-header">
+    <div class="prose">
+      <Breadcrumbs items={[{ href: '/dens/', label: 'Dens' }]} />
+      <p class="eyebrow">Grade-level dens</p>
+      <h1>Dens</h1>
+      <p class="lead">
+        Dens are smaller grade-level groups within the pack. They give scouts
+        age-appropriate activities, friendships, and a steady path through the
+        Cub Scout program.
+      </p>
+    </div>
+  </header>
+  <Section>
+    <AlertBox title="Meeting details are private" tone="warning">
+      <p>
+        Exact den meeting details are shared privately with registered families
+        through official pack communication channels.
+      </p>
+    </AlertBox>
+    <br />
+    <CardGrid columns="three">
+      {
+        dens.map((den) => (
+          <DenCard
+            title={den.data.title}
+            grade={den.data.grade}
+            description={den.data.description}
+            href={`/dens/${den.slug}/`}
+          />
+        ))
+      }
+    </CardGrid>
+  </Section>
+</Layout>

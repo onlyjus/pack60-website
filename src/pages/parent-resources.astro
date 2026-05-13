@@ -1,0 +1,73 @@
+---
+import { getCollection } from 'astro:content';
+import Layout from '../layouts/Layout.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import ResourceList from '../components/ResourceList.astro';
+import AlertBox from '../components/AlertBox.astro';
+
+const resources = (
+  await getCollection(
+    'resources',
+    ({ data }) => data.public && data.category === 'Families',
+  )
+).sort((a, b) => (a.data.order ?? 99) - (b.data.order ?? 99));
+---
+
+<Layout
+  title="Parent Resources"
+  description="Public-safe Pack 60 resources for new and current families."
+>
+  <header class="page-header">
+    <div class="prose">
+      <Breadcrumbs
+        items={[{ href: '/parent-resources/', label: 'Parent Resources' }]}
+      />
+      <p class="eyebrow">For families</p>
+      <h1>Parent Resources</h1>
+      <p class="lead">
+        Helpful public-safe information for families. Private forms, specific
+        family details, and registered-family communications belong outside this
+        public site.
+      </p>
+    </div>
+  </header>
+  <section class="content-band">
+    <div class="container two-column">
+      <article class="prose">
+        <h2>New family checklist</h2>
+        <ul>
+          <li>Read the Join page and contact the pack with basic questions.</li>
+          <li>
+            Visit a public recruiting event or approved pack meeting
+            opportunity.
+          </li>
+          <li>Review uniform basics and expected family participation.</li>
+          <li>
+            Use official registration links when provided by pack leadership.
+          </li>
+        </ul>
+        <h2>Pack meeting expectations</h2>
+        <p>
+          Pack meetings are designed for families. Scouts should arrive ready to
+          participate, and parents or guardians should expect to stay and help
+          their scout.
+        </p>
+        <h2>Public resources</h2>
+        <ResourceList
+          items={resources.map((resource) => ({
+            title: resource.data.title,
+            description: resource.data.description,
+            href: `/resources/${resource.slug}/`,
+          }))}
+        />
+      </article>
+      <AlertBox title="Safety note" tone="warning">
+        <p>
+          Do not post private forms, medical information, permission slips with
+          personal data, Scoutbook exports, or private meeting links on this
+          public site.
+        </p>
+      </AlertBox>
+    </div>
+  </section>
+</Layout>

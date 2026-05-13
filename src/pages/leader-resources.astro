@@ -1,0 +1,68 @@
+---
+import { getCollection } from 'astro:content';
+import Layout from '../layouts/Layout.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import ResourceList from '../components/ResourceList.astro';
+import AlertBox from '../components/AlertBox.astro';
+
+const resources = (
+  await getCollection(
+    'resources',
+    ({ data }) => data.public && data.category === 'Leaders',
+  )
+).sort((a, b) => (a.data.order ?? 99) - (b.data.order ?? 99));
+---
+
+<Layout
+  title="Leader Resources"
+  description="Public-safe planning and communication resources for Pack 60 adult volunteers."
+>
+  <header class="page-header">
+    <div class="prose">
+      <Breadcrumbs
+        items={[{ href: '/leader-resources/', label: 'Leader Resources' }]}
+      />
+      <p class="eyebrow">For volunteers</p>
+      <h1>Leader Resources</h1>
+      <p class="lead">
+        Public-safe guidance for planning den meetings, pack events,
+        communications, and website content. Private operational files should
+        stay in approved private systems.
+      </p>
+    </div>
+  </header>
+  <section class="content-band">
+    <div class="container two-column">
+      <article class="prose">
+        <h2>Leader planning basics</h2>
+        <ul>
+          <li>
+            Plan meetings with age-appropriate activities and clear adult
+            support.
+          </li>
+          <li>
+            Use official training and program resources from Scouting America.
+          </li>
+          <li>
+            Keep public communication general and private communication secure.
+          </li>
+          <li>Review the photo and public content policies before posting.</li>
+        </ul>
+        <h2>Public leader resources</h2>
+        <ResourceList
+          items={resources.map((resource) => ({
+            title: resource.data.title,
+            description: resource.data.description,
+            href: `/resources/${resource.slug}/`,
+          }))}
+        />
+      </article>
+      <AlertBox title="Public content rule" tone="warning">
+        <p>
+          Do not put rosters, medical forms, advancement records, private travel
+          plans, or personal contact information in this repository.
+        </p>
+      </AlertBox>
+    </div>
+  </section>
+</Layout>

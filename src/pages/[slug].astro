@@ -1,0 +1,32 @@
+---
+import { getCollection } from 'astro:content';
+import Layout from '../layouts/Layout.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+
+export async function getStaticPaths() {
+  const pages = await getCollection('pages', ({ data }) => data.public);
+  return pages.map((page) => ({
+    params: { slug: page.slug },
+    props: { page },
+  }));
+}
+
+const { page } = Astro.props;
+const { Content } = await page.render();
+---
+
+<Layout title={page.data.title} description={page.data.description}>
+  <header class="page-header">
+    <div class="prose">
+      <Breadcrumbs
+        items={[{ href: `/${page.slug}/`, label: page.data.title }]}
+      />
+      <p class="eyebrow">Cub Scout Pack 60</p>
+      <h1>{page.data.title}</h1>
+      <p class="lead">{page.data.description}</p>
+    </div>
+  </header>
+  <article class="content-band prose">
+    <Content />
+  </article>
+</Layout>

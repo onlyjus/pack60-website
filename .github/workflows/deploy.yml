@@ -1,0 +1,14 @@
+name: Deploy
+
+on:
+  workflow_dispatch:
+
+jobs:
+  note:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deployment note
+        run: |
+          echo "Cloudflare Pages native Git integration is recommended for this site."
+          echo "Use build command: npm run build"
+          echo "Use output directory: dist"

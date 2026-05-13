@@ -1,0 +1,198 @@
+---
+import { getCollection } from 'astro:content';
+import Layout from '../layouts/Layout.astro';
+import Hero from '../components/Hero.astro';
+import Section from '../components/Section.astro';
+import Card from '../components/Card.astro';
+import CardGrid from '../components/CardGrid.astro';
+import ActivityCard from '../components/ActivityCard.astro';
+import CTAButton from '../components/CTAButton.astro';
+import AlertBox from '../components/AlertBox.astro';
+
+const activities = (
+  await getCollection('activities', ({ data }) => data.public)
+)
+  .sort((a, b) => (a.data.order ?? 99) - (b.data.order ?? 99))
+  .slice(0, 6);
+---
+
+<Layout
+  title="Cub Scout Pack 60"
+  description="Adventure, character, outdoor skills, and family fun with Cub Scout Pack 60 in the Morgantown, WV area."
+>
+  <Hero
+    eyebrow="Cub Scout Pack 60"
+    title="Adventure starts here."
+    description="Cub Scout Pack 60 helps kids build confidence, character, outdoor skills, and friendships while families share the adventure together."
+    primaryHref="/join/"
+    primaryLabel="Interested in joining?"
+    secondaryHref="/contact/"
+    secondaryLabel="Contact the pack"
+  />
+
+  <Section
+    title="Welcome to Pack 60"
+    intro="We are a family-centered Cub Scout pack serving the Morgantown, WV area. This public website helps families learn what Cub Scouting is like and how to get connected."
+  >
+    <CardGrid columns="three">
+      <Card title="What is Cub Scouts?">
+        <p>
+          Cub Scouts is a program for elementary-aged youth focused on hands-on
+          learning, character, service, outdoor skills, and fun.
+        </p>
+      </Card>
+      <Card title="Why join Pack 60?">
+        <p>
+          Families find a welcoming community, age-appropriate adventures,
+          leadership opportunities, and a steady rhythm of memorable activities.
+        </p>
+      </Card>
+      <Card title="Families are part of it">
+        <p>
+          Parents and guardians participate alongside scouts, help with
+          activities, and support den and pack events.
+        </p>
+      </Card>
+    </CardGrid>
+  </Section>
+
+  <Section
+    variant="alt"
+    eyebrow="Activities"
+    title="Always something to look forward to"
+    intro="From Pinewood Derby to campouts, service projects, hikes, STEM nights, and pack meetings, Pack 60 gives scouts many ways to try new things."
+  >
+    <CardGrid columns="three">
+      {
+        activities.map((activity) => (
+          <ActivityCard
+            title={activity.data.title}
+            description={activity.data.description}
+            href={`/activities/${activity.slug}/`}
+            season={activity.data.season}
+            image={activity.data.image}
+          />
+        ))
+      }
+    </CardGrid>
+  </Section>
+
+  <Section
+    title="Meeting overview"
+    intro="Pack 60 uses a mix of pack meetings, den meetings, outings, service projects, and special events. Exact meeting details are shared privately with registered families."
+  >
+    <div class="two-column">
+      <div class="surface">
+        <h2>Public meeting information</h2>
+        <p>
+          The pack generally serves families in the Morgantown, WV area. Public
+          recruiting events and general meeting information may be shared here
+          when appropriate.
+        </p>
+        <p>
+          Placeholder meeting location: <strong>[Meeting location]</strong>
+        </p>
+      </div>
+      <AlertBox title="Public-safe calendar" tone="warning">
+        <p>
+          This site lists only public-safe event information. Registered
+          families receive full details through official pack communication
+          channels.
+        </p>
+      </AlertBox>
+    </div>
+  </Section>
+
+  <Section
+    variant="alt"
+    title="Upcoming public events"
+    intro="These are examples of public-safe event types. Replace them only with details approved for public posting."
+  >
+    <CardGrid columns="three">
+      <Card title="Join Scouting Night" meta="Placeholder">
+        <p>
+          A public recruiting event for families interested in learning more
+          about Pack 60.
+        </p>
+      </Card>
+      <Card title="Pinewood Derby" meta="Placeholder">
+        <p>
+          A winter pack tradition where scouts build and race small wooden cars.
+        </p>
+      </Card>
+      <Card title="Service Project" meta="Placeholder">
+        <p>
+          A public-safe community service opportunity with details shared when
+          approved.
+        </p>
+      </Card>
+    </CardGrid>
+  </Section>
+
+  <Section title="Ready to learn more?">
+    <div class="cta-panel">
+      <div>
+        <h2>Interested in joining Pack 60?</h2>
+        <p>
+          Start with the Join page, then contact the pack using the placeholder
+          membership email. Volunteers can update those aliases later when
+          approved.
+        </p>
+      </div>
+      <div class="cta-actions">
+        <CTAButton href="/join/">How to join</CTAButton>
+        <CTAButton href="/contact/" variant="secondary"
+          >Contact the pack</CTAButton
+        >
+      </div>
+    </div>
+  </Section>
+</Layout>
+
+<style>
+  .surface h2,
+  .cta-panel h2 {
+    margin: 0 0 0.5rem;
+    color: var(--color-green);
+    line-height: 1.15;
+  }
+
+  .surface p,
+  .cta-panel p {
+    color: var(--color-muted);
+  }
+
+  .cta-panel {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.5rem;
+    border-radius: var(--radius);
+    background: var(--color-green);
+    color: #fff;
+    padding: clamp(1.25rem, 4vw, 2rem);
+  }
+
+  .cta-panel h2 {
+    color: #fff;
+  }
+
+  .cta-panel p {
+    max-width: 65ch;
+    margin: 0;
+    color: rgba(255, 255, 255, 0.86);
+  }
+
+  .cta-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+  }
+
+  @media (max-width: 760px) {
+    .cta-panel {
+      align-items: flex-start;
+      flex-direction: column;
+    }
+  }
+</style>

@@ -1,0 +1,30 @@
+---
+title: 'Hiking and Outdoor Skills'
+description: 'Simple outdoor adventures that teach observation, preparedness, and confidence.'
+season: 'Spring, Summer, and Fall'
+category: 'Outdoor Adventure'
+image: '/images/placeholders/hiking.svg'
+order: 5
+public: true
+lastUpdated: '2026-05-12'
+---
+
+## What it is
+
+Hikes and outdoor skills activities may include trail walks, nature observation, knots, first-aid basics, maps, Leave No Trace principles, and simple preparedness.
+
+## When it usually happens
+
+Outdoor skill activities are often planned when weather and daylight make the activity appropriate for families.
+
+## Why scouts enjoy it
+
+Scouts enjoy exploring trails, spotting wildlife, learning useful skills, and spending time outside with friends and family.
+
+## What families should know
+
+Public pages should avoid exact trailhead meeting details and live location information. Registered families receive full details privately.
+
+## Public-safe image placeholder
+
+Use trail, gear, map, boots, flags, or wide activity photos that do not identify individual youth.

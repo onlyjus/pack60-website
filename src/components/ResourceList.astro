@@ -1,0 +1,57 @@
+---
+interface Item {
+  title: string;
+  description: string;
+  href: string;
+}
+
+interface Props {
+  items: Item[];
+}
+
+const { items } = Astro.props;
+---
+
+<ul class="resource-list">
+  {
+    items.map((item) => (
+      <li>
+        <a href={item.href}>{item.title}</a>
+        <p>{item.description}</p>
+      </li>
+    ))
+  }
+</ul>
+
+<style>
+  .resource-list {
+    display: grid;
+    gap: 0.85rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  li {
+    border-left: 4px solid var(--color-gold);
+    border-radius: var(--radius);
+    background: #fff;
+    padding: 0.85rem 1rem;
+  }
+
+  a {
+    color: var(--color-green);
+    font-weight: 800;
+    text-decoration: none;
+  }
+
+  a:hover {
+    text-decoration: underline;
+    text-underline-offset: 0.18em;
+  }
+
+  p {
+    margin: 0.2rem 0 0;
+    color: var(--color-muted);
+  }
+</style>

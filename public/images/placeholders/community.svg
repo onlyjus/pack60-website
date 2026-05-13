@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 400" role="img" aria-labelledby="title desc">
+  <title id="title">Community event placeholder</title>
+  <desc id="desc">Flags and community buildings.</desc>
+  <rect width="640" height="400" fill="#fbf7ef"/>
+  <path d="M92 160h456v154H92z" fill="#fff" stroke="#123c2f" stroke-width="12"/>
+  <path d="M112 160 320 64l208 96" fill="#f4c542" stroke="#123c2f" stroke-width="12"/>
+  <path d="M170 314v-70h72v70M398 314v-70h72v70" fill="#edf5ef" stroke="#123c2f" stroke-width="10"/>
+  <path d="M320 118v196" stroke="#1e5b45" stroke-width="12"/>
+  <path d="M320 125h104v56H320z" fill="#1f4f78"/>
+</svg>

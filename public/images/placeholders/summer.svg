@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 400" role="img" aria-labelledby="title desc">
+  <title id="title">Summer activities placeholder</title>
+  <desc id="desc">Sun, water, and outdoor activity icons.</desc>
+  <rect width="640" height="400" fill="#eef6fb"/>
+  <circle cx="150" cy="100" r="52" fill="#f4c542"/>
+  <path d="M0 285c76-31 128-31 198 0s127 31 197 0 134-31 245 0v115H0Z" fill="#1f4f78"/>
+  <path d="M118 267h404" stroke="#123c2f" stroke-width="18" stroke-linecap="round"/>
+  <path d="M300 130 410 267H190Z" fill="#fff" stroke="#123c2f" stroke-width="12"/>
+</svg>

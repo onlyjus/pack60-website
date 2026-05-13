@@ -1,0 +1,67 @@
+---
+import { getCollection } from 'astro:content';
+import Layout from '../../layouts/Layout.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import AlertBox from '../../components/AlertBox.astro';
+
+export async function getStaticPaths() {
+  const activities = await getCollection(
+    'activities',
+    ({ data }) => data.public,
+  );
+  return activities.map((activity) => ({
+    params: { slug: activity.slug },
+    props: { activity },
+  }));
+}
+
+const { activity } = Astro.props;
+const { Content } = await activity.render();
+---
+
+<Layout
+  title={activity.data.title}
+  description={activity.data.description}
+  image={activity.data.image}
+>
+  <header class="page-header">
+    <div class="prose">
+      <Breadcrumbs
+        items={[
+          { href: '/activities/', label: 'Activities' },
+          { href: `/activities/${activity.slug}/`, label: activity.data.title },
+        ]}
+      />
+      <p class="eyebrow">{activity.data.category} · {activity.data.season}</p>
+      <h1>{activity.data.title}</h1>
+      <p class="lead">{activity.data.description}</p>
+    </div>
+  </header>
+  <section class="content-band">
+    <div class="container two-column">
+      <article class="prose">
+        <img
+          class="feature-image"
+          src={activity.data.image}
+          alt={`Public-safe illustration for ${activity.data.title}`}
+        />
+        <Content />
+      </article>
+      <AlertBox title="Public content note" tone="warning">
+        <p>
+          Activity pages should never include private travel details, live
+          locations, youth names, or private family contact information.
+        </p>
+      </AlertBox>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .feature-image {
+    width: 100%;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius);
+    background: #fff;
+  }
+</style>

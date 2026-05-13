@@ -1,0 +1,99 @@
+---
+import { getCollection } from 'astro:content';
+import Layout from '../layouts/Layout.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import RoleCard from '../components/RoleCard.astro';
+import CardGrid from '../components/CardGrid.astro';
+import CTAButton from '../components/CTAButton.astro';
+
+const roles = (await getCollection('roles', ({ data }) => data.public)).sort(
+  (a, b) => (a.data.order ?? 99) - (b.data.order ?? 99),
+);
+const roleRenderings = await Promise.all(
+  roles.map(async (role) => ({
+    role,
+    Content: (await role.render()).Content,
+  })),
+);
+---
+
+<Layout
+  title="Leadership and Volunteer Roles"
+  description="Public-safe overview of Pack 60 adult volunteer roles and ways to help."
+>
+  <header class="page-header">
+    <div class="prose">
+      <Breadcrumbs
+        items={[
+          { href: '/leadership/', label: 'Leadership and Volunteer Roles' },
+        ]}
+      />
+      <p class="eyebrow">Adult volunteers</p>
+      <h1>Leadership and Volunteer Roles</h1>
+      <p class="lead">
+        Pack 60 runs on volunteer support. These role descriptions are
+        placeholders that explain common pack responsibilities without listing
+        private leader information.
+      </p>
+    </div>
+  </header>
+  <section class="content-band">
+    <div class="container">
+      <CardGrid columns="two">
+        {
+          roleRenderings.map(({ role, Content }) => (
+            <RoleCard
+              title={role.data.title}
+              roleType={role.data.roleType}
+              timeCommitment={role.data.timeCommitment}
+              description={role.data.description}
+            >
+              <div class="role-body">
+                <Content />
+              </div>
+            </RoleCard>
+          ))
+        }
+      </CardGrid>
+      <div class="volunteer-cta">
+        <h2>Interested in helping?</h2>
+        <p>
+          Adult volunteers can start small. Contact the pack using a generic
+          alias and avoid sending private youth or family information through
+          public channels.
+        </p>
+        <CTAButton href="/contact/">Contact the pack</CTAButton>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .role-body :global(h2) {
+    color: var(--color-green);
+    font-size: 1rem;
+  }
+
+  .role-body :global(li),
+  .role-body :global(p) {
+    color: var(--color-muted);
+    font-size: 0.95rem;
+  }
+
+  .volunteer-cta {
+    margin-top: 2rem;
+    border-radius: var(--radius);
+    background: var(--color-green);
+    color: #fff;
+    padding: clamp(1.25rem, 4vw, 2rem);
+  }
+
+  .volunteer-cta h2 {
+    margin: 0 0 0.5rem;
+  }
+
+  .volunteer-cta p {
+    max-width: 70ch;
+    color: rgba(255, 255, 255, 0.86);
+  }
+</style>

@@ -1,0 +1,30 @@
+---
+title: 'STEM / Rockets / Science Activities'
+description: 'Hands-on science, technology, engineering, and math activities that make learning active.'
+season: 'Year-round'
+category: 'Hands-on Learning'
+image: '/images/placeholders/stem.svg'
+order: 6
+public: true
+lastUpdated: '2026-05-12'
+---
+
+## What it is
+
+STEM activities can include rockets, simple engineering challenges, experiments, nature science, and creative problem-solving.
+
+## When it usually happens
+
+STEM activities can fit into pack meetings, den meetings, summer activities, or special events.
+
+## Why scouts enjoy it
+
+Scouts enjoy building, testing, launching, measuring, and learning by trying.
+
+## What families should know
+
+Activities should be age-appropriate and supervised. Public pages should keep details general and avoid posting youth-identifying project photos without approval.
+
+## Public-safe image placeholder
+
+Use photos of rockets, launch equipment, craft supplies, experiments, or activity stations.

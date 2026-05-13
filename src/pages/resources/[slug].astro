@@ -1,0 +1,46 @@
+---
+import { getCollection } from 'astro:content';
+import Layout from '../../layouts/Layout.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import AlertBox from '../../components/AlertBox.astro';
+
+export async function getStaticPaths() {
+  const resources = await getCollection('resources', ({ data }) => data.public);
+  return resources.map((resource) => ({
+    params: { slug: resource.slug },
+    props: { resource },
+  }));
+}
+
+const { resource } = Astro.props;
+const { Content } = await resource.render();
+---
+
+<Layout title={resource.data.title} description={resource.data.description}>
+  <header class="page-header">
+    <div class="prose">
+      <Breadcrumbs
+        items={[
+          { href: '/resources/', label: 'Resources' },
+          { href: `/resources/${resource.slug}/`, label: resource.data.title },
+        ]}
+      />
+      <p class="eyebrow">{resource.data.category}</p>
+      <h1>{resource.data.title}</h1>
+      <p class="lead">{resource.data.description}</p>
+    </div>
+  </header>
+  <section class="content-band">
+    <div class="container two-column">
+      <article class="prose">
+        <Content />
+      </article>
+      <AlertBox title="Public-safe resource" tone="warning">
+        <p>
+          Do not add private forms, youth information, personal contact details,
+          or private meeting links to public resources.
+        </p>
+      </AlertBox>
+    </div>
+  </section>
+</Layout>

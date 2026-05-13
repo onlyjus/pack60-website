@@ -1,0 +1,76 @@
+---
+import { getCollection } from 'astro:content';
+import Layout from '../../layouts/Layout.astro';
+import Section from '../../components/Section.astro';
+import Card from '../../components/Card.astro';
+import CardGrid from '../../components/CardGrid.astro';
+import ResourceList from '../../components/ResourceList.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+
+const resources = (
+  await getCollection('resources', ({ data }) => data.public)
+).sort((a, b) => (a.data.order ?? 99) - (b.data.order ?? 99));
+---
+
+<Layout
+  title="Resources"
+  description="Public-safe resources for Pack 60 families and volunteers."
+>
+  <header class="page-header">
+    <div class="prose">
+      <Breadcrumbs items={[{ href: '/resources/', label: 'Resources' }]} />
+      <p class="eyebrow">Public-safe resources</p>
+      <h1>Resources</h1>
+      <p class="lead">
+        These resources are safe for the public website. Private forms, personal
+        information, and registered-family details belong outside this
+        repository.
+      </p>
+    </div>
+  </header>
+  <Section title="Common pages">
+    <CardGrid columns="three">
+      <Card title="Parent Resources" href="/parent-resources/">
+        <p>
+          New family checklist, uniform basics, camping notes, and pack
+          expectations.
+        </p>
+      </Card>
+      <Card title="Leader Resources" href="/leader-resources/">
+        <p>
+          Planning templates, communication guidance, and public content rules.
+        </p>
+      </Card>
+      <Card title="Volunteer Roles" href="/leadership/">
+        <p>
+          Pack leadership and committee role descriptions for interested adult
+          volunteers.
+        </p>
+      </Card>
+      <Card title="FAQ" href="/faq/">
+        <p>
+          Short answers to common questions from families considering Cub
+          Scouts.
+        </p>
+      </Card>
+      <Card title="Privacy Policy" href="/privacy/">
+        <p>
+          How this site handles public information, photos, names, calendars,
+          and removals.
+        </p>
+      </Card>
+      <Card title="Contact" href="/contact/">
+        <p>Generic pack contact aliases and public-safe contact guidance.</p>
+      </Card>
+    </CardGrid>
+  </Section>
+  <Section variant="alt" title="Resource library">
+    <ResourceList
+      items={resources.map((resource) => ({
+        title: resource.data.title,
+        description: resource.data.description,
+        href: `/resources/${resource.slug}/`,
+      }))}
+    />
+  </Section>
+</Layout>

@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 400" role="img" aria-labelledby="title desc">
+  <title id="title">Camping placeholder</title>
+  <desc id="desc">Tent and trees illustration.</desc>
+  <rect width="640" height="400" fill="#edf5ef"/>
+  <circle cx="520" cy="72" r="42" fill="#f4c542"/>
+  <path d="M0 305c80-45 160-50 240-12s156 42 236 0 128-35 164-18v125H0Z" fill="#1e5b45"/>
+  <path d="M116 310 240 100l124 210Z" fill="#fff" stroke="#123c2f" stroke-width="12"/>
+  <path d="M240 100v210" stroke="#123c2f" stroke-width="9"/>
+  <path d="M55 281h112" stroke="#123c2f" stroke-width="18" stroke-linecap="round"/>
+</svg>

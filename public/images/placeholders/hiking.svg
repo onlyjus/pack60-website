@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 400" role="img" aria-labelledby="title desc">
+  <title id="title">Hiking placeholder</title>
+  <desc id="desc">Trail winding through hills.</desc>
+  <rect width="640" height="400" fill="#edf5ef"/>
+  <path d="M0 260 140 112l90 78 98-116 312 206v120H0Z" fill="#1e5b45"/>
+  <path d="M0 315c78-30 150-26 218 13s150 50 247 4 143-38 175-22v90H0Z" fill="#123c2f"/>
+  <path d="M305 400c6-72 35-117 88-136" stroke="#f4c542" stroke-width="18" stroke-linecap="round"/>
+  <path d="M114 126h120v52H114z" fill="#fff" stroke="#123c2f" stroke-width="10"/>
+  <path d="M234 152h55" stroke="#123c2f" stroke-width="10" stroke-linecap="round"/>
+</svg>

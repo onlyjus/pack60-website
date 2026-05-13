@@ -1,0 +1,40 @@
+---
+interface Props {
+  columns?: 'two' | 'three';
+}
+
+const { columns = 'three' } = Astro.props;
+---
+
+<div class:list={['card-grid', columns]}>
+  <slot />
+</div>
+
+<style>
+  .card-grid {
+    display: grid;
+    gap: 1rem;
+  }
+
+  .three {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .two {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  @media (max-width: 860px) {
+    .three,
+    .two {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+
+  @media (max-width: 620px) {
+    .three,
+    .two {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 400" role="img" aria-labelledby="title desc">
+  <title id="title">Pinewood Derby placeholder</title>
+  <desc id="desc">Wooden derby cars on a track.</desc>
+  <rect width="640" height="400" fill="#f8fbf6"/>
+  <path d="M0 265h640v55H0z" fill="#1f4f78"/>
+  <path d="M0 320h640v24H0z" fill="#f4c542"/>
+  <path d="M128 160h230c31 0 56 25 56 56v8H72v-8c0-31 25-56 56-56Z" fill="#f4c542" stroke="#123c2f" stroke-width="12"/>
+  <circle cx="142" cy="238" r="28" fill="#123c2f"/>
+  <circle cx="344" cy="238" r="28" fill="#123c2f"/>
+  <path d="M377 92h112c28 0 51 23 51 51v8H326v-8c0-28 23-51 51-51Z" fill="#edf5ef" stroke="#123c2f" stroke-width="12"/>
+  <circle cx="390" cy="164" r="24" fill="#123c2f"/>
+  <circle cx="512" cy="164" r="24" fill="#123c2f"/>
+</svg>

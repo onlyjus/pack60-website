@@ -1,0 +1,62 @@
+---
+import { getCollection } from 'astro:content';
+import Layout from '../layouts/Layout.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+
+const faqs = (await getCollection('faq', ({ data }) => data.public)).sort(
+  (a, b) => a.data.order - b.data.order,
+);
+---
+
+<Layout
+  title="FAQ"
+  description="Common questions about joining and participating in Cub Scout Pack 60."
+>
+  <header class="page-header">
+    <div class="prose">
+      <Breadcrumbs items={[{ href: '/faq/', label: 'FAQ' }]} />
+      <p class="eyebrow">Questions from families</p>
+      <h1>FAQ</h1>
+      <p class="lead">
+        These answers are general placeholders. Pack volunteers can update
+        details when they are approved for public posting.
+      </p>
+    </div>
+  </header>
+  <section class="content-band">
+    <div class="prose faq-list">
+      {
+        faqs.map((item) => (
+          <details>
+            <summary>{item.data.question}</summary>
+            <p>{item.data.answer}</p>
+          </details>
+        ))
+      }
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .faq-list {
+    display: grid;
+    gap: 0.75rem;
+  }
+
+  details {
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius);
+    background: #fff;
+    padding: 0.9rem 1rem;
+  }
+
+  summary {
+    cursor: pointer;
+    color: var(--color-green);
+    font-weight: 800;
+  }
+
+  p {
+    margin: 0.75rem 0 0;
+  }
+</style>
