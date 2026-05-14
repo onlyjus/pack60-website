@@ -2,7 +2,7 @@
 title: 'Photo and Privacy Policy'
 description: 'Public-safe photo and privacy rules for website contributors.'
 category: 'Leaders'
-order: 9
+order: 10
 public: true
 lastUpdated: '2026-05-12'
 ---

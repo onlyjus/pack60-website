@@ -2,7 +2,7 @@
 title: 'Pack Event Planning Checklist'
 description: 'Public-safe planning prompts for pack activities and events.'
 category: 'Leaders'
-order: 7
+order: 8
 public: true
 lastUpdated: '2026-05-12'
 ---

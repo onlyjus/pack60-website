@@ -2,7 +2,7 @@
 title: 'Communication Guidelines'
 description: 'Public-safe communication rules for website and public announcements.'
 category: 'Leaders'
-order: 8
+order: 9
 public: true
 lastUpdated: '2026-05-12'
 ---
