@@ -32,4 +32,4 @@ Parents and guardians are closely involved in the Lion program and should expect
 
 Placeholder: **[Official Scouting Lion resources]**
 
-Exact meeting details are shared privately with registered families.
+Families receive den-specific meeting details through regular pack communications.

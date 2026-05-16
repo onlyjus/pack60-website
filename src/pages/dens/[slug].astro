@@ -2,7 +2,6 @@
 import { getCollection } from 'astro:content';
 import Layout from '../../layouts/Layout.astro';
 import Breadcrumbs from '../../components/Breadcrumbs.astro';
-import AlertBox from '../../components/AlertBox.astro';
 
 export async function getStaticPaths() {
   const dens = await getCollection('dens', ({ data }) => data.public);
@@ -30,17 +29,7 @@ const { Content } = await den.render();
       <p class="lead">{den.data.description}</p>
     </div>
   </header>
-  <section class="content-band">
-    <div class="container two-column">
-      <article class="prose">
-        <Content />
-      </article>
-      <AlertBox title="Private details stay private" tone="warning">
-        <p>
-          This public page gives a general overview only. Exact meeting details
-          are shared privately with registered families.
-        </p>
-      </AlertBox>
-    </div>
-  </section>
+  <article class="content-band prose">
+    <Content />
+  </article>
 </Layout>

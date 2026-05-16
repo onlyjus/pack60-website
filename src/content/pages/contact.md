@@ -1,10 +1,10 @@
 ---
 title: 'Contact'
-description: 'Contact Cub Scout Pack 60 using public-safe pack email aliases.'
+description: 'Contact Cub Scout Pack 60 using pack email aliases.'
 navTitle: 'Contact'
 order: 8
 public: true
-lastUpdated: '2026-05-12'
+lastUpdated: '2026-05-16'
 ---
 
 ## General contact
@@ -19,16 +19,12 @@ For joining questions, email [membership@pack60.org](mailto:membership@pack60.or
 
 For website corrections, public content concerns, or photo removal requests, email [webmaster@pack60.org](mailto:webmaster@pack60.org).
 
-## Meeting location
+## Meeting time and location
 
-Pack 60 serves families in the Morgantown, WV area.
+Pack 60 meets Tuesdays at 7:00 PM at [Suncrest United Methodist Church](https://www.google.com/maps/search/?api=1&query=Suncrest+United+Methodist+Church%2C+Morgantown%2C+WV) in Morgantown, WV.
 
-Placeholder meeting location: **[Meeting location]**
-
-Exact meeting details are shared privately with registered families.
+Contact the pack before your first visit so a volunteer can confirm the best arrival details and any schedule changes.
 
 ## Contact form placeholder
 
 This static site does not include a backend contact form. Pack volunteers may add a privacy-conscious form service later if approved.
-
-Do not publish personal phone numbers, private addresses, youth information, medical information, or private meeting links on this page.

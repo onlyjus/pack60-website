@@ -3,7 +3,6 @@ import { getCollection } from 'astro:content';
 import Layout from '../layouts/Layout.astro';
 import Breadcrumbs from '../components/Breadcrumbs.astro';
 import ResourceList from '../components/ResourceList.astro';
-import AlertBox from '../components/AlertBox.astro';
 
 const resources = (
   await getCollection(
@@ -15,7 +14,7 @@ const resources = (
 
 <Layout
   title="Leader Resources"
-  description="Public-safe planning and communication resources for Pack 60 adult volunteers."
+  description="Planning and communication resources for Pack 60 adult volunteers."
 >
   <header class="page-header">
     <div class="prose">
@@ -25,14 +24,13 @@ const resources = (
       <p class="eyebrow">For volunteers</p>
       <h1>Leader Resources</h1>
       <p class="lead">
-        Public-safe guidance for planning den meetings, pack events,
-        communications, and website content. Private operational files should
-        stay in approved private systems.
+        Guidance for planning den meetings, pack events, communications, and
+        website content.
       </p>
     </div>
   </header>
   <section class="content-band">
-    <div class="container two-column">
+    <div class="container">
       <article class="prose">
         <h2>Leader planning basics</h2>
         <ul>
@@ -44,9 +42,9 @@ const resources = (
             Use official training and program resources from Scouting America.
           </li>
           <li>
-            Keep public communication general and private communication secure.
+            Keep pack communications clear, timely, and useful for families.
           </li>
-          <li>Review the photo and public content policies before posting.</li>
+          <li>Review photo guidance before posting event images.</li>
         </ul>
         <h2>Public leader resources</h2>
         <ResourceList
@@ -57,12 +55,6 @@ const resources = (
           }))}
         />
       </article>
-      <AlertBox title="Public content rule" tone="warning">
-        <p>
-          Do not put rosters, medical forms, advancement records, private travel
-          plans, or personal contact information in this repository.
-        </p>
-      </AlertBox>
     </div>
   </section>
 </Layout>

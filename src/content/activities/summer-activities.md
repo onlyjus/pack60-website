@@ -23,8 +23,4 @@ Scouts get to keep friendships active, spend time outside, and try activities th
 
 ## What families should know
 
-Public pages should not list live locations, exact private travel details, or attendee information.
-
-## Public-safe image placeholder
-
-Use photos of outdoor gear, water bottles, nature, flags, or activity supplies.
+Summer activities vary by year and are usually lighter than the school-year schedule.

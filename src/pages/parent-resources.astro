@@ -3,7 +3,6 @@ import { getCollection } from 'astro:content';
 import Layout from '../layouts/Layout.astro';
 import Breadcrumbs from '../components/Breadcrumbs.astro';
 import ResourceList from '../components/ResourceList.astro';
-import AlertBox from '../components/AlertBox.astro';
 
 const resources = (
   await getCollection(
@@ -11,11 +10,14 @@ const resources = (
     ({ data }) => data.public && data.category === 'Families',
   )
 ).sort((a, b) => (a.data.order ?? 99) - (b.data.order ?? 99));
+
+const meetingMapsUrl =
+  'https://www.google.com/maps/search/?api=1&query=Suncrest+United+Methodist+Church%2C+Morgantown%2C+WV';
 ---
 
 <Layout
   title="Parent Resources"
-  description="Public-safe Pack 60 resources for new and current families."
+  description="Pack 60 resources for new and current families."
 >
   <header class="page-header">
     <div class="prose">
@@ -25,23 +27,29 @@ const resources = (
       <p class="eyebrow">For families</p>
       <h1>Parent Resources</h1>
       <p class="lead">
-        Helpful public-safe information for families. Private forms, specific
-        family details, and registered-family communications belong outside this
-        public site.
+        Helpful information for families getting started with Pack 60.
       </p>
     </div>
   </header>
   <section class="content-band">
-    <div class="container two-column">
+    <div class="container">
       <article class="prose">
         <h2>New family checklist</h2>
         <ul>
           <li>Read the Join page and contact the pack with basic questions.</li>
           <li>
+            Confirm the next Tuesday meeting at
+            <a href={meetingMapsUrl}>Suncrest United Methodist Church</a>.
+          </li>
+          <li>
             Visit a public recruiting event or approved pack meeting
             opportunity.
           </li>
-          <li>Review uniform basics and expected family participation.</li>
+          <li>
+            Review
+            <a href="/resources/uniform-basics/">uniform basics</a>
+            and expected family participation.
+          </li>
           <li>
             Use official registration links when provided by pack leadership.
           </li>
@@ -49,8 +57,8 @@ const resources = (
         <h2>Pack meeting expectations</h2>
         <p>
           Pack meetings are designed for families. Scouts should arrive ready to
-          participate, and parents or guardians should expect to stay and help
-          their scout.
+          participate on Tuesdays at 7:00 PM, and parents or guardians should
+          expect to stay and help their scout.
         </p>
         <h2>Public resources</h2>
         <ResourceList
@@ -61,13 +69,6 @@ const resources = (
           }))}
         />
       </article>
-      <AlertBox title="Safety note" tone="warning">
-        <p>
-          Do not post private forms, medical information, permission slips with
-          personal data, Scoutbook exports, or private meeting links on this
-          public site.
-        </p>
-      </AlertBox>
     </div>
   </section>
 </Layout>

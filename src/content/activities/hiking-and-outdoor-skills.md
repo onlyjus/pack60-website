@@ -23,8 +23,4 @@ Scouts enjoy exploring trails, spotting wildlife, learning useful skills, and sp
 
 ## What families should know
 
-Public pages should avoid exact trailhead meeting details and live location information. Registered families receive full details privately.
-
-## Public-safe image placeholder
-
-Use trail, gear, map, boots, flags, or wide activity photos that do not identify individual youth.
+Families should expect simple outdoor activities matched to scout age, weather, daylight, and group readiness.

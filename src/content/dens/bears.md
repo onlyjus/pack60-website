@@ -32,4 +32,4 @@ Families help with activities, encouragement, transportation, and pack events.
 
 Placeholder: **[Official Scouting Bear resources]**
 
-Exact meeting details are shared privately with registered families.
+Families receive den-specific meeting details through regular pack communications.

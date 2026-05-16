@@ -32,4 +32,4 @@ Families help scouts finish the Cub Scout journey and prepare for what comes nex
 
 Placeholder: **[Official Scouting Arrow of Light resources]**
 
-Exact meeting details are shared privately with registered families.
+Families receive den-specific meeting details through regular pack communications.

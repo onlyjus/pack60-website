@@ -23,8 +23,4 @@ Scouts enjoy building, testing, launching, measuring, and learning by trying.
 
 ## What families should know
 
-Activities should be age-appropriate and supervised. Public pages should keep details general and avoid posting youth-identifying project photos without approval.
-
-## Public-safe image placeholder
-
-Use photos of rockets, launch equipment, craft supplies, experiments, or activity stations.
+Activities should be age-appropriate, hands-on, and supervised.

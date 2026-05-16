@@ -2,7 +2,7 @@
 title: 'Fundraising Chair'
 roleType: 'Committee'
 timeCommitment: 'Placeholder: seasonal'
-description: 'Coordinates approved pack fundraising efforts and general public-safe updates.'
+description: 'Coordinates approved pack fundraising efforts and general updates.'
 order: 11
 public: true
 lastUpdated: '2026-05-12'
@@ -12,8 +12,8 @@ lastUpdated: '2026-05-12'
 
 - Plan fundraising timelines
 - Coordinate volunteers
-- Share approved public-safe fundraiser information
-- Keep payment and family records private
+- Share fundraiser information
+- Coordinate payment and family recordkeeping
 
 ## Helpful resources
 

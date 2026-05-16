@@ -2,7 +2,6 @@
 import { getCollection } from 'astro:content';
 import Layout from '../../layouts/Layout.astro';
 import Breadcrumbs from '../../components/Breadcrumbs.astro';
-import AlertBox from '../../components/AlertBox.astro';
 
 export async function getStaticPaths() {
   const resources = await getCollection('resources', ({ data }) => data.public);
@@ -30,17 +29,7 @@ const { Content } = await resource.render();
       <p class="lead">{resource.data.description}</p>
     </div>
   </header>
-  <section class="content-band">
-    <div class="container two-column">
-      <article class="prose">
-        <Content />
-      </article>
-      <AlertBox title="Public-safe resource" tone="warning">
-        <p>
-          Do not add private forms, youth information, personal contact details,
-          or private meeting links to public resources.
-        </p>
-      </AlertBox>
-    </div>
-  </section>
+  <article class="content-band prose">
+    <Content />
+  </article>
 </Layout>

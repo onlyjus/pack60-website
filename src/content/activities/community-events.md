@@ -23,8 +23,4 @@ Scouts enjoy representing the pack, helping others, and seeing how Scouting conn
 
 ## What families should know
 
-Public event posts should use approved details only and avoid youth names, private contact information, and live location updates.
-
-## Public-safe image placeholder
-
-Use flags, activity tables, decorations, or wide public event scenes.
+Community events are a chance for scouts to be visible, helpful, and connected in Morgantown.

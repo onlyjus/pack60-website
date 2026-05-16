@@ -4,7 +4,7 @@ description: 'Learn about Cub Scout Pack 60, the community it serves, and what m
 navTitle: 'About'
 order: 3
 public: true
-lastUpdated: '2026-05-12'
+lastUpdated: '2026-05-16'
 ---
 
 ## Pack overview
@@ -13,9 +13,7 @@ Cub Scout Pack 60 is a local pack serving families in the Morgantown, WV area. T
 
 ## Location and community served
 
-Pack 60 serves families in and around Morgantown, WV. Exact meeting addresses and private location details are shared only through approved pack communication channels.
-
-Placeholder meeting location: **[Meeting location]**
+Pack 60 serves families in and around Morgantown, WV. The pack meets Tuesdays at 7:00 PM at [Suncrest United Methodist Church](https://www.google.com/maps/search/?api=1&query=Suncrest+United+Methodist+Church%2C+Morgantown%2C+WV) in Morgantown.
 
 ## Chartered organization
 
@@ -23,9 +21,15 @@ Pack 60 is connected to a chartered organization that supports the local Scoutin
 
 Placeholder: **[Chartered organization]**
 
+## Mountaineer Area Council
+
+Pack 60 is part of [Mountaineer Area Council](https://mountaineerscouting.org/), which serves Scouts and families across northern West Virginia and eastern Ohio. The council maintains several camp properties, including [Camp Mountaineer](https://mountaineerscouting.org/camp-mountaineer/), Sandscrest Scout Reservation, and Fort Steuben Scout Reservation.
+
+Mountaineer Area Council also operates service centers and Scout Shops in Wheeling and Fairmont. The Fairmont Service Center and Scout Shop is at [1831 Speedway Avenue, Fairmont, WV 26554](https://www.google.com/maps/search/?api=1&query=1831+Speedway+Avenue%2C+Fairmont%2C+WV+26554), and the council lists the phone number as [(304) 366-3940](tel:+13043663940). Families can use the [council Scout Shops page](https://mountaineerscouting.org/about/scout-shops/) for current shop information and uniform resources.
+
 ## Meeting rhythm
 
-The pack typically uses a rhythm of pack meetings, den meetings, service opportunities, outings, and seasonal traditions. Specific dates and private details should be confirmed through official pack communications.
+The pack typically uses a Tuesday meeting rhythm along with service opportunities, outings, and seasonal traditions. Specific dates, arrival details, and schedule changes should be confirmed through official pack communications.
 
 ## Pack values
 
@@ -34,6 +38,10 @@ Pack 60 aims to be welcoming, helpful, active, safe, and family-centered. Scouts
 ## Family involvement
 
 Cub Scouting works best when families participate. Parents and guardians help their scouts, support den leaders, assist with events, and volunteer in ways that fit their time and skills.
+
+## Donations and activity payments
+
+Families can use Pack 60's [PayPal link](https://paypal.me/cubscoutpack60wv) for donations and activity payments when directed by pack leadership. Include a clear note with the payment so the pack knows what it is for.
 
 ## Leadership overview
 

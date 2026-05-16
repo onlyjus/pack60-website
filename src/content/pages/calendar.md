@@ -1,31 +1,26 @@
 ---
 title: 'Calendar'
-description: 'View public-safe Pack 60 calendar information and example event types.'
+description: 'View Pack 60 calendar information and example event types.'
 navTitle: 'Calendar'
 order: 6
 public: true
-lastUpdated: '2026-05-12'
+lastUpdated: '2026-05-16'
 ---
 
-## Public-safe calendar
+## Pack calendar
 
-This calendar page is for public-safe information only. Registered families receive full details through official pack communication channels.
+This calendar page highlights Pack 60's regular meeting rhythm and common event types.
 
-<div class="placeholder-frame">
-  <strong>[Public Google Calendar embed]</strong>
-</div>
+Pack 60 meets Tuesdays at 7:00 PM at [Suncrest United Methodist Church](https://www.google.com/maps/search/?api=1&query=Suncrest+United+Methodist+Church%2C+Morgantown%2C+WV) in Morgantown, WV. Registered families should still confirm schedule changes through official pack communications.
 
-## Public-safe event examples
+Mountaineer Area Council also maintains a [Council Calendar](https://mountaineerscouting.org/calendar/) for district and council events.
+
+## Event examples
 
 - Pack meeting
+- Tuesday meeting at Suncrest United Methodist Church
 - Join Scouting night
 - Pinewood Derby
 - Blue & Gold
 - Service project
-- Campout date range without exact private details
-
-## Calendar rules
-
-Public calendar entries should avoid exact private addresses, live event locations, detailed travel plans, private meeting links, youth names, and personal contact information.
-
-When in doubt, keep the public calendar general and share full details privately with registered families.
+- Campout

@@ -13,7 +13,7 @@ lastUpdated: '2026-05-12'
 - Support den leaders with recognition timing
 - Coordinate awards purchasing and ceremony support
 - Help families understand general advancement flow
-- Keep individual advancement records out of the public repository
+- Coordinate individual advancement records
 
 ## Helpful resources
 

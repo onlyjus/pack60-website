@@ -2,7 +2,6 @@
 import { getCollection } from 'astro:content';
 import Layout from '../../layouts/Layout.astro';
 import Breadcrumbs from '../../components/Breadcrumbs.astro';
-import AlertBox from '../../components/AlertBox.astro';
 
 export async function getStaticPaths() {
   const activities = await getCollection(
@@ -37,24 +36,14 @@ const { Content } = await activity.render();
       <p class="lead">{activity.data.description}</p>
     </div>
   </header>
-  <section class="content-band">
-    <div class="container two-column">
-      <article class="prose">
-        <img
-          class="feature-image"
-          src={activity.data.image}
-          alt={`Public-safe illustration for ${activity.data.title}`}
-        />
-        <Content />
-      </article>
-      <AlertBox title="Public content note" tone="warning">
-        <p>
-          Activity pages should never include private travel details, live
-          locations, youth names, or private family contact information.
-        </p>
-      </AlertBox>
-    </div>
-  </section>
+  <article class="content-band prose">
+    <img
+      class="feature-image"
+      src={activity.data.image}
+      alt={`Illustration for ${activity.data.title}`}
+    />
+    <Content />
+  </article>
 </Layout>
 
 <style>

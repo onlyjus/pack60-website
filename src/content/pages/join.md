@@ -4,7 +4,7 @@ description: 'Learn how to join Cub Scout Pack 60.'
 navTitle: 'Join'
 order: 2
 public: true
-lastUpdated: '2026-05-12'
+lastUpdated: '2026-05-16'
 ---
 
 ## Who can join
@@ -22,9 +22,9 @@ Cub Scouts is open to elementary-aged youth. Pack 60 welcomes families in the Mo
 
 ## How to visit a meeting
 
-Families interested in visiting should contact the pack first at [membership@pack60.org](mailto:membership@pack60.org). A volunteer can share approved public information and explain the next available visit opportunity.
+Pack 60 meets Tuesdays at 7:00 PM at [Suncrest United Methodist Church](https://www.google.com/maps/search/?api=1&query=Suncrest+United+Methodist+Church%2C+Morgantown%2C+WV) in Morgantown, WV.
 
-Exact meeting details are shared privately with families through official pack communication channels.
+Families interested in visiting should contact the pack first at [membership@pack60.org](mailto:membership@pack60.org). A volunteer can confirm the best arrival details, share any schedule changes, and explain the next available visit opportunity.
 
 ## How to register
 
@@ -44,10 +44,8 @@ Placeholder: **[Estimated annual cost range]**
 
 ## Uniform basics
 
-Uniform expectations vary by rank and event. Families can start with the basics and ask the pack before purchasing optional items.
-
-Placeholder: **[Uniform guidance link]**
+Uniform expectations vary by rank and event. Families can start with the [Pack 60 uniform basics](/resources/uniform-basics/) resource and use Scouting America's [official Cub Scout uniform page](https://www.scouting.org/programs/cub-scouts/cub-scout-uniform/) for current rank-specific requirements.
 
 ## Contact membership
 
-Use [membership@pack60.org](mailto:membership@pack60.org) for membership questions. Do not send private youth, medical, or family information through public website channels.
+Use [membership@pack60.org](mailto:membership@pack60.org) for membership questions.

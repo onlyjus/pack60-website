@@ -1,22 +1,18 @@
 ---
 title: 'Communication Guidelines'
-description: 'Public-safe communication rules for website and public announcements.'
+description: 'Communication tips for website and public announcements.'
 category: 'Leaders'
 order: 9
 public: true
 lastUpdated: '2026-05-12'
 ---
 
-Public communications should be clear, welcoming, and general.
+Pack communications should be clear, welcoming, and useful.
 
-Do not publish:
+Good communication usually includes:
 
-- Youth full names
-- Parent personal contact information
-- Private addresses
-- Live location details
-- Private meeting links
-- Medical or permission forms containing personal data
-- Payment or advancement records
-
-Use placeholders when information is not approved for public posting.
+- A clear subject or headline
+- The intended audience
+- The date, time, and location when relevant
+- The action families should take next
+- A pack contact alias for questions

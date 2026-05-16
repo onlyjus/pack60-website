@@ -32,4 +32,4 @@ Parents and guardians support den activities, help scouts stay engaged, and assi
 
 Placeholder: **[Official Scouting Wolf resources]**
 
-Exact meeting details are shared privately with registered families.
+Families receive den-specific meeting details through regular pack communications.

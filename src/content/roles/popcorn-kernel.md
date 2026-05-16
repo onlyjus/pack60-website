@@ -12,8 +12,8 @@ lastUpdated: '2026-05-12'
 
 - Coordinate popcorn fundraiser dates and materials
 - Support families with approved instructions
-- Communicate public-safe fundraiser information
-- Keep individual sales records out of the public repository
+- Communicate fundraiser information
+- Help track individual sales records
 
 ## Helpful resources
 

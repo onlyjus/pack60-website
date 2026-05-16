@@ -17,7 +17,7 @@ On race day, cars roll down a sloped track powered only by gravity. Pack 60's se
 
 ## When it usually happens
 
-The event is often held during the winter season. Replace this placeholder only with approved public timing.
+The event is often held during the winter season.
 
 ## Why scouts enjoy it
 
@@ -25,7 +25,7 @@ Scouts enjoy building something with their hands, testing ideas, decorating cars
 
 ## What families should know
 
-Families often help with safe tool use, sanding, painting, and learning the rules. Public pages should avoid posting youth full names, standings tied to youth identities, or private event details.
+Families often help with safe tool use, sanding, painting, and learning the rules.
 
 ## Typical awards
 
@@ -68,8 +68,4 @@ A typical Pinewood Derby kit includes:
 - Apply dry graphite powder to the axles if allowed by current rules.
 - Make sure wheels are straight and minimize wobbling for a smoother ride.
 
-Optional public resource: [Pinewood Derby science tips video](https://youtu.be/-RjJtO51ykY)
-
-## Public-safe image placeholder
-
-Photos of cars, tracks, tools, trophies, or wide activity scenes work well.
+Optional resource: [Pinewood Derby science tips video](https://youtu.be/-RjJtO51ykY)

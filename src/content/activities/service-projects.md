@@ -23,8 +23,4 @@ Scouts can see that their work matters, learn teamwork, and build pride in helpi
 
 ## What families should know
 
-Public event descriptions should avoid private beneficiary details, youth names, exact private locations, and live location updates.
-
-## Public-safe image placeholder
-
-Use photos of supplies, completed projects, outdoor cleanup scenes, flags, or wide group activity images.
+Service projects are planned around age-appropriate work and family participation.

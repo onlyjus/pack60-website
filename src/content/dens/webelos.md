@@ -32,4 +32,4 @@ Parents and guardians continue supporting scouts while encouraging age-appropria
 
 Placeholder: **[Official Scouting Webelos resources]**
 
-Exact meeting details are shared privately with registered families.
+Families receive den-specific meeting details through regular pack communications.

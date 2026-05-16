@@ -7,13 +7,15 @@ import Card from '../components/Card.astro';
 import CardGrid from '../components/CardGrid.astro';
 import ActivityCard from '../components/ActivityCard.astro';
 import CTAButton from '../components/CTAButton.astro';
-import AlertBox from '../components/AlertBox.astro';
 
 const activities = (
   await getCollection('activities', ({ data }) => data.public)
 )
   .sort((a, b) => (a.data.order ?? 99) - (b.data.order ?? 99))
   .slice(0, 6);
+
+const meetingMapsUrl =
+  'https://www.google.com/maps/search/?api=1&query=Suncrest+United+Methodist+Church%2C+Morgantown%2C+WV';
 ---
 
 <Layout
@@ -79,34 +81,29 @@ const activities = (
 
   <Section
     title="Meeting overview"
-    intro="Pack 60 uses a mix of pack meetings, den meetings, outings, service projects, and special events. Exact meeting details are shared privately with registered families."
+    intro="Pack 60 meets Tuesdays at 7:00 PM at Suncrest United Methodist Church in Morgantown, WV, with additional outings, service projects, and special events shared through official pack communication channels."
   >
     <div class="two-column">
       <div class="surface">
-        <h2>Public meeting information</h2>
+        <h2>When and where we meet</h2>
         <p>
-          The pack generally serves families in the Morgantown, WV area. Public
-          recruiting events and general meeting information may be shared here
-          when appropriate.
+          Families interested in Pack 60 are welcome to ask about visiting a
+          meeting. We meet <strong>Tuesdays at 7:00 PM</strong> at
+          <a href={meetingMapsUrl}>Suncrest United Methodist Church</a> in Morgantown,
+          WV.
         </p>
         <p>
-          Placeholder meeting location: <strong>[Meeting location]</strong>
+          Please contact the pack before your first visit so a volunteer can
+          confirm the best arrival details and any schedule changes.
         </p>
       </div>
-      <AlertBox title="Public-safe calendar" tone="warning">
-        <p>
-          This site lists only public-safe event information. Registered
-          families receive full details through official pack communication
-          channels.
-        </p>
-      </AlertBox>
     </div>
   </Section>
 
   <Section
     variant="alt"
     title="Upcoming public events"
-    intro="These are examples of public-safe event types. Replace them only with details approved for public posting."
+    intro="Here are a few event types families can expect from Pack 60 throughout the year."
   >
     <CardGrid columns="three">
       <Card title="Join Scouting Night" meta="Placeholder">
@@ -122,8 +119,8 @@ const activities = (
       </Card>
       <Card title="Service Project" meta="Placeholder">
         <p>
-          A public-safe community service opportunity with details shared when
-          approved.
+          A community service opportunity where scouts can help, learn, and
+          serve together.
         </p>
       </Card>
     </CardGrid>
@@ -134,9 +131,9 @@ const activities = (
       <div>
         <h2>Interested in joining Pack 60?</h2>
         <p>
-          Start with the Join page, then contact the pack using the placeholder
-          membership email. Volunteers can update those aliases later when
-          approved.
+          Start with the Join page, then contact the pack with questions about
+          visiting a Tuesday meeting or registering through official Scouting
+          channels.
         </p>
       </div>
       <div class="cta-actions">

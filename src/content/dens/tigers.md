@@ -32,4 +32,4 @@ Adult partners are an important part of the Tiger experience.
 
 Placeholder: **[Official Scouting Tiger resources]**
 
-Exact meeting details are shared privately with registered families.
+Families receive den-specific meeting details through regular pack communications.

@@ -15,7 +15,7 @@ Blue & Gold is a pack celebration that brings families together to recognize the
 
 ## When it usually happens
 
-Many packs hold Blue & Gold in late winter. Exact Pack 60 plans should be shared only after approval for public posting.
+Many packs hold Blue & Gold in late winter.
 
 ## Why scouts enjoy it
 
@@ -23,8 +23,4 @@ Scouts enjoy the ceremony, food, decorations, skits, songs, recognition, and tim
 
 ## What families should know
 
-This is usually a family event. Public pages should keep details general and avoid private location, attendee, or youth-identifying information.
-
-## Public-safe image placeholder
-
-Use photos of decorations, table settings, flags, cakes, or wide group scenes.
+This is usually a family event with recognition, food, and time together as a pack.

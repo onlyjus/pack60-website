@@ -1,14 +1,12 @@
 ---
-title: 'Scoutbook / Official App Placeholder'
-description: 'A placeholder for approved guidance about official Scouting tools.'
+title: 'Scoutbook Plus'
+description: 'Official Scouting advancement tool used to enter completed adventures and advancement records.'
 category: 'Families'
 order: 5
 public: true
-lastUpdated: '2026-05-12'
+lastUpdated: '2026-05-16'
 ---
 
-Pack volunteers may use official Scouting tools to communicate with registered families and track advancement.
+[Scoutbook Plus](https://advancements.scouting.org/) is the official Scouting advancement tool used to enter completed adventures and advancement records.
 
-Placeholder: **[Official app or Scoutbook guidance]**
-
-Do not export or publish private Scoutbook data in this repository.
+Pack 60 leaders should use the pack's normal advancement process when recording completed adventures after den meetings, campouts, service projects, and other pack activities.

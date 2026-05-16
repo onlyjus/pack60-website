@@ -1,10 +1,10 @@
 ---
 title: 'Den Meeting Planning Guide'
-description: 'A practical public-safe guide for planning engaging den meetings around Cub Scout adventure requirements.'
+description: 'A practical guide for planning engaging den meetings around Cub Scout adventure requirements.'
 category: 'Leaders'
 order: 6
 public: true
-lastUpdated: '2026-05-13'
+lastUpdated: '2026-05-16'
 ---
 
 This guide gives den leaders a repeatable way to plan a meeting that is active, focused, and easy for scouts to follow. It is based on a simple pattern: choose a current adventure, pick two requirements, then build the meeting around activities that help scouts learn by doing.
@@ -28,12 +28,12 @@ A strong den meeting usually:
 
 Pick the adventure your den is currently working on. Use the rank page for your den:
 
-- Lions: Kindergarten
-- Tigers: 1st Grade
-- Wolves: 2nd Grade
-- Bears: 3rd Grade
-- Webelos: 4th Grade
-- Arrow of Light: 5th Grade
+- [Lion Adventures](https://www.scouting.org/programs/cub-scouts/adventures/lion/): Kindergarten
+- [Tiger Adventures](https://www.scouting.org/programs/cub-scouts/adventures/tiger/): 1st Grade
+- [Wolf Adventures](https://www.scouting.org/programs/cub-scouts/adventures/wolf/): 2nd Grade
+- [Bear Adventures](https://www.scouting.org/programs/cub-scouts/adventures/bear/): 3rd Grade
+- [Webelos Adventures](https://www.scouting.org/programs/cub-scouts/adventures/webelos/): 4th Grade
+- [Arrow of Light Adventures](https://www.scouting.org/programs/cub-scouts/adventures/arrow-of-light/): 5th Grade
 
 Write down the adventure name and the meeting theme in plain language. For example:
 
@@ -76,7 +76,7 @@ Good opening activities are:
 Example AI prompt:
 
 ```text
-I am planning a Cub Scout den meeting for [rank/grade]. The adventure is [adventure name], and the two requirements are: [requirement 1] and [requirement 2]. Please create a 10-minute opening activity scouts can do as they arrive. It should match the theme, use simple supplies, avoid private information, and keep scouts engaged while teaching the idea.
+I am planning a Cub Scout den meeting for [rank/grade]. The adventure is [adventure name], and the two requirements are: [requirement 1] and [requirement 2]. Please create a 10-minute opening activity scouts can do as they arrive. It should match the theme, use simple supplies, and keep scouts engaged while teaching the idea.
 ```
 
 Ask AI to revise the idea if it is too complicated, too messy, too expensive, or not appropriate for the age group.
@@ -89,7 +89,7 @@ Use this structure as the default:
 2. **Meeting opening:** Pledge, Scout Oath, and Scout Law.
 3. **Talk time:** Upcoming activities, adventure context, and quick reminders. Keep this short.
 4. **Activity 1:** Focused on the first adventure requirement.
-5. **Snack:** Keep it simple and check family-provided allergy guidance through private channels.
+5. **Snack:** Keep it simple and check family-provided allergy guidance.
 6. **Activity 2:** Focused on the second adventure requirement.
 7. **Closing:** Brief reflection, recognition, cleanup, and next step.
 
@@ -128,8 +128,7 @@ How scouts will show they tried it:
 Opening activity:
 Snack plan:
 Adult helpers needed:
-Public-safe notes:
-Private details to share only through official channels:
+Notes:
 ```
 
 ## AI prompt for a full den meeting plan
@@ -149,16 +148,14 @@ Use this structure:
 - Activity 2 for requirement 2
 - Closing
 
-Keep it age-appropriate, hands-on, simple to lead, and public-safe. Include supplies, estimated timing, leader notes, and a backup indoor option. Do not include youth names, parent contact information, private meeting locations, or personal information.
+Keep it age-appropriate, hands-on, and simple to lead. Include supplies, estimated timing, leader notes, and a backup indoor option.
 ```
 
-## Safety and privacy reminders
+## Leader reminders
 
-- Share exact meeting location, attendance, family details, and allergy information only through approved private pack channels.
-- Do not put youth names, behavior notes, medical information, or parent contact details in public files.
 - Use official Scouting safety guidance and required training for activities.
 - Ask for adult help before the meeting if an activity needs stations, tools, outdoor supervision, or setup.
-- Keep photos public-safe if documenting the meeting later.
+- Enter completed advancement in [Scoutbook Plus](https://advancements.scouting.org/) after the meeting, using the pack's normal advancement process.
 
 ## After the meeting
 
@@ -168,6 +165,6 @@ Take five minutes to note what worked:
 - Which instruction was confusing?
 - What supplies should be prepared differently next time?
 - Did the two-requirement plan feel realistic?
-- What should be shared with families privately?
+- What should be shared with families after the meeting?
 
 Small notes after each meeting make the next meeting easier to plan.

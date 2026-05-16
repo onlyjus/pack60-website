@@ -1,31 +1,23 @@
 ---
-title: 'Privacy / Public Content Policy'
-description: 'How Pack 60 keeps public website content safe for a youth organization.'
+title: 'Privacy'
+description: 'How to contact Pack 60 about website privacy questions or content updates.'
 navTitle: 'Privacy'
 order: 9
 public: true
 lastUpdated: '2026-05-12'
 ---
 
-## What this site shares publicly
+## Website content
 
-This public website may share general pack information, joining guidance, activity descriptions, public-safe calendar information, volunteer role descriptions, public resources, and approved public-safe photos or illustrations.
+This website shares general pack information, joining guidance, activity descriptions, calendar information, volunteer role descriptions, resources, and photos or illustrations.
 
-## What this site does not share
+## Photo updates
 
-This site must not include youth rosters, youth last names, parent contact information, medical forms, private addresses, exact travel itineraries, private meeting links, payment records, advancement records, discipline notes, background check information, or private Scoutbook data.
+Pack volunteers can update or remove website photos when needed.
 
-## Photo policy
+## Calendar updates
 
-Photos should be public-safe and should favor group or activity scenes. Avoid close-up portraits of individual youth. Do not identify youth by full name. Do not post live location details.
-
-## Youth name policy
-
-Do not publish youth full names. Avoid youth last names in captions, file names, alt text, page text, documents, or metadata.
-
-## Calendar policy
-
-Public calendar details should remain general. Registered families receive full event details through official pack communication channels.
+Calendar details may change during the year. Families should confirm current event details through regular pack communications.
 
 ## Removal requests
 

@@ -5,7 +5,6 @@ import Section from '../../components/Section.astro';
 import DenCard from '../../components/DenCard.astro';
 import CardGrid from '../../components/CardGrid.astro';
 import Breadcrumbs from '../../components/Breadcrumbs.astro';
-import AlertBox from '../../components/AlertBox.astro';
 
 const dens = (await getCollection('dens', ({ data }) => data.public)).sort(
   (a, b) => a.data.order - b.data.order,
@@ -29,13 +28,6 @@ const dens = (await getCollection('dens', ({ data }) => data.public)).sort(
     </div>
   </header>
   <Section>
-    <AlertBox title="Meeting details are private" tone="warning">
-      <p>
-        Exact den meeting details are shared privately with registered families
-        through official pack communication channels.
-      </p>
-    </AlertBox>
-    <br />
     <CardGrid columns="three">
       {
         dens.map((den) => (

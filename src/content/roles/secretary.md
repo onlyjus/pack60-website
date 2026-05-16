@@ -12,8 +12,8 @@ lastUpdated: '2026-05-12'
 
 - Record committee meeting notes
 - Help track action items
-- Maintain public-safe records as approved
-- Keep private information in approved private systems
+- Maintain pack records as approved
+- Help organize committee materials
 
 ## Helpful resources
 

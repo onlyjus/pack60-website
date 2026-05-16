@@ -13,7 +13,7 @@ lastUpdated: '2026-05-12'
 - Plan age-appropriate den meetings
 - Coordinate with families in the den
 - Help scouts work through rank activities
-- Share private meeting details only through approved channels
+- Share meeting details with den families
 
 ## Helpful resources
 

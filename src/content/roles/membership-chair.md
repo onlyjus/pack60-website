@@ -10,10 +10,10 @@ lastUpdated: '2026-05-12'
 
 ## Typical responsibilities
 
-- Answer public-safe joining questions
+- Answer joining questions
 - Coordinate recruiting events
 - Help families find official registration links
-- Keep personal family information out of public pages
+- Help new families get connected with the pack
 
 ## Helpful resources
 
