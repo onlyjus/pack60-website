@@ -3,7 +3,7 @@ title: 'Summer Activities'
 description: 'Optional warm-weather activities that help families stay connected between school years.'
 season: 'Summer'
 category: 'Seasonal Program'
-image: '/images/placeholders/summer.svg'
+image: '/images/illustrations/summer.svg'
 order: 7
 public: true
 lastUpdated: '2026-05-12'

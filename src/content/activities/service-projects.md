@@ -3,7 +3,7 @@ title: 'Service Projects'
 description: 'Opportunities for scouts and families to help the community in age-appropriate ways.'
 season: 'Year-round'
 category: 'Community Service'
-image: '/images/placeholders/service.svg'
+image: '/images/illustrations/service.svg'
 order: 4
 public: true
 lastUpdated: '2026-05-12'

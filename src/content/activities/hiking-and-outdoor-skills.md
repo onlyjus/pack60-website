@@ -3,7 +3,7 @@ title: 'Hiking and Outdoor Skills'
 description: 'Simple outdoor adventures that teach observation, preparedness, and confidence.'
 season: 'Spring, Summer, and Fall'
 category: 'Outdoor Adventure'
-image: '/images/placeholders/hiking.svg'
+image: '/images/illustrations/hiking.svg'
 order: 5
 public: true
 lastUpdated: '2026-05-12'

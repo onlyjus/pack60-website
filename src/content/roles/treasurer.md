@@ -1,11 +1,11 @@
 ---
 title: 'Treasurer'
 roleType: 'Committee'
-timeCommitment: 'Placeholder: varies by season'
+timeCommitment: 'Varies by season'
 description: 'Helps manage pack finances, budgeting, and financial reporting to the committee.'
 order: 4
 public: true
-lastUpdated: '2026-05-12'
+lastUpdated: '2026-05-19'
 ---
 
 ## Typical responsibilities
@@ -17,4 +17,4 @@ lastUpdated: '2026-05-12'
 
 ## Helpful resources
 
-Placeholder: **[Pack finance guidance]**
+Use approved pack finance processes and keep payment records, reimbursements, account details, and family-specific information private.

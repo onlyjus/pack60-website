@@ -1,11 +1,11 @@
 ---
 title: 'Fundraising Chair'
 roleType: 'Committee'
-timeCommitment: 'Placeholder: seasonal'
+timeCommitment: 'Seasonal'
 description: 'Coordinates approved pack fundraising efforts and general updates.'
 order: 11
 public: true
-lastUpdated: '2026-05-12'
+lastUpdated: '2026-05-19'
 ---
 
 ## Typical responsibilities
@@ -17,4 +17,4 @@ lastUpdated: '2026-05-12'
 
 ## Helpful resources
 
-Placeholder: **[Fundraising guidance]**
+Use approved pack fundraising plans and keep payment records, sales records, and family-specific details out of the public website.

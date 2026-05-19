@@ -3,7 +3,7 @@ title: 'STEM / Rockets / Science Activities'
 description: 'Hands-on science, technology, engineering, and math activities that make learning active.'
 season: 'Year-round'
 category: 'Hands-on Learning'
-image: '/images/placeholders/stem.svg'
+image: '/images/illustrations/stem.svg'
 order: 6
 public: true
 lastUpdated: '2026-05-12'

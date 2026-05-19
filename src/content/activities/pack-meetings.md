@@ -3,7 +3,7 @@ title: 'Pack Meetings'
 description: 'Regular gatherings where dens come together for activities, recognition, and shared pack fun.'
 season: 'School Year'
 category: 'Pack Program'
-image: '/images/placeholders/pack-meeting.svg'
+image: '/images/illustrations/pack-meeting.svg'
 order: 9
 public: true
 lastUpdated: '2026-05-16'

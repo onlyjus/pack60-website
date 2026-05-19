@@ -1,11 +1,11 @@
 ---
 title: 'Popcorn Kernel'
 roleType: 'Fundraising'
-timeCommitment: 'Placeholder: seasonal'
+timeCommitment: 'Seasonal'
 description: 'Leads the seasonal popcorn fundraiser with support from families and pack leadership.'
 order: 12
 public: true
-lastUpdated: '2026-05-12'
+lastUpdated: '2026-05-19'
 ---
 
 ## Typical responsibilities
@@ -17,4 +17,4 @@ lastUpdated: '2026-05-12'
 
 ## Helpful resources
 
-Placeholder: **[Popcorn fundraiser resources]**
+Use approved fundraiser materials shared through pack leadership and keep individual sales records private.

@@ -45,4 +45,4 @@ Use the Cloudflare Pages deployment history to roll back to a previous successfu
 
 ## GitHub Actions option
 
-This repository includes CI checks. A separate deploy workflow placeholder is included for teams that later choose token-based GitHub Actions deployment, but Cloudflare Pages native Git integration is recommended for simplicity.
+This repository includes CI checks. Cloudflare Pages native Git integration is recommended for simplicity; teams that later choose token-based GitHub Actions deployment should add that workflow intentionally.

@@ -1,11 +1,11 @@
 ---
 title: 'Outdoor/Activities Chair'
 roleType: 'Committee'
-timeCommitment: 'Placeholder: varies by event calendar'
+timeCommitment: 'Varies by event calendar'
 description: 'Helps coordinate outings, activities, and event planning with safety and public-content care.'
 order: 10
 public: true
-lastUpdated: '2026-05-12'
+lastUpdated: '2026-05-19'
 ---
 
 ## Typical responsibilities
@@ -17,4 +17,4 @@ lastUpdated: '2026-05-12'
 
 ## Helpful resources
 
-Placeholder: **[Outdoor program resources]**
+Use the [Event Planning Checklist](/resources/event-planning-checklist/) and current Scouting safety guidance when planning outings.

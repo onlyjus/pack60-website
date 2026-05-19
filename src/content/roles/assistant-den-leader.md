@@ -1,11 +1,11 @@
 ---
 title: 'Assistant Den Leader'
 roleType: 'Program'
-timeCommitment: 'Placeholder: varies by den'
+timeCommitment: 'Varies by den'
 description: 'Supports the den leader with meeting activities, communication, and family participation.'
 order: 9
 public: true
-lastUpdated: '2026-05-12'
+lastUpdated: '2026-05-19'
 ---
 
 ## Typical responsibilities
@@ -17,4 +17,4 @@ lastUpdated: '2026-05-12'
 
 ## Helpful resources
 
-Placeholder: **[Assistant den leader resources]**
+Use [My Scouting](https://my.scouting.org/) for required training and the [Den Meeting Planning Guide](/resources/den-meeting-planning-guide/) for public-safe planning support.

@@ -4,7 +4,7 @@ Review the public site monthly or seasonally.
 
 ## Checklist
 
-- Check the Join page for clarity and current placeholders.
+- Check the Join page for clarity, current meeting guidance, and any facts waiting on human approval.
 - Confirm the calendar embed still works.
 - Review generic leader contact aliases.
 - Check photos for public safety.

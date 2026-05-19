@@ -3,7 +3,7 @@ title: 'Blue & Gold Banquet'
 description: 'A Cub Scout celebration that recognizes the pack community and the progress scouts have made.'
 season: 'Late Winter'
 category: 'Celebration'
-image: '/images/placeholders/blue-gold.svg'
+image: '/images/illustrations/blue-gold.svg'
 order: 3
 public: true
 lastUpdated: '2026-05-12'

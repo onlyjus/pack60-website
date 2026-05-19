@@ -10,7 +10,7 @@ This is a public website for a youth organization. Treat the repository as publi
 - Avoids private addresses and meeting links
 - Avoids live location details
 - Uses approved public-safe photos only
-- Uses placeholders when facts are not approved
+- Leaves unapproved facts off public pages and tracks them for human review
 - Keeps private pack operations outside the site
 
 ## Forbidden public content

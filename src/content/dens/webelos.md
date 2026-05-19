@@ -5,7 +5,7 @@ rank: 'Webelos'
 order: 5
 description: 'The Webelos den gives fourth graders deeper outdoor, leadership, and skill-building experiences.'
 public: true
-lastUpdated: '2026-05-12'
+lastUpdated: '2026-05-19'
 ---
 
 ## Grade level
@@ -22,7 +22,7 @@ Webelos scouts begin preparing for more independent outdoor skills, leadership, 
 - Fitness and wellness
 - Practical skills
 - Service
-- Troop visit placeholders when approved
+- Troop visits when approved and coordinated by pack leadership
 
 ## Parent involvement
 
@@ -30,6 +30,6 @@ Parents and guardians continue supporting scouts while encouraging age-appropria
 
 ## Official resources
 
-Placeholder: **[Official Scouting Webelos resources]**
+Use Scouting America's [Webelos Adventures](https://www.scouting.org/programs/cub-scouts/adventures/webelos/) page for official Webelos program information.
 
 Families receive den-specific meeting details through regular pack communications.

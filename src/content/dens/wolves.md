@@ -5,7 +5,7 @@ rank: 'Wolf'
 order: 3
 description: 'The Wolf den helps second graders practice teamwork, outdoor awareness, and useful life skills.'
 public: true
-lastUpdated: '2026-05-12'
+lastUpdated: '2026-05-19'
 ---
 
 ## Grade level
@@ -30,6 +30,6 @@ Parents and guardians support den activities, help scouts stay engaged, and assi
 
 ## Official resources
 
-Placeholder: **[Official Scouting Wolf resources]**
+Use Scouting America's [Wolf Adventures](https://www.scouting.org/programs/cub-scouts/adventures/wolf/) page for official Wolf program information.
 
 Families receive den-specific meeting details through regular pack communications.

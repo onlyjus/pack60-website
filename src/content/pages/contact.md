@@ -4,7 +4,7 @@ description: 'Contact Cub Scout Pack 60 using pack email aliases.'
 navTitle: 'Contact'
 order: 8
 public: true
-lastUpdated: '2026-05-16'
+lastUpdated: '2026-05-19'
 ---
 
 ## General contact
@@ -25,6 +25,6 @@ Pack 60 meets Tuesdays at 7:00 PM at [Suncrest United Methodist Church](https://
 
 Contact the pack before your first visit so a volunteer can confirm the best arrival details and any schedule changes.
 
-## Contact form placeholder
+## Contact form
 
 This static site does not include a backend contact form. Pack volunteers may add a privacy-conscious form service later if approved.

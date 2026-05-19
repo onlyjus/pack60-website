@@ -1,5 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 400" role="img" aria-labelledby="title desc">
-  <title id="title">STEM placeholder</title>
+  <title id="title">STEM illustration</title>
   <desc id="desc">Rocket and science shapes.</desc>
   <rect width="640" height="400" fill="#f8fbf6"/>
   <path d="M326 72c55 28 91 85 91 150v83H235v-83c0-65 36-122 91-150Z" fill="#fff" stroke="#123c2f" stroke-width="12"/>

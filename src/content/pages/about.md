@@ -4,7 +4,7 @@ description: 'Learn about Cub Scout Pack 60, the community it serves, and what m
 navTitle: 'About'
 order: 3
 public: true
-lastUpdated: '2026-05-16'
+lastUpdated: '2026-05-19'
 ---
 
 ## Pack overview
@@ -15,11 +15,9 @@ Cub Scout Pack 60 is a local pack serving families in the Morgantown, WV area. T
 
 Pack 60 serves families in and around Morgantown, WV. The pack meets Tuesdays at 7:00 PM at [Suncrest United Methodist Church](https://www.google.com/maps/search/?api=1&query=Suncrest+United+Methodist+Church%2C+Morgantown%2C+WV) in Morgantown.
 
-## Chartered organization
+## Meeting host
 
-Pack 60 is connected to a chartered organization that supports the local Scouting program.
-
-Placeholder: **[Chartered organization]**
+Pack 60 meets at [Suncrest United Methodist Church](https://www.google.com/maps/search/?api=1&query=Suncrest+United+Methodist+Church%2C+Morgantown%2C+WV) in Morgantown, WV. Families should use pack communications for current arrival details and schedule changes.
 
 ## Mountaineer Area Council
 

@@ -3,7 +3,7 @@ title: 'Cub Scout Resident Camp'
 description: 'A longer council-run overnight summer camp experience for Cub Scouts at Camp Mountaineer.'
 season: 'Summer'
 category: 'Council Program'
-image: '/images/placeholders/summer.svg'
+image: '/images/illustrations/summer.svg'
 order: 7.5
 public: true
 lastUpdated: '2026-05-16'

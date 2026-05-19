@@ -5,7 +5,7 @@ rank: 'Tiger'
 order: 2
 description: 'The Tiger den helps first graders learn by exploring, playing, and doing activities with adult partners.'
 public: true
-lastUpdated: '2026-05-12'
+lastUpdated: '2026-05-19'
 ---
 
 ## Grade level
@@ -30,6 +30,6 @@ Adult partners are an important part of the Tiger experience.
 
 ## Official resources
 
-Placeholder: **[Official Scouting Tiger resources]**
+Use Scouting America's [Tiger Adventures](https://www.scouting.org/programs/cub-scouts/adventures/tiger/) page for official Tiger program information.
 
 Families receive den-specific meeting details through regular pack communications.

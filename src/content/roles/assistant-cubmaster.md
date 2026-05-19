@@ -1,11 +1,11 @@
 ---
 title: 'Assistant Cubmaster'
 roleType: 'Program'
-timeCommitment: 'Placeholder: varies by pack rhythm'
+timeCommitment: 'Varies by pack rhythm'
 description: 'Supports the Cubmaster with pack meetings, activities, and program delivery.'
 order: 2
 public: true
-lastUpdated: '2026-05-12'
+lastUpdated: '2026-05-19'
 ---
 
 ## Typical responsibilities
@@ -17,4 +17,4 @@ lastUpdated: '2026-05-12'
 
 ## Helpful resources
 
-Placeholder: **[Assistant Cubmaster resources]**
+Use [My Scouting](https://my.scouting.org/) for required training and coordinate role expectations with the Cubmaster and committee chair.

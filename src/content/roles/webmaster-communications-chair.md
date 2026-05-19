@@ -1,11 +1,11 @@
 ---
 title: 'Webmaster / Communications Chair'
 roleType: 'Communications'
-timeCommitment: 'Placeholder: a few hours per month'
+timeCommitment: 'A few hours per month'
 description: 'Maintains website content and helps keep pack communications clear.'
 order: 13
 public: true
-lastUpdated: '2026-05-12'
+lastUpdated: '2026-05-19'
 ---
 
 ## Typical responsibilities
@@ -17,4 +17,4 @@ lastUpdated: '2026-05-12'
 
 ## Helpful resources
 
-Placeholder: **[Website editing and communication resources]**
+Use the [Communication Guidelines](/resources/communication-guidelines/) and [Photo Privacy Policy](/resources/photo-privacy-policy/) when reviewing public website updates.

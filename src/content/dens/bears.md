@@ -5,7 +5,7 @@ rank: 'Bear'
 order: 4
 description: 'The Bear den helps third graders build confidence, outdoor skills, and teamwork.'
 public: true
-lastUpdated: '2026-05-12'
+lastUpdated: '2026-05-19'
 ---
 
 ## Grade level
@@ -30,6 +30,6 @@ Families help with activities, encouragement, transportation, and pack events.
 
 ## Official resources
 
-Placeholder: **[Official Scouting Bear resources]**
+Use Scouting America's [Bear Adventures](https://www.scouting.org/programs/cub-scouts/adventures/bear/) page for official Bear program information.
 
 Families receive den-specific meeting details through regular pack communications.

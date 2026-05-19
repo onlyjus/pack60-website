@@ -3,7 +3,7 @@ title: 'Camping'
 description: 'Family-friendly outdoor overnights that help scouts build confidence and outdoor skills.'
 season: 'Fall and Spring'
 category: 'Outdoor Adventure'
-image: '/images/placeholders/camping.svg'
+image: '/images/illustrations/camping.svg'
 order: 1
 public: true
 lastUpdated: '2026-05-16'

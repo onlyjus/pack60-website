@@ -12,7 +12,7 @@ interface Props {
 const {
   title,
   description,
-  image = '/images/placeholders/pack-adventure.svg',
+  image = '/images/illustrations/pack-adventure.svg',
 } = Astro.props;
 const canonical = new URL(Astro.url.pathname, Astro.site).toString();
 const pageTitle = title.includes('Pack 60')

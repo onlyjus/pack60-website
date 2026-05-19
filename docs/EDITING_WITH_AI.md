@@ -22,14 +22,14 @@ Please improve the Join page for clarity and warmth. Keep the tone friendly and 
 - Do not add private information.
 - Do not add youth names.
 - Do not add personal phone numbers.
-- Use placeholders when unsure.
+- Leave unapproved facts off public pages and flag them for human review.
 - Keep content public-safe.
 - Preserve frontmatter.
 - Run formatting and build checks.
 
 ## What AI should avoid
 
-AI should not create fake leader names, fake meeting addresses, exact dues, exact calendar dates, chartered organization details, council or district details, private links, or specific travel plans unless those facts are provided and approved for public posting.
+AI should not create fake leader names, fake meeting addresses, exact dues, exact calendar dates, chartered organization details, council or district details, private links, or specific travel plans unless those facts are provided and approved for public posting. Do not publish bracketed draft notes or other unfinished copy on public pages.
 
 ## Checks to run
 

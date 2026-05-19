@@ -1,11 +1,11 @@
 ---
 title: 'Advancement Chair'
 roleType: 'Committee'
-timeCommitment: 'Placeholder: varies near recognition events'
+timeCommitment: 'Varies near recognition events'
 description: 'Coordinates recognition logistics while keeping individual advancement records private.'
 order: 6
-public: true
-lastUpdated: '2026-05-12'
+public: false
+lastUpdated: '2026-05-19'
 ---
 
 ## Typical responsibilities
@@ -17,4 +17,4 @@ lastUpdated: '2026-05-12'
 
 ## Helpful resources
 
-Placeholder: **[Advancement guidance]**
+Use [Scoutbook Plus](https://advancements.scouting.org/) for official advancement entry and the pack's normal private advancement process for individual records.

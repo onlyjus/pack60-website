@@ -5,7 +5,7 @@ rank: 'Lion'
 order: 1
 description: 'The Lion den gives kindergarten scouts a gentle introduction to Cub Scouting with family support.'
 public: true
-lastUpdated: '2026-05-12'
+lastUpdated: '2026-05-19'
 ---
 
 ## Grade level
@@ -30,6 +30,6 @@ Parents and guardians are closely involved in the Lion program and should expect
 
 ## Official resources
 
-Placeholder: **[Official Scouting Lion resources]**
+Use Scouting America's [Lion Adventures](https://www.scouting.org/programs/cub-scouts/adventures/lion/) page for official Lion program information.
 
 Families receive den-specific meeting details through regular pack communications.

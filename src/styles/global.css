@@ -178,17 +178,6 @@ a:hover {
   font-weight: 700;
 }
 
-.placeholder-frame {
-  display: grid;
-  min-height: 240px;
-  place-items: center;
-  border: 1px dashed #a9bbb3;
-  border-radius: var(--radius);
-  background: #f7faf8;
-  color: var(--color-muted);
-  text-align: center;
-}
-
 @media (max-width: 780px) {
   body {
     font-size: 16px;

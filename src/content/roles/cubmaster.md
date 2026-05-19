@@ -1,11 +1,11 @@
 ---
 title: 'Cubmaster'
 roleType: 'Program'
-timeCommitment: 'Placeholder: several hours per month'
+timeCommitment: 'Several hours per month'
 description: 'Leads pack meetings and helps deliver a fun, welcoming program for scouts and families.'
 order: 1
 public: true
-lastUpdated: '2026-05-12'
+lastUpdated: '2026-05-19'
 ---
 
 ## Typical responsibilities
@@ -17,4 +17,4 @@ lastUpdated: '2026-05-12'
 
 ## Helpful resources
 
-Placeholder: **[Official Cubmaster training resources]**
+Use [My Scouting](https://my.scouting.org/) for required training and Scouting America's [Cub Scout Adventures](https://www.scouting.org/programs/cub-scouts/adventures/) pages for program planning.

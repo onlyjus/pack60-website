@@ -5,7 +5,7 @@ rank: 'Arrow of Light'
 order: 6
 description: 'The Arrow of Light den helps fifth graders prepare for the next stage of Scouting.'
 public: true
-lastUpdated: '2026-05-12'
+lastUpdated: '2026-05-19'
 ---
 
 ## Grade level
@@ -30,6 +30,6 @@ Families help scouts finish the Cub Scout journey and prepare for what comes nex
 
 ## Official resources
 
-Placeholder: **[Official Scouting Arrow of Light resources]**
+Use Scouting America's [Arrow of Light Adventures](https://www.scouting.org/programs/cub-scouts/adventures/arrow-of-light/) page for official Arrow of Light program information.
 
 Families receive den-specific meeting details through regular pack communications.

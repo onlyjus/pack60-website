@@ -3,7 +3,7 @@ title: 'Pinewood Derby'
 description: 'A favorite Cub Scout tradition where scouts design, build, and race small wooden cars on a gravity-powered track.'
 season: 'Winter'
 category: 'Pack Tradition'
-image: '/images/placeholders/pinewood-derby.svg'
+image: '/images/illustrations/pinewood-derby.svg'
 order: 2
 public: true
 lastUpdated: '2026-05-13'

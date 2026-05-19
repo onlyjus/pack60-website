@@ -1,5 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 400" role="img" aria-labelledby="title desc">
-  <title id="title">Pack meeting placeholder</title>
+  <title id="title">Pack meeting illustration</title>
   <desc id="desc">Meeting room with activity stations.</desc>
   <rect width="640" height="400" fill="#edf5ef"/>
   <path d="M96 82h448v236H96z" fill="#fff" stroke="#123c2f" stroke-width="12"/>

@@ -3,7 +3,7 @@ title: 'Community Events'
 description: 'Public activities where Pack 60 can be visible, helpful, and connected to the local community.'
 season: 'Year-round'
 category: 'Community'
-image: '/images/placeholders/community.svg'
+image: '/images/illustrations/community.svg'
 order: 8
 public: true
 lastUpdated: '2026-05-12'

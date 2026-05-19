@@ -91,4 +91,4 @@ See `docs/DEPLOYMENT.md` and `docs/DOMAIN_SETUP.md`.
 
 This is a public website for a youth organization. Do not add youth rosters, youth last names, parent contact information, medical forms, permission slips with personal data, private addresses, exact travel details, private meeting links, or any private Scoutbook data.
 
-Use placeholders when unsure. Keep all content public-safe.
+When a fact is not approved for public posting, leave it off the live site and note it for human review. Keep all content public-safe.

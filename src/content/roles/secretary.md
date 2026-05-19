@@ -1,11 +1,11 @@
 ---
 title: 'Secretary'
 roleType: 'Committee'
-timeCommitment: 'Placeholder: a few hours per month'
+timeCommitment: 'A few hours per month'
 description: 'Keeps committee notes and helps the pack stay organized.'
 order: 5
-public: true
-lastUpdated: '2026-05-12'
+public: false
+lastUpdated: '2026-05-19'
 ---
 
 ## Typical responsibilities
@@ -17,4 +17,4 @@ lastUpdated: '2026-05-12'
 
 ## Helpful resources
 
-Placeholder: **[Committee secretary resources]**
+Use private committee systems for minutes and records, and publish only approved public-safe summaries when needed.

@@ -1,11 +1,11 @@
 ---
 title: 'Committee Chair'
 roleType: 'Committee'
-timeCommitment: 'Placeholder: several hours per month'
+timeCommitment: 'Several hours per month'
 description: 'Coordinates the pack committee and helps make sure pack operations support the program.'
 order: 3
 public: true
-lastUpdated: '2026-05-12'
+lastUpdated: '2026-05-19'
 ---
 
 ## Typical responsibilities
@@ -17,4 +17,4 @@ lastUpdated: '2026-05-12'
 
 ## Helpful resources
 
-Placeholder: **[Committee chair training resources]**
+Use [My Scouting](https://my.scouting.org/) for required training and the pack's public [leader resources](/leader-resources/) for planning guidance.

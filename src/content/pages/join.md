@@ -4,7 +4,7 @@ description: 'Learn how to join Cub Scout Pack 60.'
 navTitle: 'Join'
 order: 2
 public: true
-lastUpdated: '2026-05-16'
+lastUpdated: '2026-05-19'
 ---
 
 ## Who can join
@@ -28,9 +28,7 @@ Families interested in visiting should contact the pack first at [membership@pac
 
 ## How to register
 
-Registration is completed through official Scouting channels. Pack volunteers can provide a current registration link when available.
-
-Placeholder link: **[BeAScout link]**
+Registration is completed through official Scouting channels. Email [membership@pack60.org](mailto:membership@pack60.org) and a Pack 60 volunteer can share the current registration path, answer questions, and help your family get connected with the right den.
 
 ## What new families should expect
 
@@ -38,9 +36,7 @@ New families should expect a welcoming environment, age-appropriate activities, 
 
 ## Estimated costs
 
-Costs may include national registration fees, local pack dues, a handbook, uniform items, and optional activity expenses. Current costs should be confirmed with pack leadership before posting publicly.
-
-Placeholder: **[Estimated annual cost range]**
+Costs may include national registration fees, local pack dues, a handbook, uniform items, and optional activity expenses. Because fees can change by year and family situation, Pack 60 confirms current costs directly with interested families.
 
 ## Uniform basics
 

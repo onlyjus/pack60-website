@@ -1,11 +1,11 @@
 ---
 title: 'Chartered Organization Representative'
 roleType: 'Chartered Organization'
-timeCommitment: 'Placeholder: varies'
+timeCommitment: 'Varies'
 description: 'Connects the pack with its chartered organization and supports healthy unit operations.'
 order: 14
 public: true
-lastUpdated: '2026-05-12'
+lastUpdated: '2026-05-19'
 ---
 
 ## Typical responsibilities
@@ -17,4 +17,4 @@ lastUpdated: '2026-05-12'
 
 ## Helpful resources
 
-Placeholder: **[Chartered organization representative resources]**
+Use [My Scouting](https://my.scouting.org/) for required training and coordinate public chartered-organization wording with pack leadership before posting details.
