@@ -1,0 +1,151 @@
+---
+import { getCollection } from 'astro:content';
+import Layout from '../../../layouts/Layout.astro';
+import Breadcrumbs from '../../../components/Breadcrumbs.astro';
+import Section from '../../../components/Section.astro';
+import MemberNav from '../../../components/MemberNav.astro';
+import {
+  formatAlbumDate,
+  sortAlbumsDescending,
+} from '../../../lib/memberContent';
+
+const albums = (
+  await getCollection('photo-albums', ({ data }) => data.published)
+).sort(sortAlbumsDescending);
+---
+
+<Layout
+  title="Member Photo Albums"
+  description="Private Pack 60 event photo albums for registered families."
+  noindex
+>
+  <header class="page-header">
+    <div class="prose">
+      <Breadcrumbs
+        items={[
+          { href: '/members/', label: 'Members' },
+          { href: '/members/photos/', label: 'Photos' },
+        ]}
+      />
+      <p class="eyebrow">Member photos</p>
+      <h1>Photo albums</h1>
+      <p class="lead">
+        Private event albums shared with registered Pack 60 families and
+        leaders.
+      </p>
+      <MemberNav />
+    </div>
+  </header>
+
+  <Section>
+    {
+      albums.length > 0 ? (
+        <div class="album-grid">
+          {albums.map((album) => (
+            <article class="album-card">
+              <a href={`/members/photos/${album.slug}/`}>
+                {album.data.coverImage ? (
+                  <img
+                    src={album.data.coverImage}
+                    alt=""
+                    width="640"
+                    height="420"
+                    loading="lazy"
+                  />
+                ) : (
+                  <span class="album-placeholder">Album</span>
+                )}
+                <span class="album-body">
+                  <span>{formatAlbumDate(album)}</span>
+                  <strong>{album.data.title}</strong>
+                  <em>{album.data.description}</em>
+                </span>
+              </a>
+            </article>
+          ))}
+        </div>
+      ) : (
+        <p class="empty-state">No private photo albums are published yet.</p>
+      )
+    }
+  </Section>
+</Layout>
+
+<style>
+  .album-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1rem;
+  }
+
+  .album-card {
+    overflow: hidden;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius);
+    background: var(--color-surface);
+    box-shadow: 0 10px 30px rgba(18, 60, 47, 0.06);
+  }
+
+  .album-card a {
+    display: grid;
+    color: inherit;
+    text-decoration: none;
+  }
+
+  .album-card img,
+  .album-placeholder {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+  }
+
+  .album-placeholder {
+    display: grid;
+    place-items: center;
+    background: var(--color-surface-alt);
+    color: var(--color-green);
+    font-weight: 800;
+  }
+
+  .album-body {
+    display: grid;
+    gap: 0.35rem;
+    padding: 1rem;
+  }
+
+  .album-body span {
+    color: var(--color-gold-dark);
+    font-size: 0.78rem;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .album-body strong {
+    color: var(--color-green);
+    font-size: 1.2rem;
+    line-height: 1.2;
+  }
+
+  .album-body em,
+  .empty-state {
+    color: var(--color-muted);
+    font-style: normal;
+  }
+
+  .empty-state {
+    margin: 0;
+  }
+
+  @media (max-width: 860px) {
+    .album-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+
+  @media (max-width: 620px) {
+    .album-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

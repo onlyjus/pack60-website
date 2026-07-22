@@ -2,7 +2,7 @@
 title: 'Camping Packing List'
 description: 'A general packing list for family campouts.'
 category: 'Families'
-order: 3
+order: 5
 public: true
 lastUpdated: '2026-05-16'
 ---

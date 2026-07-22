@@ -4,12 +4,14 @@ description: 'General Pack 60 uniform guidance with links to official Cub Scout 
 category: 'Families'
 order: 2
 public: true
-lastUpdated: '2026-05-16'
+lastUpdated: '2026-06-06'
 ---
 
 Uniform expectations can vary by rank, event, and family situation. Pack 60 families should ask pack leadership before purchasing optional items, especially if they are joining mid-year or using hand-me-down uniform pieces.
 
 The official Scouting America [Cub Scout uniform page](https://www.scouting.org/programs/cub-scouts/cub-scout-uniform/) lists rank-specific uniform parts for Lions, Tigers, Wolves, Bears, Webelos, and Arrow of Light scouts.
+
+Pack 60's welcome materials describe the uniform shirt as the minimum uniform item. Families should confirm current rank needs with pack leadership before buying hats, neckerchiefs, slides, pants, socks, or other optional items.
 
 ## Pack 60 quick guide
 

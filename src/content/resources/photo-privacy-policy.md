@@ -2,7 +2,7 @@
 title: 'Photo Guidelines'
 description: 'General photo guidance for website contributors.'
 category: 'Leaders'
-order: 10
+order: 24
 public: true
 lastUpdated: '2026-05-12'
 ---

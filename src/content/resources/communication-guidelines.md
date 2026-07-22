@@ -2,7 +2,7 @@
 title: 'Communication Guidelines'
 description: 'Communication tips for website and public announcements.'
 category: 'Leaders'
-order: 9
+order: 23
 public: true
 lastUpdated: '2026-05-12'
 ---

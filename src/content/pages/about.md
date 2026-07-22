@@ -4,7 +4,7 @@ description: 'Learn about Cub Scout Pack 60, the community it serves, and what m
 navTitle: 'About'
 order: 3
 public: true
-lastUpdated: '2026-05-19'
+lastUpdated: '2026-06-06'
 ---
 
 ## Pack overview
@@ -27,7 +27,9 @@ Mountaineer Area Council also operates service centers and Scout Shops in Wheeli
 
 ## Meeting rhythm
 
-The pack typically uses a Tuesday meeting rhythm along with service opportunities, outings, and seasonal traditions. Specific dates, arrival details, and schedule changes should be confirmed through official pack communications.
+The pack typically uses a Tuesday meeting rhythm during the school year. Dens meet by age or grade, and about once a month the pack brings all dens together for a larger pack meeting with activities, recognition, and shared family time.
+
+The pack also plans service opportunities, outings, campouts, and seasonal traditions. Specific dates, arrival details, and schedule changes should be confirmed through official pack communications.
 
 ## Pack values
 
@@ -36,6 +38,10 @@ Pack 60 aims to be welcoming, helpful, active, safe, and family-centered. Scouts
 ## Family involvement
 
 Cub Scouting works best when families participate. Parents and guardians help their scouts, support den leaders, assist with events, and volunteer in ways that fit their time and skills.
+
+## Program rhythm
+
+Pack 60's year often includes fall and spring family campouts, hikes, service projects, community events, Pinewood Derby, Blue & Gold, STEM activities, summer meetups, and other age-appropriate adventures.
 
 ## Donations and activity payments
 

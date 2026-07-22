@@ -6,12 +6,12 @@ category: 'Community'
 image: '/images/illustrations/community.svg'
 order: 8
 public: true
-lastUpdated: '2026-05-12'
+lastUpdated: '2026-06-06'
 ---
 
 ## What it is
 
-Community events may include public ceremonies, recruiting tables, service events, parades, or approved local gatherings.
+Community events may include public ceremonies, recruiting tables, service events, parades, Scout nights, or approved local gatherings.
 
 ## When it usually happens
 

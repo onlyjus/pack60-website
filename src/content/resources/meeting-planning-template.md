@@ -2,7 +2,7 @@
 title: 'Meeting Planning Template'
 description: 'A simple worksheet for den or pack meeting planning.'
 category: 'Leaders'
-order: 7
+order: 21
 public: true
 lastUpdated: '2026-05-13'
 ---

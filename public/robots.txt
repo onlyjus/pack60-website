@@ -1,4 +1,5 @@
 User-agent: *
 Allow: /
+Disallow: /members/
 
 Sitemap: https://pack60.org/sitemap-index.xml

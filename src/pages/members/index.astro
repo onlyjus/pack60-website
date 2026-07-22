@@ -1,0 +1,155 @@
+---
+import { getCollection } from 'astro:content';
+import Layout from '../../layouts/Layout.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import Section from '../../components/Section.astro';
+import Card from '../../components/Card.astro';
+import CardGrid from '../../components/CardGrid.astro';
+import MemberNav from '../../components/MemberNav.astro';
+import {
+  formatAlbumDate,
+  formatShortEventDate,
+  isUpcomingEvent,
+  sortAlbumsDescending,
+  sortEventsAscending,
+} from '../../lib/memberContent';
+
+const events = (
+  await getCollection('member-events', ({ data }) => data.published)
+).sort(sortEventsAscending);
+
+const albums = (
+  await getCollection('photo-albums', ({ data }) => data.published)
+).sort(sortAlbumsDescending);
+
+const upcomingEvents = events
+  .filter((event) => isUpcomingEvent(event))
+  .slice(0, 3);
+const recentAlbums = albums.slice(0, 3);
+---
+
+<Layout
+  title="Member Area"
+  description="Private Pack 60 calendar and photo albums for registered families."
+  noindex
+>
+  <header class="page-header">
+    <div class="prose">
+      <Breadcrumbs items={[{ href: '/members/', label: 'Members' }]} />
+      <p class="eyebrow">Pack 60 members</p>
+      <h1>Member area</h1>
+      <p class="lead">
+        Private calendar details, event notes, and photo albums for registered
+        Pack 60 families and leaders.
+      </p>
+      <MemberNav />
+    </div>
+  </header>
+
+  <Section title="Member resources">
+    <CardGrid columns="three">
+      <Card title="Private calendar" href="/members/calendar/" meta="Events">
+        <p>Detailed event information for current Pack 60 families.</p>
+      </Card>
+      <Card title="Photo albums" href="/members/photos/" meta="Photos">
+        <p>Private event albums shared with registered families.</p>
+      </Card>
+      <Card title="Public resources" href="/resources/" meta="Reference">
+        <p>Public-safe checklists and guides for families and volunteers.</p>
+      </Card>
+    </CardGrid>
+  </Section>
+
+  <Section variant="alt" title="Upcoming events">
+    {
+      upcomingEvents.length > 0 ? (
+        <div class="summary-list">
+          {upcomingEvents.map((event) => (
+            <article class="summary-item">
+              <p>{formatShortEventDate(event)}</p>
+              <h2>
+                <a href={`/members/events/${event.slug}/`}>
+                  {event.data.title}
+                </a>
+              </h2>
+              <span>{event.data.description}</span>
+            </article>
+          ))}
+        </div>
+      ) : (
+        <p class="empty-state">No private events are published yet.</p>
+      )
+    }
+  </Section>
+
+  <Section title="Recent albums">
+    {
+      recentAlbums.length > 0 ? (
+        <div class="summary-list">
+          {recentAlbums.map((album) => (
+            <article class="summary-item">
+              <p>{formatAlbumDate(album)}</p>
+              <h2>
+                <a href={`/members/photos/${album.slug}/`}>
+                  {album.data.title}
+                </a>
+              </h2>
+              <span>{album.data.description}</span>
+            </article>
+          ))}
+        </div>
+      ) : (
+        <p class="empty-state">No private photo albums are published yet.</p>
+      )
+    }
+  </Section>
+</Layout>
+
+<style>
+  .summary-list {
+    display: grid;
+    gap: 1rem;
+  }
+
+  .summary-item {
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius);
+    background: var(--color-surface);
+    padding: 1rem;
+  }
+
+  .summary-item p {
+    margin: 0 0 0.2rem;
+    color: var(--color-gold-dark);
+    font-size: 0.8rem;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .summary-item h2 {
+    margin: 0 0 0.35rem;
+    color: var(--color-green);
+    font-size: 1.25rem;
+    line-height: 1.2;
+  }
+
+  .summary-item h2 a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  .summary-item h2 a:hover {
+    text-decoration: underline;
+    text-underline-offset: 0.18em;
+  }
+
+  .summary-item span,
+  .empty-state {
+    color: var(--color-muted);
+  }
+
+  .empty-state {
+    margin: 0;
+  }
+</style>

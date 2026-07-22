@@ -54,6 +54,10 @@ Helpful docs:
 - `docs/EDITING_WITH_AI.md`
 - `docs/CONTENT_RULES.md`
 - `docs/PHOTO_POLICY.md`
+- `docs/MEMBER_AREA_PLAN.md`
+- `docs/MEMBER_EVENTS.md`
+- `docs/PHOTO_ALBUMS.md`
+- `docs/CLOUDFLARE_ACCESS.md`
 - `docs/MAINTENANCE_CHECKLIST.md`
 
 ## Quality Checks
@@ -89,6 +93,8 @@ See `docs/DEPLOYMENT.md` and `docs/DOMAIN_SETUP.md`.
 
 ## Public Content Safety
 
-This is a public website for a youth organization. Do not add youth rosters, youth last names, parent contact information, medical forms, permission slips with personal data, private addresses, exact travel details, private meeting links, or any private Scoutbook data.
+This is a public website for a youth organization. The `/members/*` section is designed to be protected by Cloudflare Access, but private content should not be added until that protection has been configured and tested.
+
+Do not add youth rosters, youth last names, parent contact information, medical forms, permission slips with personal data, private addresses, exact travel details, private meeting links, or any private Scoutbook data.
 
 When a fact is not approved for public posting, leave it off the live site and note it for human review. Keep all content public-safe.

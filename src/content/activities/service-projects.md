@@ -6,12 +6,12 @@ category: 'Community Service'
 image: '/images/illustrations/service.svg'
 order: 4
 public: true
-lastUpdated: '2026-05-12'
+lastUpdated: '2026-06-06'
 ---
 
 ## What it is
 
-Service projects help scouts practice helpfulness, citizenship, and care for the community.
+Service projects help scouts practice helpfulness, citizenship, preparedness, and care for the community. Examples may include food-collection efforts, trail or park cleanups, weather-readiness projects, and other age-appropriate service approved by pack leadership.
 
 ## When it usually happens
 

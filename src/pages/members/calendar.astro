@@ -1,0 +1,228 @@
+---
+import { getCollection } from 'astro:content';
+import Layout from '../../layouts/Layout.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import Section from '../../components/Section.astro';
+import MemberNav from '../../components/MemberNav.astro';
+import {
+  formatEventDateRange,
+  formatEventMonth,
+  isUpcomingEvent,
+  sortEventsAscending,
+  sortEventsDescending,
+  statusLabel,
+} from '../../lib/memberContent';
+
+const events = await getCollection(
+  'member-events',
+  ({ data }) => data.published,
+);
+
+const upcomingEvents = events
+  .filter((event) => isUpcomingEvent(event))
+  .sort(sortEventsAscending);
+
+const pastEvents = events
+  .filter((event) => !isUpcomingEvent(event))
+  .sort(sortEventsDescending);
+---
+
+<Layout
+  title="Member Calendar"
+  description="Private Pack 60 calendar details for registered families."
+  noindex
+>
+  <header class="page-header">
+    <div class="prose">
+      <Breadcrumbs
+        items={[
+          { href: '/members/', label: 'Members' },
+          { href: '/members/calendar/', label: 'Calendar' },
+        ]}
+      />
+      <p class="eyebrow">Member calendar</p>
+      <h1>Private calendar</h1>
+      <p class="lead">
+        Event details, arrival notes, and related links for registered Pack 60
+        families and leaders.
+      </p>
+      <MemberNav />
+    </div>
+  </header>
+
+  <Section title="Upcoming events">
+    {
+      upcomingEvents.length > 0 ? (
+        <div class="event-list">
+          {upcomingEvents.map((event) => (
+            <article class="event-card">
+              <div class="event-date">
+                <span>{formatEventMonth(event)}</span>
+                <strong>{formatEventDateRange(event)}</strong>
+              </div>
+              <div class="event-main">
+                <div class="event-heading">
+                  <h2>
+                    <a href={`/members/events/${event.slug}/`}>
+                      {event.data.title}
+                    </a>
+                  </h2>
+                  <span class:list={['status', event.data.status]}>
+                    {statusLabel(event.data.status)}
+                  </span>
+                </div>
+                <p>{event.data.description}</p>
+                {event.data.locationName && (
+                  <p class="event-meta">{event.data.locationName}</p>
+                )}
+              </div>
+            </article>
+          ))}
+        </div>
+      ) : (
+        <p class="empty-state">No private events are published yet.</p>
+      )
+    }
+  </Section>
+
+  <Section variant="alt" title="Past events">
+    {
+      pastEvents.length > 0 ? (
+        <div class="event-list">
+          {pastEvents.map((event) => (
+            <article class="event-card">
+              <div class="event-date">
+                <span>{formatEventMonth(event)}</span>
+                <strong>{formatEventDateRange(event)}</strong>
+              </div>
+              <div class="event-main">
+                <div class="event-heading">
+                  <h2>
+                    <a href={`/members/events/${event.slug}/`}>
+                      {event.data.title}
+                    </a>
+                  </h2>
+                  <span class:list={['status', event.data.status]}>
+                    {statusLabel(event.data.status)}
+                  </span>
+                </div>
+                <p>{event.data.description}</p>
+              </div>
+            </article>
+          ))}
+        </div>
+      ) : (
+        <p class="empty-state">No past private events are published yet.</p>
+      )
+    }
+  </Section>
+</Layout>
+
+<style>
+  .event-list {
+    display: grid;
+    gap: 1rem;
+  }
+
+  .event-card {
+    display: grid;
+    grid-template-columns: minmax(180px, 0.32fr) minmax(0, 1fr);
+    gap: 1rem;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius);
+    background: var(--color-surface);
+    box-shadow: 0 10px 30px rgba(18, 60, 47, 0.06);
+    padding: 1rem;
+  }
+
+  .event-date span {
+    display: block;
+    margin-bottom: 0.25rem;
+    color: var(--color-gold-dark);
+    font-size: 0.78rem;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .event-date strong {
+    display: block;
+    color: var(--color-green);
+    font-size: 0.98rem;
+    line-height: 1.35;
+  }
+
+  .event-heading {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.75rem;
+  }
+
+  h2 {
+    margin: 0;
+    color: var(--color-green);
+    font-size: 1.28rem;
+    line-height: 1.2;
+  }
+
+  h2 a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  h2 a:hover {
+    text-decoration: underline;
+    text-underline-offset: 0.18em;
+  }
+
+  .event-main p,
+  .empty-state {
+    color: var(--color-muted);
+  }
+
+  .event-main p {
+    margin: 0.45rem 0 0;
+  }
+
+  .event-meta {
+    font-weight: 700;
+  }
+
+  .status {
+    border-radius: 999px;
+    color: #fff;
+    font-size: 0.78rem;
+    font-weight: 800;
+    line-height: 1;
+    padding: 0.42rem 0.58rem;
+    text-transform: uppercase;
+  }
+
+  .planned {
+    background: var(--color-green-2);
+  }
+
+  .tentative {
+    background: var(--color-blue);
+  }
+
+  .updated {
+    background: var(--color-gold-dark);
+  }
+
+  .canceled {
+    background: #8f2f2a;
+  }
+
+  .empty-state {
+    margin: 0;
+  }
+
+  @media (max-width: 720px) {
+    .event-card {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

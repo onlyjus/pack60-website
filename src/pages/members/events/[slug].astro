@@ -1,0 +1,165 @@
+---
+import { getCollection } from 'astro:content';
+import Layout from '../../../layouts/Layout.astro';
+import Breadcrumbs from '../../../components/Breadcrumbs.astro';
+import Section from '../../../components/Section.astro';
+import CTAButton from '../../../components/CTAButton.astro';
+import MemberNav from '../../../components/MemberNav.astro';
+import { formatEventDateRange, statusLabel } from '../../../lib/memberContent';
+
+export async function getStaticPaths() {
+  const events = await getCollection(
+    'member-events',
+    ({ data }) => data.published,
+  );
+
+  return events.map((event) => ({
+    params: { slug: event.slug },
+    props: { event },
+  }));
+}
+
+const { event } = Astro.props;
+const { Content } = await event.render();
+
+const albums = await getCollection(
+  'photo-albums',
+  ({ data }) => data.published,
+);
+
+const relatedAlbum = event.data.relatedAlbum
+  ? albums.find((album) => album.slug === event.data.relatedAlbum)
+  : undefined;
+
+const details = [
+  { label: 'Date', value: formatEventDateRange(event) },
+  { label: 'Status', value: statusLabel(event.data.status) },
+  { label: 'Location', value: event.data.locationName },
+  { label: 'Arrival', value: event.data.arrivalTime },
+  { label: 'Contact', value: event.data.contactAlias },
+].filter((item) => item.value);
+---
+
+<Layout title={event.data.title} description={event.data.description} noindex>
+  <header class="page-header">
+    <div class="prose">
+      <Breadcrumbs
+        items={[
+          { href: '/members/', label: 'Members' },
+          { href: '/members/calendar/', label: 'Calendar' },
+          { href: `/members/events/${event.slug}/`, label: event.data.title },
+        ]}
+      />
+      <p class="eyebrow">Member event</p>
+      <h1>{event.data.title}</h1>
+      <p class="lead">{event.data.description}</p>
+      <MemberNav />
+    </div>
+  </header>
+
+  <Section>
+    <div class="event-layout">
+      <article class="prose event-content">
+        <Content />
+      </article>
+      <aside class="surface event-details" aria-label="Event details">
+        <h2>Details</h2>
+        <dl>
+          {
+            details.map((item) => (
+              <>
+                <dt>{item.label}</dt>
+                <dd>{item.value}</dd>
+              </>
+            ))
+          }
+        </dl>
+        {
+          event.data.locationNotes && (
+            <p class="detail-note">{event.data.locationNotes}</p>
+          )
+        }
+        {
+          (event.data.rsvpUrl || event.data.signupUrl || relatedAlbum) && (
+            <div class="detail-actions">
+              {event.data.rsvpUrl && (
+                <CTAButton href={event.data.rsvpUrl}>RSVP</CTAButton>
+              )}
+              {event.data.signupUrl && (
+                <CTAButton href={event.data.signupUrl} variant="secondary">
+                  Sign up
+                </CTAButton>
+              )}
+              {relatedAlbum && (
+                <CTAButton
+                  href={`/members/photos/${relatedAlbum.slug}/`}
+                  variant="secondary"
+                >
+                  View album
+                </CTAButton>
+              )}
+            </div>
+          )
+        }
+      </aside>
+    </div>
+  </Section>
+</Layout>
+
+<style>
+  .event-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(260px, 0.42fr);
+    gap: 2rem;
+    align-items: start;
+  }
+
+  .event-content {
+    width: auto;
+  }
+
+  .event-details h2 {
+    margin: 0 0 1rem;
+    color: var(--color-green);
+    font-size: 1.25rem;
+    line-height: 1.2;
+  }
+
+  dl {
+    display: grid;
+    gap: 0.85rem;
+    margin: 0;
+  }
+
+  dt {
+    color: var(--color-gold-dark);
+    font-size: 0.78rem;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  dd {
+    margin: 0.2rem 0 0;
+    color: var(--color-muted);
+    line-height: 1.35;
+  }
+
+  .detail-note {
+    margin: 1rem 0 0;
+    color: var(--color-muted);
+  }
+
+  .detail-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.65rem;
+    margin-top: 1rem;
+  }
+
+  @media (max-width: 820px) {
+    .event-layout {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

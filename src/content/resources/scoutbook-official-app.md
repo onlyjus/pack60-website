@@ -2,7 +2,7 @@
 title: 'Scoutbook Plus'
 description: 'Official Scouting advancement tool used to enter completed adventures and advancement records.'
 category: 'Families'
-order: 5
+order: 7
 public: true
 lastUpdated: '2026-05-16'
 ---

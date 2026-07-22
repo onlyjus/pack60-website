@@ -2,7 +2,7 @@
 title: 'Pack Event Planning Checklist'
 description: 'Planning prompts for pack activities and events.'
 category: 'Leaders'
-order: 8
+order: 22
 public: true
 lastUpdated: '2026-05-12'
 ---

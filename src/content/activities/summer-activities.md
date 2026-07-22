@@ -6,12 +6,12 @@ category: 'Seasonal Program'
 image: '/images/illustrations/summer.svg'
 order: 7
 public: true
-lastUpdated: '2026-05-12'
+lastUpdated: '2026-06-06'
 ---
 
 ## What it is
 
-Summer activities can include outdoor meetups, hikes, service, council activities, and informal family-friendly pack events.
+Summer activities can include camps, hikes, picnics, baseball nights, water activities, service meetups, council activities, and informal family-friendly pack events.
 
 ## When it usually happens
 

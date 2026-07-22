@@ -4,7 +4,7 @@ description: 'Learn how to join Cub Scout Pack 60.'
 navTitle: 'Join'
 order: 2
 public: true
-lastUpdated: '2026-05-19'
+lastUpdated: '2026-06-06'
 ---
 
 ## Who can join
@@ -32,15 +32,17 @@ Registration is completed through official Scouting channels. Email [membership@
 
 ## What new families should expect
 
-New families should expect a welcoming environment, age-appropriate activities, parent involvement, and a mix of den meetings, pack meetings, outings, service, and special events.
+New families should expect a welcoming environment, age-appropriate activities, parent involvement, and a mix of den meetings, pack meetings, outings, service, and special events. Den meetings are usually age-specific, while pack meetings bring all dens together for activities, recognition, and shared pack fun.
 
 ## Estimated costs
 
-Costs may include national registration fees, local pack dues, a handbook, uniform items, and optional activity expenses. Because fees can change by year and family situation, Pack 60 confirms current costs directly with interested families.
+Costs may include national registration fees, local pack dues, a handbook, uniform items, and optional activity expenses. A recent Pack 60 welcome flyer listed an annual national registration fee and a local pack fee that helps cover awards, Pinewood Derby cars, and other pack expenses.
+
+Because fees can change by year and family situation, Pack 60 confirms current costs directly with interested families. If cost is a concern, let a pack volunteer know; Scouting assistance may be available through council channels.
 
 ## Uniform basics
 
-Uniform expectations vary by rank and event. Families can start with the [Pack 60 uniform basics](/resources/uniform-basics/) resource and use Scouting America's [official Cub Scout uniform page](https://www.scouting.org/programs/cub-scouts/cub-scout-uniform/) for current rank-specific requirements.
+Uniform expectations vary by rank and event. Families can start with the [Pack 60 uniform basics](/resources/uniform-basics/) resource and use Scouting America's [official Cub Scout uniform page](https://www.scouting.org/programs/cub-scouts/cub-scout-uniform/) for current rank-specific requirements. Before buying optional items, ask pack leadership what is needed for your scout's den.
 
 ## Contact membership
 

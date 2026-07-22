@@ -2,3 +2,5 @@ dist
 node_modules
 .astro
 package-lock.json
+public/_headers
+public/robots.txt

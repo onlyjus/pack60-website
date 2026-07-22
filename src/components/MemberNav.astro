@@ -1,0 +1,52 @@
+---
+const navItems = [
+  { href: '/members/', label: 'Overview' },
+  { href: '/members/calendar/', label: 'Calendar' },
+  { href: '/members/photos/', label: 'Photos' },
+];
+---
+
+<nav class="member-nav" aria-label="Member navigation">
+  {
+    navItems.map((item) => (
+      <a
+        href={item.href}
+        aria-current={Astro.url.pathname === item.href ? 'page' : undefined}
+      >
+        {item.label}
+      </a>
+    ))
+  }
+</nav>
+
+<style>
+  .member-nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 1.25rem;
+  }
+
+  a {
+    display: inline-flex;
+    min-height: 42px;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid var(--color-border);
+    border-radius: 999px;
+    background: #fff;
+    color: var(--color-green);
+    font-size: 0.94rem;
+    font-weight: 800;
+    line-height: 1.15;
+    padding: 0.55rem 0.85rem;
+    text-decoration: none;
+  }
+
+  a:hover,
+  a[aria-current='page'] {
+    border-color: var(--color-green);
+    background: var(--color-green);
+    color: #fff;
+  }
+</style>

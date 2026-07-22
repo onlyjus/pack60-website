@@ -2,7 +2,7 @@
 title: 'Pinewood Derby Basics'
 description: 'General notes about the Pinewood Derby tradition.'
 category: 'Families'
-order: 4
+order: 6
 public: true
 lastUpdated: '2026-05-19'
 ---

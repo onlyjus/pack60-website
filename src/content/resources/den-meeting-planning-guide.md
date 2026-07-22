@@ -2,7 +2,7 @@
 title: 'Den Meeting Planning Guide'
 description: 'A practical guide for planning engaging den meetings around Cub Scout adventure requirements.'
 category: 'Leaders'
-order: 6
+order: 20
 public: true
 lastUpdated: '2026-05-16'
 ---
