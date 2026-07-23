@@ -15,7 +15,31 @@ const activities = (
   .slice(0, 6);
 
 const meetingMapsUrl =
-  'https://www.google.com/maps/search/?api=1&query=Suncrest+United+Methodist+Church%2C+Morgantown%2C+WV';
+  'https://www.google.com/maps/search/?api=1&query=479+Van+Voorhis+Rd%2C+Morgantown%2C+WV';
+const facebookUrl = 'https://www.facebook.com/pack60wv/';
+const recentHighlights = [
+  {
+    title: 'Black Bears overnight',
+    meta: 'Summer adventure',
+    href: 'https://www.facebook.com/pack60wv/posts/pfbid02mEc4B8QDh3RqnyJjnhvTXAYf6Mm4uM293k1vFqPziX1BkcPxRFikpvtpiaoYcKeJl',
+    description:
+      'Scouts enjoyed baseball, fireworks, a movie, and an overnight campout on the field.',
+  },
+  {
+    title: 'North Bend campout',
+    meta: 'Outdoor adventure and service',
+    href: 'https://www.facebook.com/pack60wv/posts/pfbid06Dt5t3JnPmw7muX97KF7mZjDVQuMknZyFxdNYWqt13ECSnkBFXvPaVCFoQPuxFokl',
+    description:
+      'A spring weekend brought together trails, games, s’mores, camping, and a garden service project.',
+  },
+  {
+    title: 'Tiger den mosaic art',
+    meta: 'Creative learning',
+    href: 'https://www.facebook.com/pack60wv/posts/pfbid02Z1PpomWh21P6Zyc3w1FVmF6Agzho4j5oyTTgRhv9bAUPKUwSFvjykbCA1KzS5mpKl',
+    description:
+      'The Tiger den learned about safe glass cutting and created mosaic art with a local studio.',
+  },
+];
 ---
 
 <Layout
@@ -25,7 +49,7 @@ const meetingMapsUrl =
   <Hero
     eyebrow="Cub Scout Pack 60"
     title="Adventure starts here."
-    description="Cub Scout Pack 60 helps kids build confidence, character, outdoor skills, and friendships while families share the adventure together."
+    description="Pack 60 welcomes girls and boys in kindergarten through fifth grade to build confidence, character, outdoor skills, and friendships while families share the adventure."
     primaryHref="/join/"
     primaryLabel="Interested in joining?"
     secondaryHref="/contact/"
@@ -39,8 +63,9 @@ const meetingMapsUrl =
     <CardGrid columns="three">
       <Card title="What is Cub Scouts?">
         <p>
-          Cub Scouts is a program for elementary-aged youth focused on hands-on
-          learning, character, service, outdoor skills, and fun.
+          Cub Scouts is a program for girls and boys in kindergarten through
+          fifth grade focused on hands-on learning, character, service, outdoor
+          skills, and fun.
         </p>
       </Card>
       <Card title="Why join Pack 60?">
@@ -90,7 +115,7 @@ const meetingMapsUrl =
           Families interested in Pack 60 are welcome to ask about visiting a
           meeting. We meet <strong>Tuesdays at 7:00 PM</strong> at
           <a href={meetingMapsUrl}>Suncrest United Methodist Church</a> in Morgantown,
-          WV.
+          WV, at 479 Van Voorhis Road.
         </p>
         <p>
           Please contact the pack before your first visit so a volunteer can
@@ -124,6 +149,31 @@ const meetingMapsUrl =
         </p>
       </Card>
     </CardGrid>
+  </Section>
+
+  <Section
+    title="A look at Pack 60 in action"
+    eyebrow="Recent Facebook highlights"
+    intro="Pack 60 adventures go beyond regular meetings. These recent public posts show scouts learning, serving, creating, and spending time outdoors together."
+  >
+    <CardGrid columns="three">
+      {
+        recentHighlights.map((highlight) => (
+          <Card
+            title={highlight.title}
+            meta={highlight.meta}
+            href={highlight.href}
+          >
+            <p>{highlight.description}</p>
+          </Card>
+        ))
+      }
+    </CardGrid>
+    <p class="facebook-more">
+      <CTAButton href={facebookUrl} variant="secondary">
+        See more Pack 60 updates on Facebook
+      </CTAButton>
+    </p>
   </Section>
 
   <Section title="Ready to learn more?">
@@ -184,6 +234,10 @@ const meetingMapsUrl =
     display: flex;
     flex-wrap: wrap;
     gap: 0.75rem;
+  }
+
+  .facebook-more {
+    margin: 1.5rem 0 0;
   }
 
   @media (max-width: 760px) {

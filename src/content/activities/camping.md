@@ -6,7 +6,7 @@ category: 'Outdoor Adventure'
 image: '/images/illustrations/camping.svg'
 order: 1
 public: true
-lastUpdated: '2026-05-16'
+lastUpdated: '2026-07-22'
 ---
 
 ## What it is
@@ -18,6 +18,8 @@ Pack 60 campouts are family camping weekends. Scouts camp with a parent or guard
 Pack 60 usually plans two family campouts each year: one in the fall and one in the spring.
 
 The fall campout is usually at [Camp Mountaineer](https://mountaineerscouting.org/camp-mountaineer/) in Morgantown. The spring campout is often at another family campground, such as [North Bend State Park](https://wvstateparks.com/park/north-bend-state-park/) in West Virginia.
+
+A recent [North Bend spring campout](https://www.facebook.com/pack60wv/posts/pfbid06Dt5t3JnPmw7muX97KF7mZjDVQuMknZyFxdNYWqt13ECSnkBFXvPaVCFoQPuxFokl) included trail exploration, games, s’mores, and a garden service project.
 
 ## Why scouts enjoy it
 

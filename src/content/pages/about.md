@@ -4,20 +4,20 @@ description: 'Learn about Cub Scout Pack 60, the community it serves, and what m
 navTitle: 'About'
 order: 3
 public: true
-lastUpdated: '2026-06-06'
+lastUpdated: '2026-07-22'
 ---
 
 ## Pack overview
 
-Cub Scout Pack 60 is a local pack serving families in the Morgantown, WV area. The pack provides a family-friendly program where scouts can build confidence, character, outdoor skills, and friendships.
+Cub Scout Pack 60 is a local pack serving families in the Morgantown, WV area. Pack 60 welcomes girls and boys in kindergarten through fifth grade and provides a family-friendly program where scouts can build confidence, character, outdoor skills, and friendships.
 
 ## Location and community served
 
-Pack 60 serves families in and around Morgantown, WV. The pack meets Tuesdays at 7:00 PM at [Suncrest United Methodist Church](https://www.google.com/maps/search/?api=1&query=Suncrest+United+Methodist+Church%2C+Morgantown%2C+WV) in Morgantown.
+Pack 60 serves families in and around Morgantown, WV. The pack meets Tuesdays at 7:00 PM at [Suncrest United Methodist Church, 479 Van Voorhis Road](https://www.google.com/maps/search/?api=1&query=479+Van+Voorhis+Rd%2C+Morgantown%2C+WV), in Morgantown.
 
 ## Meeting host
 
-Pack 60 meets at [Suncrest United Methodist Church](https://www.google.com/maps/search/?api=1&query=Suncrest+United+Methodist+Church%2C+Morgantown%2C+WV) in Morgantown, WV. Families should use pack communications for current arrival details and schedule changes.
+Pack 60 meets at [Suncrest United Methodist Church](https://www.google.com/maps/search/?api=1&query=479+Van+Voorhis+Rd%2C+Morgantown%2C+WV) in Morgantown, WV. Families should use pack communications for current arrival details and schedule changes.
 
 ## Mountaineer Area Council
 
@@ -54,3 +54,7 @@ Pack leadership includes program leaders, committee volunteers, den leaders, and
 ## What makes Pack 60 special
 
 Pack 60 is built around shared family experiences: campouts, Pinewood Derby, service projects, hikes, creative projects, pack meetings, and community events.
+
+Recent public highlights have included a [Black Bears baseball overnight](https://www.facebook.com/pack60wv/posts/pfbid02mEc4B8QDh3RqnyJjnhvTXAYf6Mm4uM293k1vFqPziX1BkcPxRFikpvtpiaoYcKeJl), a [North Bend State Park campout and service project](https://www.facebook.com/pack60wv/posts/pfbid06Dt5t3JnPmw7muX97KF7mZjDVQuMknZyFxdNYWqt13ECSnkBFXvPaVCFoQPuxFokl), mosaic art, Pinewood Derby, and a program introducing scouts to ASL and braille.
+
+Follow the [Pack 60 Facebook page](https://www.facebook.com/pack60wv/) for the latest public photos and announcements.

@@ -6,12 +6,14 @@ category: 'Seasonal Program'
 image: '/images/illustrations/summer.svg'
 order: 7
 public: true
-lastUpdated: '2026-06-06'
+lastUpdated: '2026-07-22'
 ---
 
 ## What it is
 
 Summer activities can include camps, hikes, picnics, baseball nights, water activities, service meetups, council activities, and informal family-friendly pack events.
+
+One recent summer highlight was a [West Virginia Black Bears night](https://www.facebook.com/pack60wv/posts/pfbid02mEc4B8QDh3RqnyJjnhvTXAYf6Mm4uM293k1vFqPziX1BkcPxRFikpvtpiaoYcKeJl) with baseball, fireworks, a movie, and camping on the field.
 
 ## When it usually happens
 
