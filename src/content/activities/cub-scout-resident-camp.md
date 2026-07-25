@@ -5,9 +5,19 @@ season: 'Summer'
 category: 'Council Program'
 image: '/images/activities/camp-mountaineer-pack60.jpg'
 imageAlt: 'Pack 60 scouts and leaders gathered at Camp Mountaineer'
+gallery:
+  - src: '/images/activities/resident-camp-lake.webp'
+    alt: 'Morning mist rising from the lake at Camp Mountaineer'
+    caption: 'Quiet mornings are part of the resident-camp experience.'
+  - src: '/images/activities/resident-camp-gaga-ball.webp'
+    alt: 'Scouts playing gaga ball outdoors at Camp Mountaineer'
+    caption: 'Camp recreation gives scouts time to play and make friends.'
+  - src: '/images/activities/resident-camp-gathering.webp'
+    alt: 'Scouts and families gathered on the field at Camp Mountaineer'
+    caption: 'Camp traditions bring the larger Scouting community together.'
 order: 7.5
 public: true
-lastUpdated: '2026-07-24'
+lastUpdated: '2026-07-25'
 ---
 
 ## What it is
