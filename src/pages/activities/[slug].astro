@@ -40,7 +40,7 @@ const { Content } = await activity.render();
     <img
       class="feature-image"
       src={activity.data.image}
-      alt={`Illustration for ${activity.data.title}`}
+      alt={activity.data.imageAlt ?? `Illustration for ${activity.data.title}`}
     />
     <Content />
   </article>

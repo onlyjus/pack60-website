@@ -3,23 +3,28 @@ interface Props {
   title?: string;
   href?: string;
   meta?: string;
+  image?: string;
+  imageAlt?: string;
 }
 
-const { title, href, meta } = Astro.props;
+const { title, href, meta, image, imageAlt = '' } = Astro.props;
 const TitleTag = href ? 'a' : 'span';
 ---
 
-<article class="card">
-  {meta && <p class="card-meta">{meta}</p>}
-  {
-    title && (
-      <h3>
-        <TitleTag href={href}>{title}</TitleTag>
-      </h3>
-    )
-  }
-  <div class="card-body">
-    <slot />
+<article class:list={['card', { 'has-image': image }]}>
+  {image && <img class="card-image" src={image} alt={imageAlt} loading="lazy" />}
+  <div class="card-content">
+    {meta && <p class="card-meta">{meta}</p>}
+    {
+      title && (
+        <h3>
+          <TitleTag href={href}>{title}</TitleTag>
+        </h3>
+      )
+    }
+    <div class="card-body">
+      <slot />
+    </div>
   </div>
 </article>
 
@@ -30,6 +35,28 @@ const TitleTag = href ? 'a' : 'span';
     border-radius: var(--radius);
     background: var(--color-surface);
     box-shadow: 0 10px 30px rgba(18, 60, 47, 0.06);
+    padding: 1.15rem;
+  }
+
+  .card.has-image {
+    overflow: hidden;
+    padding: 0;
+  }
+
+  .card-image {
+    display: block;
+    width: 100%;
+    aspect-ratio: 16 / 10;
+    object-fit: cover;
+    background: var(--color-surface-alt);
+  }
+
+  .card-content {
+    height: 100%;
+  }
+
+  .has-image .card-content {
+    height: auto;
     padding: 1.15rem;
   }
 

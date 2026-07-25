@@ -19,6 +19,15 @@ const meetingMapsUrl =
 const facebookUrl = 'https://www.facebook.com/pack60wv/';
 const recentHighlights = [
   {
+    title: 'Camp Mountaineer resident camp',
+    meta: 'Summer camp adventure',
+    href: 'https://www.facebook.com/pack60wv/posts/pfbid02dMnCmqd9zuWmjXqZXzEMpzABhrUagwjKM7QwBnEa2CCwM9katAZZ7iKJhSe3DK1zl',
+    image: '/images/activities/camp-mountaineer-climbing.jpg',
+    imageAlt: 'A scout climbing at Camp Mountaineer with support from camp staff',
+    description:
+      'Scouts spent a week climbing, enjoying lake activities, practicing shooting sports, making crafts, and sharing a themed camp adventure.',
+  },
+  {
     title: 'Black Bears overnight',
     meta: 'Summer adventure',
     href: 'https://www.facebook.com/pack60wv/posts/pfbid02mEc4B8QDh3RqnyJjnhvTXAYf6Mm4uM293k1vFqPziX1BkcPxRFikpvtpiaoYcKeJl',
@@ -31,13 +40,6 @@ const recentHighlights = [
     href: 'https://www.facebook.com/pack60wv/posts/pfbid06Dt5t3JnPmw7muX97KF7mZjDVQuMknZyFxdNYWqt13ECSnkBFXvPaVCFoQPuxFokl',
     description:
       'A spring weekend brought together trails, games, s’mores, camping, and a garden service project.',
-  },
-  {
-    title: 'Tiger den mosaic art',
-    meta: 'Creative learning',
-    href: 'https://www.facebook.com/pack60wv/posts/pfbid02Z1PpomWh21P6Zyc3w1FVmF6Agzho4j5oyTTgRhv9bAUPKUwSFvjykbCA1KzS5mpKl',
-    description:
-      'The Tiger den learned about safe glass cutting and created mosaic art with a local studio.',
   },
 ];
 ---
@@ -163,6 +165,8 @@ const recentHighlights = [
             title={highlight.title}
             meta={highlight.meta}
             href={highlight.href}
+            image={highlight.image}
+            imageAlt={highlight.imageAlt}
           >
             <p>{highlight.description}</p>
           </Card>

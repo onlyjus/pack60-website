@@ -24,6 +24,7 @@ const activities = defineCollection({
     season: z.string(),
     category: z.string(),
     image: z.string(),
+    imageAlt: z.string().optional(),
     order: z.number().optional(),
   }),
 });

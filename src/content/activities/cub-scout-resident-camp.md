@@ -3,10 +3,11 @@ title: 'Cub Scout Resident Camp'
 description: 'A longer council-run overnight summer camp experience for Cub Scouts at Camp Mountaineer.'
 season: 'Summer'
 category: 'Council Program'
-image: '/images/illustrations/summer.svg'
+image: '/images/activities/camp-mountaineer-pack60.jpg'
+imageAlt: 'Pack 60 scouts and leaders gathered at Camp Mountaineer'
 order: 7.5
 public: true
-lastUpdated: '2026-05-16'
+lastUpdated: '2026-07-24'
 ---
 
 ## What it is
@@ -14,6 +15,12 @@ lastUpdated: '2026-05-16'
 [Cub Scout Resident Camp](https://mountaineerscouting.org/cub-scout-resident-camp/) is a Mountaineer Area Council summer camp program held at [Camp Mountaineer](https://mountaineerscouting.org/camp-mountaineer/) in Morgantown, WV.
 
 The council describes it as a five-day, four-night overnight camp experience for Cub Scouts entering grades 1-5 the following school year. It is a bigger summer camp experience than a Pack 60 family weekend campout, with a council-run program, camp staff, and activities at Camp Mountaineer.
+
+## A recent Pack 60 experience
+
+Pack 60 scouts recently spent a week at Camp Mountaineer climbing, enjoying lake activities, practicing shooting sports, making crafts, and taking part in a themed camp adventure. The week gave scouts many ways to try something new, build confidence, and share a memorable outdoor experience.
+
+[See the public Facebook post and photo album](https://www.facebook.com/pack60wv/posts/pfbid02dMnCmqd9zuWmjXqZXzEMpzABhrUagwjKM7QwBnEa2CCwM9katAZZ7iKJhSe3DK1zl).
 
 ## When it usually happens
 
