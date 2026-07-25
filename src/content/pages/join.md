@@ -1,6 +1,6 @@
 ---
 title: 'Join Pack 60'
-description: 'Learn how to join Cub Scout Pack 60.'
+description: 'Plan a visit and learn how your family can join Cub Scout Pack 60.'
 navTitle: 'Join'
 order: 2
 public: true
@@ -10,6 +10,8 @@ lastUpdated: '2026-07-22'
 ## Who can join
 
 Pack 60 welcomes girls and boys in kindergarten through fifth grade. Families in the Morgantown, WV area can join a friendly program built around character, outdoor skills, service, creativity, and fun.
+
+**The best first step is to visit.** Email [membership@pack60.org](mailto:membership@pack60.org?subject=We%20would%20like%20to%20visit%20Pack%2060) and tell us your child's grade. A volunteer will help your family plan a Tuesday visit and connect you with the right den.
 
 ## Grade and den mapping
 
@@ -24,17 +26,19 @@ Pack 60 welcomes girls and boys in kindergarten through fifth grade. Families in
 
 Pack 60 meets Tuesdays at 7:00 PM at [Suncrest United Methodist Church, 479 Van Voorhis Road](https://www.google.com/maps/search/?api=1&query=479+Van+Voorhis+Rd%2C+Morgantown%2C+WV), in Morgantown, WV.
 
-Families interested in visiting should contact the pack first at [membership@pack60.org](mailto:membership@pack60.org). A volunteer can confirm the best arrival details, share any schedule changes, and explain the next available visit opportunity.
+Families interested in visiting should contact the pack first at [membership@pack60.org](mailto:membership@pack60.org?subject=We%20would%20like%20to%20visit%20Pack%2060). A volunteer can confirm that week's schedule, welcome your family when you arrive, and introduce your child to the right grade-level den.
 
 Families can also follow the [Pack 60 Facebook page](https://www.facebook.com/pack60wv/) for current public announcements and a look at recent activities.
 
 ## How to register
 
-Registration is completed through official Scouting channels. Email [membership@pack60.org](mailto:membership@pack60.org) and a Pack 60 volunteer can share the current registration path, answer questions, and help your family get connected with the right den.
+When your family is ready, registration is completed through Pack 60's [official BeAScout listing](https://beascout.scouting.org/list/?zip=26505&program%5B0%5D=pack&cubFilter=all&miles=10&unitID=43232). Pack volunteers can answer questions and help you complete the process.
 
 ## What new families should expect
 
-New families should expect a welcoming environment, age-appropriate activities, parent involvement, and a mix of den meetings, pack meetings, outings, service, and special events. Den meetings are usually age-specific, while pack meetings bring all dens together for activities, recognition, and shared pack fun.
+New families should expect a welcoming environment, age-appropriate activities, parent involvement, and a mix of den meetings, pack meetings, outings, service, and special events. Den meetings are usually age-specific, while pack meetings bring everyone together for activities, recognition, and shared pack fun.
+
+You do not need to know anything about Scouting or outdoor activities before contacting us. Pack volunteers and other families help new scouts learn one step at a time.
 
 ## Estimated costs
 
@@ -46,6 +50,6 @@ Because fees can change by year and family situation, Pack 60 confirms current c
 
 Uniform expectations vary by rank and event. Families can start with the [Pack 60 uniform basics](/resources/uniform-basics/) resource and use Scouting America's [official Cub Scout uniform page](https://www.scouting.org/programs/cub-scouts/cub-scout-uniform/) for current rank-specific requirements. Before buying optional items, ask pack leadership what is needed for your scout's den.
 
-## Contact membership
+## Ready to take the next step?
 
-Use [membership@pack60.org](mailto:membership@pack60.org) for membership questions.
+Email [membership@pack60.org](mailto:membership@pack60.org?subject=We%20would%20like%20to%20visit%20Pack%2060) to plan a visit, or view Pack 60's [official BeAScout listing](https://beascout.scouting.org/list/?zip=26505&program%5B0%5D=pack&cubFilter=all&miles=10&unitID=43232).

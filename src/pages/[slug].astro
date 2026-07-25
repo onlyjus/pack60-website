@@ -2,6 +2,7 @@
 import { getCollection } from 'astro:content';
 import Layout from '../layouts/Layout.astro';
 import Breadcrumbs from '../components/Breadcrumbs.astro';
+import CTAButton from '../components/CTAButton.astro';
 
 export async function getStaticPaths() {
   const pages = await getCollection('pages', ({ data }) => data.public);
@@ -13,6 +14,9 @@ export async function getStaticPaths() {
 
 const { page } = Astro.props;
 const { Content } = await page.render();
+const isJoinPage = page.slug === 'join';
+const beAScoutUrl =
+  'https://beascout.scouting.org/list/?zip=26505&program[0]=pack&cubFilter=all&miles=10&unitID=43232';
 ---
 
 <Layout title={page.data.title} description={page.data.description}>
@@ -26,7 +30,70 @@ const { Content } = await page.render();
       <p class="lead">{page.data.description}</p>
     </div>
   </header>
+  {
+    isJoinPage && (
+      <section class="join-actions" aria-label="Ways to get started">
+        <div class="container join-actions-inner">
+          <div>
+            <strong>Your first step can be simple.</strong>
+            <span>Tell us your child's grade and plan a Tuesday visit.</span>
+          </div>
+          <div class="join-buttons">
+            <CTAButton href="mailto:membership@pack60.org?subject=We%20would%20like%20to%20visit%20Pack%2060">
+              Plan a visit
+            </CTAButton>
+            <CTAButton href={beAScoutUrl} variant="secondary">
+              Official BeAScout listing
+            </CTAButton>
+          </div>
+        </div>
+      </section>
+    )
+  }
   <article class="content-band prose">
     <Content />
   </article>
 </Layout>
+
+<style>
+  .join-actions {
+    border-block: 1px solid var(--color-border);
+    background: #fff;
+  }
+
+  .join-actions-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.5rem;
+    padding-block: 1.25rem;
+  }
+
+  .join-actions strong,
+  .join-actions span {
+    display: block;
+  }
+
+  .join-actions strong {
+    color: var(--color-green);
+    font-size: 1.1rem;
+  }
+
+  .join-actions span {
+    color: var(--color-muted);
+    font-size: 0.95rem;
+  }
+
+  .join-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.65rem;
+  }
+
+  @media (max-width: 720px) {
+    .join-actions-inner {
+      align-items: flex-start;
+      flex-direction: column;
+    }
+  }
+</style>

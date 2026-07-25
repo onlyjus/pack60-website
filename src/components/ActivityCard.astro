@@ -5,13 +5,14 @@ interface Props {
   href: string;
   season: string;
   image: string;
+  imageAlt?: string;
 }
 
-const { title, description, href, season, image } = Astro.props;
+const { title, description, href, season, image, imageAlt = '' } = Astro.props;
 ---
 
 <article class="activity-card">
-  <img src={image} alt="" loading="lazy" />
+  <img src={image} alt={imageAlt} loading="lazy" />
   <div>
     <p>{season}</p>
     <h2><a href={href}>{title}</a></h2>

@@ -13,7 +13,7 @@ For general questions, email [info@pack60.org](mailto:info@pack60.org).
 
 ## Membership questions
 
-For joining questions, email [membership@pack60.org](mailto:membership@pack60.org).
+For joining questions or to plan a Tuesday visit, email [membership@pack60.org](mailto:membership@pack60.org?subject=We%20would%20like%20to%20visit%20Pack%2060).
 
 ## Website updates
 
@@ -27,8 +27,4 @@ Visit the [Pack 60 Facebook page](https://www.facebook.com/pack60wv/) for curren
 
 Pack 60 meets Tuesdays at 7:00 PM at [Suncrest United Methodist Church, 479 Van Voorhis Road](https://www.google.com/maps/search/?api=1&query=479+Van+Voorhis+Rd%2C+Morgantown%2C+WV), in Morgantown, WV.
 
-Contact the pack before your first visit so a volunteer can confirm the best arrival details and any schedule changes.
-
-## Contact form
-
-This static site does not include a backend contact form. Pack volunteers may add a privacy-conscious form service later if approved.
+Contact the pack before your first visit so a volunteer can confirm that week's schedule, welcome your family, and introduce your child to the right den.

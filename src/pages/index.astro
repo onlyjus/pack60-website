@@ -8,15 +8,27 @@ import CardGrid from '../components/CardGrid.astro';
 import ActivityCard from '../components/ActivityCard.astro';
 import CTAButton from '../components/CTAButton.astro';
 
-const activities = (
-  await getCollection('activities', ({ data }) => data.public)
-)
-  .sort((a, b) => (a.data.order ?? 99) - (b.data.order ?? 99))
-  .slice(0, 6);
+const featuredActivitySlugs = [
+  'cub-scout-resident-camp',
+  'pinewood-derby',
+  'caving-at-laurel-caverns',
+  'stem-rockets-science',
+  'community-events',
+  'good-zoo-overnight',
+];
+const activities = (await getCollection('activities', ({ data }) => data.public))
+  .filter((activity) => featuredActivitySlugs.includes(activity.slug))
+  .sort(
+    (a, b) =>
+      featuredActivitySlugs.indexOf(a.slug) -
+      featuredActivitySlugs.indexOf(b.slug),
+  );
 
 const meetingMapsUrl =
   'https://www.google.com/maps/search/?api=1&query=479+Van+Voorhis+Rd%2C+Morgantown%2C+WV';
 const facebookUrl = 'https://www.facebook.com/pack60wv/';
+const beAScoutUrl =
+  'https://beascout.scouting.org/list/?zip=26505&program[0]=pack&cubFilter=all&miles=10&unitID=43232';
 const recentHighlights = [
   {
     title: 'Camp Mountaineer resident camp',
@@ -53,36 +65,46 @@ const recentHighlights = [
 >
   <Hero
     eyebrow="Cub Scout Pack 60"
-    title="Adventure starts here."
-    description="Pack 60 welcomes girls and boys in kindergarten through fifth grade to build confidence, character, outdoor skills, and friendships while families share the adventure."
+    title="Find your next adventure."
+    description="Girls and boys in kindergarten through fifth grade build confidence, friendships, and practical skills through real adventures with Pack 60 families in Morgantown."
     primaryHref="/join/"
-    primaryLabel="Interested in joining?"
-    secondaryHref="/contact/"
-    secondaryLabel="Contact the pack"
+    primaryLabel="Plan a visit"
+    secondaryHref="/activities/"
+    secondaryLabel="See what we do"
   />
 
+  <div class="trust-strip" aria-label="Pack 60 at a glance">
+    <div class="container trust-grid">
+      <p><strong>Girls & boys</strong><span>Kindergarten–5th grade</span></p>
+      <p><strong>Tuesdays at 7 PM</strong><span>Suncrest United Methodist Church</span></p>
+      <p><strong>Family-centered</strong><span>Parents share the adventure</span></p>
+      <p><strong>Morgantown-based</strong><span>Local outings and community events</span></p>
+    </div>
+  </div>
+
   <Section
-    title="Welcome to Pack 60"
-    intro="We are a family-centered Cub Scout pack serving the Morgantown, WV area. This public website helps families learn what Cub Scouting is like and how to get connected."
+    eyebrow="Why Pack 60?"
+    title="Local adventures. Lasting confidence."
+    intro="Pack 60 combines a welcoming weekly rhythm with experiences children remember: outdoor challenges, creative projects, community service, and time with friends."
   >
     <CardGrid columns="three">
-      <Card title="What is Cub Scouts?">
+      <Card title="Remarkable local adventures">
         <p>
-          Cub Scouts is a program for girls and boys in kindergarten through
-          fifth grade focused on hands-on learning, character, service, outdoor
-          skills, and fun.
+          Scouts camp at Camp Mountaineer, explore Laurel Caverns, stay
+          overnight at the Good Zoo, attend baseball overnights, hike, fish,
+          and try new outdoor skills.
         </p>
       </Card>
-      <Card title="Why join Pack 60?">
+      <Card title="Learning by doing">
         <p>
-          Families find a welcoming community, age-appropriate adventures,
-          leadership opportunities, and a steady rhythm of memorable activities.
+          Pinewood Derby, WVU STEM Day, civic visits, crafts, service, and
+          age-appropriate challenges turn curiosity into confidence.
         </p>
       </Card>
-      <Card title="Families are part of it">
+      <Card title="A community for families">
         <p>
-          Parents and guardians participate alongside scouts, help with
-          activities, and support den and pack events.
+          Parents and guardians participate alongside scouts while children
+          make friends in grade-level dens and across the whole pack.
         </p>
       </Card>
     </CardGrid>
@@ -103,6 +125,7 @@ const recentHighlights = [
             href={`/activities/${activity.slug}/`}
             season={activity.data.season}
             image={activity.data.image}
+            imageAlt={activity.data.imageAlt}
           />
         ))
       }
@@ -130,11 +153,7 @@ const recentHighlights = [
     </div>
   </Section>
 
-  <Section
-    variant="alt"
-    title="Upcoming public events"
-    intro="Here are a few event types families can expect from Pack 60 throughout the year. Exact dates and arrival details are confirmed through official pack communications."
-  >
+  <Section variant="alt" title="A year full of highlights" intro="Pack 60 balances a dependable meeting rhythm with special traditions, outdoor weekends, community events, and optional summer adventures.">
     <CardGrid columns="three">
       <Card title="Join Scouting Night" meta="Recruiting season">
         <p>
@@ -186,24 +205,55 @@ const recentHighlights = [
   <Section title="Ready to learn more?">
     <div class="cta-panel">
       <div>
-        <h2>Interested in joining Pack 60?</h2>
+        <h2>Come see Pack 60 in action.</h2>
         <p>
-          Start with the Join page, then contact the pack with questions about
-          visiting a Tuesday meeting or registering through official Scouting
-          channels.
+          Start by planning a Tuesday visit. A pack volunteer will confirm the
+          schedule, welcome your family, and introduce your child to the right
+          grade-level den.
         </p>
       </div>
       <div class="cta-actions">
-        <CTAButton href="/join/">How to join</CTAButton>
-        <CTAButton href="/contact/" variant="secondary"
-          >Contact the pack</CTAButton
-        >
+        <CTAButton href="/join/">Plan a visit</CTAButton>
+        <CTAButton href={beAScoutUrl} variant="secondary">Official BeAScout listing</CTAButton>
       </div>
     </div>
   </Section>
 </Layout>
 
 <style>
+  .trust-strip {
+    border-bottom: 1px solid var(--color-border);
+    background: #fff;
+  }
+
+  .trust-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  .trust-grid p {
+    margin: 0;
+    padding: 1.1rem;
+    text-align: center;
+  }
+
+  .trust-grid strong,
+  .trust-grid span {
+    display: block;
+  }
+
+  .trust-grid strong {
+    color: var(--color-green);
+    line-height: 1.25;
+  }
+
+  .trust-grid span {
+    margin-top: 0.2rem;
+    color: var(--color-muted);
+    font-size: 0.82rem;
+    line-height: 1.35;
+  }
+
   .surface h2,
   .cta-panel h2 {
     margin: 0 0 0.5rem;
@@ -248,6 +298,14 @@ const recentHighlights = [
   }
 
   @media (max-width: 760px) {
+    .trust-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .trust-grid p {
+      border-bottom: 1px solid var(--color-border);
+    }
+
     .cta-panel {
       align-items: flex-start;
       flex-direction: column;
