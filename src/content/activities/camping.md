@@ -3,10 +3,11 @@ title: 'Camping'
 description: 'Family-friendly outdoor overnights that help scouts build confidence and outdoor skills.'
 season: 'Fall and Spring'
 category: 'Outdoor Adventure'
-image: '/images/illustrations/camping.svg'
+image: '/images/activities/family-campsite.webp'
+imageAlt: 'Family tents beside a pond at a green woodland campsite'
 order: 1
 public: true
-lastUpdated: '2026-07-22'
+lastUpdated: '2026-07-25'
 ---
 
 ## What it is

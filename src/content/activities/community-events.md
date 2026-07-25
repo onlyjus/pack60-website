@@ -3,10 +3,11 @@ title: 'Community Events'
 description: 'Public activities where Pack 60 can be visible, helpful, and connected to the local community.'
 season: 'Year-round'
 category: 'Community'
-image: '/images/illustrations/community.svg'
+image: '/images/activities/mosaic-workshop.jpg'
+imageAlt: 'Scouts gathered around a table during a mosaic art workshop'
 order: 8
 public: true
-lastUpdated: '2026-07-22'
+lastUpdated: '2026-07-25'
 ---
 
 ## What it is

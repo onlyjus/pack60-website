@@ -3,10 +3,11 @@ title: 'Hiking and Outdoor Skills'
 description: 'Simple outdoor adventures that teach observation, preparedness, and confidence.'
 season: 'Spring, Summer, and Fall'
 category: 'Outdoor Adventure'
-image: '/images/illustrations/hiking.svg'
+image: '/images/activities/hiking-waterfall.webp'
+imageAlt: 'A wooded West Virginia stream flowing over layered rocks'
 order: 5
 public: true
-lastUpdated: '2026-05-12'
+lastUpdated: '2026-07-25'
 ---
 
 ## What it is

@@ -25,6 +25,15 @@ const activities = defineCollection({
     category: z.string(),
     image: z.string(),
     imageAlt: z.string().optional(),
+    gallery: z
+      .array(
+        z.object({
+          src: z.string(),
+          alt: z.string(),
+          caption: z.string().optional(),
+        }),
+      )
+      .optional(),
     order: z.number().optional(),
   }),
 });

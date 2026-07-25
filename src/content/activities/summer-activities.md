@@ -3,10 +3,11 @@ title: 'Summer Activities'
 description: 'Optional warm-weather activities that help families stay connected between school years.'
 season: 'Summer'
 category: 'Seasonal Program'
-image: '/images/illustrations/summer.svg'
+image: '/images/activities/black-bears-fireworks.jpg'
+imageAlt: 'Fireworks over the West Virginia Black Bears ballpark'
 order: 7
 public: true
-lastUpdated: '2026-07-22'
+lastUpdated: '2026-07-25'
 ---
 
 ## What it is

@@ -42,6 +42,18 @@ const { Content } = await activity.render();
       src={activity.data.image}
       alt={activity.data.imageAlt ?? `Illustration for ${activity.data.title}`}
     />
+    {
+      activity.data.gallery && (
+        <div class="photo-gallery" aria-label={`${activity.data.title} photos`}>
+          {activity.data.gallery.map((photo) => (
+            <figure>
+              <img src={photo.src} alt={photo.alt} loading="lazy" />
+              {photo.caption && <figcaption>{photo.caption}</figcaption>}
+            </figure>
+          ))}
+        </div>
+      )
+    }
     <Content />
   </article>
 </Layout>
@@ -52,5 +64,39 @@ const { Content } = await activity.render();
     border: 1px solid var(--color-border);
     border-radius: var(--radius);
     background: #fff;
+  }
+
+  .photo-gallery {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1rem;
+    margin: 1rem 0 2.5rem;
+  }
+
+  .photo-gallery figure {
+    overflow: hidden;
+    margin: 0;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius);
+    background: #fff;
+  }
+
+  .photo-gallery img {
+    display: block;
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+  }
+
+  .photo-gallery figcaption {
+    padding: 0.65rem 0.8rem;
+    color: var(--color-muted);
+    font-size: 0.9rem;
+  }
+
+  @media (max-width: 620px) {
+    .photo-gallery {
+      grid-template-columns: 1fr;
+    }
   }
 </style>
