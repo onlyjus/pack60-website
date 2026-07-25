@@ -5,6 +5,10 @@ season: 'Fall and Spring'
 category: 'Outdoor Adventure'
 image: '/images/activities/family-campsite.webp'
 imageAlt: 'Family tents beside a pond at a green woodland campsite'
+gallery:
+  - src: '/images/activities/camp-mountaineer-fall-campfire.webp'
+    alt: 'Pack 60 families gathered around a campfire during a fall campout at Camp Mountaineer'
+    caption: 'An evening campfire during Pack 60 fall camping at Camp Mountaineer'
 order: 1
 public: true
 lastUpdated: '2026-07-25'

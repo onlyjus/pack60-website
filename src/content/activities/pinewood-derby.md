@@ -5,6 +5,13 @@ season: 'Winter'
 category: 'Pack Tradition'
 image: '/images/activities/pinewood-cars.webp'
 imageAlt: 'Three colorful handmade Pinewood Derby cars'
+gallery:
+  - src: '/images/activities/pack-pinewood-race-wide.webp'
+    alt: 'Scouts and families watching Pinewood Derby cars race down the Pack 60 track'
+    caption: 'Scouts and families gather for the Pack 60 Pinewood Derby'
+  - src: '/images/activities/pack-pinewood-finish-line.webp'
+    alt: 'Pinewood Derby cars crossing the electronic finish line as scouts cheer'
+    caption: 'Cars race toward the finish line while scouts cheer them on'
 order: 2
 public: true
 lastUpdated: '2026-07-25'
