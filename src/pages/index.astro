@@ -153,26 +153,37 @@ const recentHighlights = [
     </div>
   </Section>
 
-  <Section variant="alt" title="A year full of highlights" intro="Pack 60 balances a dependable meeting rhythm with special traditions, outdoor weekends, community events, and optional summer adventures.">
+  <Section
+    variant="alt"
+    eyebrow="Year at a glance"
+    title="A full year of adventure"
+    intro="Pack 60 balances a dependable meeting rhythm with special traditions, outdoor weekends, community service, and optional summer adventures."
+  >
     <CardGrid columns="three">
-      <Card title="Join Scouting Night" meta="Recruiting season">
+      <Card title="Winter & spring" meta="January–May">
         <p>
-          A public recruiting event for families interested in learning more
-          about Pack 60.
+          Planetarium night, Pinewood Derby, WVU STEM Day, Scouting for Food,
+          a Botanic Garden hike, spring camping, and Blue & Gold.
         </p>
       </Card>
-      <Card title="Pinewood Derby" meta="Winter">
+      <Card title="Summer adventures" meta="June–August">
         <p>
-          A winter pack tradition where scouts build and race small wooden cars.
+          Day camp, fishing, rail-trail service, the Morgantown parade, Black
+          Bears Scout Night, resident camp, lake adventures, and a pool party.
         </p>
       </Card>
-      <Card title="Service Project" meta="Year-round">
+      <Card title="Fall & holidays" meta="September–December">
         <p>
-          A community service opportunity where scouts can help, learn, and
-          serve together.
+          Camp Mountaineer family camping, Raingutter Regatta, fall hikes,
+          Trunk or Treat, Cubsgiving, the Veterans Day Parade, and a winter hike.
         </p>
       </Card>
     </CardGrid>
+    <p class="calendar-more">
+      <CTAButton href="/calendar/" variant="secondary">
+        Explore the full year
+      </CTAButton>
+    </p>
   </Section>
 
   <Section
@@ -294,6 +305,10 @@ const recentHighlights = [
   }
 
   .facebook-more {
+    margin: 1.5rem 0 0;
+  }
+
+  .calendar-more {
     margin: 1.5rem 0 0;
   }
 
