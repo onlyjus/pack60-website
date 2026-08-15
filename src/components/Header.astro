@@ -13,12 +13,7 @@ const navItems = [
 <header class="site-header">
   <div class="header-inner container">
     <a class="brand" href="/" aria-label="Cub Scout Pack 60 home">
-      <img
-        src="/images/pack/pack60-logo.webp"
-        alt=""
-        width="58"
-        height="58"
-      />
+      <img src="/images/pack/pack60-logo.webp" alt="" width="58" height="58" />
       <span>
         <strong>Pack 60</strong>
         <small>Morgantown, WV area</small>
@@ -46,6 +41,14 @@ const navItems = [
           </a>
         ))
       }
+      <a
+        class="donate-button"
+        href="https://paypal.me/cubscoutpack60wv"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        Donate
+      </a>
     </nav>
   </div>
 </header>
@@ -133,6 +136,18 @@ const navItems = [
     color: #fff;
   }
 
+  .site-nav .donate-button {
+    margin-left: 0.35rem;
+    background: var(--color-gold);
+    color: var(--color-green);
+    box-shadow: 0 4px 12px rgba(18, 60, 47, 0.14);
+  }
+
+  .site-nav .donate-button:hover {
+    background: var(--color-green);
+    color: #fff;
+  }
+
   .menu-toggle {
     display: none;
     width: 44px;
@@ -178,6 +193,11 @@ const navItems = [
 
     .site-nav a {
       padding: 0.85rem 1rem;
+    }
+
+    .site-nav .donate-button {
+      margin-left: 0;
+      text-align: center;
     }
   }
 </style>
