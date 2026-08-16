@@ -16,7 +16,9 @@ const featuredActivitySlugs = [
   'community-events',
   'good-zoo-overnight',
 ];
-const activities = (await getCollection('activities', ({ data }) => data.public))
+const activities = (
+  await getCollection('activities', ({ data }) => data.public)
+)
   .filter((activity) => featuredActivitySlugs.includes(activity.slug))
   .sort(
     (a, b) =>
@@ -31,11 +33,21 @@ const beAScoutUrl =
   'https://beascout.scouting.org/list/?zip=26505&program[0]=pack&cubFilter=all&miles=10&unitID=43232';
 const recentHighlights = [
   {
+    title: 'Brookhaven conservation project',
+    meta: 'Community service · July 28, 2026',
+    href: 'https://www.facebook.com/pack60wv/posts/pfbid02Sz9uxPyko9xyHoANyaDfiRmmVKwzDWgGCKbCurpBNZYgCdjk1KnF2Svr2Lyo3sBTl',
+    image: '/images/illustrations/service.svg',
+    imageAlt: 'Illustration representing a community service project',
+    description:
+      'Pack 60 and Pack 52 worked together on a conservation and landscaping project at Brookhaven Elementary, helping make the community more beautiful.',
+  },
+  {
     title: 'Camp Mountaineer resident camp',
     meta: 'Summer camp adventure',
     href: 'https://www.facebook.com/pack60wv/posts/pfbid02dMnCmqd9zuWmjXqZXzEMpzABhrUagwjKM7QwBnEa2CCwM9katAZZ7iKJhSe3DK1zl',
     image: '/images/activities/camp-mountaineer-climbing.jpg',
-    imageAlt: 'A scout climbing at Camp Mountaineer with support from camp staff',
+    imageAlt:
+      'A scout climbing at Camp Mountaineer with support from camp staff',
     description:
       'Scouts spent a week climbing, enjoying lake activities, practicing shooting sports, making crafts, and sharing a themed camp adventure.',
   },
@@ -48,16 +60,6 @@ const recentHighlights = [
       'Pack 60 scouts with the West Virginia Black Bears mascot at the ballpark',
     description:
       'Scouts enjoyed baseball, fireworks, a movie, and an overnight campout on the field.',
-  },
-  {
-    title: 'North Bend campout',
-    meta: 'Outdoor adventure and service',
-    href: 'https://www.facebook.com/pack60wv/posts/pfbid06Dt5t3JnPmw7muX97KF7mZjDVQuMknZyFxdNYWqt13ECSnkBFXvPaVCFoQPuxFokl',
-    image: '/images/activities/north-bend-campout.webp',
-    imageAlt:
-      'Pack 60 tents set up in a sunny campground at North Bend State Park',
-    description:
-      'A spring weekend brought together trails, games, s’mores, camping, and a garden service project.',
   },
 ];
 ---
@@ -79,9 +81,19 @@ const recentHighlights = [
   <div class="trust-strip" aria-label="Pack 60 at a glance">
     <div class="container trust-grid">
       <p><strong>Girls & boys</strong><span>Kindergarten–5th grade</span></p>
-      <p><strong>Tuesdays at 7 PM</strong><span>Suncrest United Methodist Church</span></p>
-      <p><strong>Family-centered</strong><span>Parents share the adventure</span></p>
-      <p><strong>Morgantown-based</strong><span>Local outings and community events</span></p>
+      <p>
+        <strong>Tuesdays at 7 PM</strong><span
+          >Suncrest United Methodist Church</span
+        >
+      </p>
+      <p>
+        <strong>Family-centered</strong><span>Parents share the adventure</span>
+      </p>
+      <p>
+        <strong>Morgantown-based</strong><span
+          >Local outings and community events</span
+        >
+      </p>
     </div>
   </div>
 
@@ -94,8 +106,8 @@ const recentHighlights = [
       <Card title="Remarkable local adventures">
         <p>
           Scouts camp at Camp Mountaineer, explore Laurel Caverns, stay
-          overnight at the Good Zoo, attend baseball overnights, hike, fish,
-          and try new outdoor skills.
+          overnight at the Good Zoo, attend baseball overnights, hike, fish, and
+          try new outdoor skills.
         </p>
       </Card>
       <Card title="Learning by doing">
@@ -106,8 +118,8 @@ const recentHighlights = [
       </Card>
       <Card title="A community for families">
         <p>
-          Parents and guardians participate alongside scouts while children
-          make friends in grade-level dens and across the whole pack.
+          Parents and guardians participate alongside scouts while children make
+          friends in grade-level dens and across the whole pack.
         </p>
       </Card>
     </CardGrid>
@@ -165,8 +177,8 @@ const recentHighlights = [
     <CardGrid columns="three">
       <Card title="Winter & spring" meta="January–May">
         <p>
-          Planetarium night, Pinewood Derby, WVU STEM Day, Scouting for Food,
-          a Botanic Garden hike, spring camping, and Blue & Gold.
+          Planetarium night, Pinewood Derby, WVU STEM Day, Scouting for Food, a
+          Botanic Garden hike, spring camping, and Blue & Gold.
         </p>
       </Card>
       <Card title="Summer adventures" meta="June–August">
@@ -177,8 +189,8 @@ const recentHighlights = [
       </Card>
       <Card title="Fall & holidays" meta="September–December">
         <p>
-          Camp Mountaineer family camping, Raingutter Regatta, fall hikes,
-          Trunk or Treat, Cubsgiving, the Veterans Day Parade, and a winter hike.
+          Camp Mountaineer family camping, Raingutter Regatta, fall hikes, Trunk
+          or Treat, Cubsgiving, the Veterans Day Parade, and a winter hike.
         </p>
       </Card>
     </CardGrid>
@@ -228,7 +240,9 @@ const recentHighlights = [
       </div>
       <div class="cta-actions">
         <CTAButton href="/join/">Plan a visit</CTAButton>
-        <CTAButton href={beAScoutUrl} variant="secondary">Official BeAScout listing</CTAButton>
+        <CTAButton href={beAScoutUrl} variant="secondary"
+          >Official BeAScout listing</CTAButton
+        >
       </div>
     </div>
   </Section>

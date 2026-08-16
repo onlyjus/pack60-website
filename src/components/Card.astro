@@ -12,7 +12,11 @@ const TitleTag = href ? 'a' : 'span';
 ---
 
 <article class:list={['card', { 'has-image': image }]}>
-  {image && <img class="card-image" src={image} alt={imageAlt} loading="lazy" />}
+  {
+    image && (
+      <img class="card-image" src={image} alt={imageAlt} loading="lazy" />
+    )
+  }
   <div class="card-content">
     {meta && <p class="card-meta">{meta}</p>}
     {

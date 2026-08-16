@@ -6,14 +6,14 @@ category: 'Community Service'
 image: '/images/illustrations/service.svg'
 order: 4
 public: true
-lastUpdated: '2026-07-22'
+lastUpdated: '2026-07-28'
 ---
 
 ## What it is
 
 Service projects help scouts practice helpfulness, citizenship, preparedness, and care for the community. Examples may include food-collection efforts, trail or park cleanups, weather-readiness projects, and other age-appropriate service approved by pack leadership.
 
-During a recent [North Bend State Park campout](https://www.facebook.com/pack60wv/posts/pfbid06Dt5t3JnPmw7muX97KF7mZjDVQuMknZyFxdNYWqt13ECSnkBFXvPaVCFoQPuxFokl), Pack 60 scouts and families helped clean up garden beds as part of the weekend.
+On July 28, 2026, Pack 60 and Pack 52 worked together on a [conservation and landscaping project at Brookhaven Elementary](https://www.facebook.com/pack60wv/posts/pfbid02Sz9uxPyko9xyHoANyaDfiRmmVKwzDWgGCKbCurpBNZYgCdjk1KnF2Svr2Lyo3sBTl), helping make the community more beautiful.
 
 ## When it usually happens
 
