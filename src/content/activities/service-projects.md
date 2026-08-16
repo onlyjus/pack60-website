@@ -3,7 +3,12 @@ title: 'Service Projects'
 description: 'Opportunities for scouts and families to help the community in age-appropriate ways.'
 season: 'Year-round'
 category: 'Community Service'
-image: '/images/illustrations/service.svg'
+image: '/images/activities/brookhaven-conservation-complete.jpg'
+imageAlt: 'Cleared garden beds and tools after the Brookhaven Elementary conservation project'
+gallery:
+  - src: '/images/activities/brookhaven-conservation-workday.jpg'
+    alt: 'Scouts working together to clear an overgrown garden bed'
+    caption: 'Pack 60 and Pack 52 worked together on the Brookhaven Elementary conservation project.'
 order: 4
 public: true
 lastUpdated: '2026-07-28'
