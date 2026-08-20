@@ -106,6 +106,7 @@ const recentAlbums = albums.slice(0, 3);
     location: string;
     starts_at: string;
     ends_at: string;
+    all_day: number;
     status: 'planned' | 'tentative' | 'canceled';
   }
 
@@ -130,14 +131,15 @@ const recentAlbums = albums.slice(0, 3);
       .replaceAll("'", '&#039;');
   }
 
-  function formatEventDate(value: string): string {
+  function formatEventDate(event: CalendarEvent): string {
     return new Intl.DateTimeFormat('en-US', {
       weekday: 'short',
       month: 'short',
       day: 'numeric',
-      hour: 'numeric',
-      minute: '2-digit',
-    }).format(new Date(value));
+      ...(event.all_day === 1
+        ? { timeZone: 'UTC' }
+        : { hour: 'numeric', minute: '2-digit' }),
+    }).format(new Date(event.starts_at));
   }
 
   fetch('/api/members/me', {
@@ -183,7 +185,7 @@ const recentAlbums = albums.slice(0, 3);
       upcomingEvents.innerHTML = `<div class="summary-list">${events
         .map(
           (event) => `<article class="summary-item">
-            <p>${escapeHtml(formatEventDate(event.starts_at))}</p>
+            <p>${escapeHtml(formatEventDate(event))}</p>
             <h2><a href="/members/calendar/">${escapeHtml(event.title)}</a></h2>
             <span>${escapeHtml(event.description || event.location || 'See the private calendar for details.')}</span>
           </article>`,

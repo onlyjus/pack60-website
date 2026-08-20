@@ -37,7 +37,7 @@ export const onRequestPatch: AppPagesFunction<'id'> = async (context) => {
     context.env.DB.prepare(
       `UPDATE calendar_events
          SET title = ?, description = ?, location = ?, starts_at = ?,
-             ends_at = ?, status = ?, updated_by_member_id = ?, updated_at = ?
+             ends_at = ?, all_day = ?, status = ?, updated_by_member_id = ?, updated_at = ?
          WHERE id = ? AND deleted_at IS NULL`,
     ).bind(
       event.title,
@@ -45,6 +45,7 @@ export const onRequestPatch: AppPagesFunction<'id'> = async (context) => {
       event.location,
       event.startsAt,
       event.endsAt,
+      event.allDay ? 1 : 0,
       event.status,
       actor.id,
       now,

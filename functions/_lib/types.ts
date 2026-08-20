@@ -48,6 +48,7 @@ export interface CalendarEventRecord {
   location: string;
   starts_at: string;
   ends_at: string;
+  all_day: number;
   status: CalendarEventStatus;
   created_by_member_id: string;
   updated_by_member_id: string;

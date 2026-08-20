@@ -28,9 +28,9 @@ export const onRequestPost: AppPagesFunction = async (context) => {
   await context.env.DB.batch([
     context.env.DB.prepare(
       `INSERT INTO calendar_events (
-           id, title, description, location, starts_at, ends_at, status,
+           id, title, description, location, starts_at, ends_at, all_day, status,
            created_by_member_id, updated_by_member_id, created_at, updated_at
-         ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
+         ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
     ).bind(
       id,
       event.title,
@@ -38,6 +38,7 @@ export const onRequestPost: AppPagesFunction = async (context) => {
       event.location,
       event.startsAt,
       event.endsAt,
+      event.allDay ? 1 : 0,
       event.status,
       actor.id,
       actor.id,
@@ -54,7 +55,11 @@ export const onRequestPost: AppPagesFunction = async (context) => {
       actor.id,
       actor.email,
       id,
-      JSON.stringify({ title: event.title, startsAt: event.startsAt }),
+      JSON.stringify({
+        title: event.title,
+        startsAt: event.startsAt,
+        allDay: event.allDay,
+      }),
       now,
     ),
   ]);

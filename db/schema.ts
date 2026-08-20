@@ -103,6 +103,7 @@ export const calendarEvents = sqliteTable(
     location: text('location').notNull().default(''),
     startsAt: text('starts_at').notNull(),
     endsAt: text('ends_at').notNull(),
+    allDay: integer('all_day').notNull().default(0),
     status: text('status', {
       enum: ['planned', 'tentative', 'canceled'],
     })
@@ -121,6 +122,7 @@ export const calendarEvents = sqliteTable(
       'calendar_events_status_check',
       sql`${table.status} IN ('planned', 'tentative', 'canceled')`,
     ),
+    check('calendar_events_all_day_check', sql`${table.allDay} IN (0, 1)`),
   ],
 );
 

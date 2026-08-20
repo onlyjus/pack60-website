@@ -19,6 +19,10 @@ function utcStamp(value: string): string {
     .replace(/\.\d{3}Z$/u, 'Z');
 }
 
+function utcDate(value: string): string {
+  return new Date(value).toISOString().slice(0, 10).replaceAll('-', '');
+}
+
 function foldLine(line: string): string {
   const chunks: string[] = [];
   let current = '';
@@ -57,13 +61,21 @@ export function buildCalendarFeed(events: CalendarEventRecord[]): string {
         : event.status === 'tentative'
           ? 'TENTATIVE'
           : 'CONFIRMED';
+    const dateLines = event.all_day
+      ? [
+          `DTSTART;VALUE=DATE:${utcDate(event.starts_at)}`,
+          `DTEND;VALUE=DATE:${utcDate(event.ends_at)}`,
+        ]
+      : [
+          `DTSTART:${utcStamp(event.starts_at)}`,
+          `DTEND:${utcStamp(event.ends_at)}`,
+        ];
     lines.push(
       'BEGIN:VEVENT',
       `UID:${event.id}@pack60.org`,
       `DTSTAMP:${utcStamp(event.updated_at)}`,
       `LAST-MODIFIED:${utcStamp(event.updated_at)}`,
-      `DTSTART:${utcStamp(event.starts_at)}`,
-      `DTEND:${utcStamp(event.ends_at)}`,
+      ...dateLines,
       `SUMMARY:${escapeText(event.title)}`,
       `DESCRIPTION:${escapeText(event.description)}`,
       `LOCATION:${escapeText(event.location)}`,

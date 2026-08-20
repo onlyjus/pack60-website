@@ -6,6 +6,7 @@ export interface CalendarEventInput {
   location: string;
   startsAt: string;
   endsAt: string;
+  allDay: boolean;
   status: CalendarEventStatus;
 }
 
@@ -31,6 +32,7 @@ export function validateCalendarEventInput(
   const location = boundedString(body?.location ?? '', 200);
   const startsAt = typeof body?.startsAt === 'string' ? body.startsAt : '';
   const endsAt = typeof body?.endsAt === 'string' ? body.endsAt : '';
+  const allDay = body?.allDay ?? false;
   const status = body?.status;
   const startTime = Date.parse(startsAt);
   const endTime = Date.parse(endsAt);
@@ -46,6 +48,9 @@ export function validateCalendarEventInput(
   }
   if (!Number.isFinite(startTime) || !Number.isFinite(endTime)) {
     return { error: 'Choose valid start and end dates.' };
+  }
+  if (typeof allDay !== 'boolean') {
+    return { error: 'Choose whether this is an all-day event.' };
   }
   if (endTime <= startTime) {
     return { error: 'The event must end after it starts.' };
@@ -64,6 +69,7 @@ export function validateCalendarEventInput(
       location,
       startsAt: new Date(startTime).toISOString(),
       endsAt: new Date(endTime).toISOString(),
+      allDay,
       status,
     },
   };
@@ -74,7 +80,7 @@ export async function listCalendarEvents(
 ): Promise<CalendarEventRecord[]> {
   const result = await db
     .prepare(
-      `SELECT id, title, description, location, starts_at, ends_at, status,
+      `SELECT id, title, description, location, starts_at, ends_at, all_day, status,
               created_by_member_id, updated_by_member_id, created_at,
               updated_at, deleted_at
        FROM calendar_events
@@ -93,7 +99,7 @@ export async function findCalendarEvent(
 ): Promise<CalendarEventRecord | null> {
   return db
     .prepare(
-      `SELECT id, title, description, location, starts_at, ends_at, status,
+      `SELECT id, title, description, location, starts_at, ends_at, all_day, status,
               created_by_member_id, updated_by_member_id, created_at,
               updated_at, deleted_at
        FROM calendar_events

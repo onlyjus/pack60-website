@@ -109,6 +109,10 @@ import MemberNav from '../../components/MemberNav.astro';
           Ends
           <input name="endsAt" type="datetime-local" required />
         </label>
+        <label class="check-row full">
+          <input name="allDay" type="checkbox" />
+          All-day or date-only event
+        </label>
         <label>
           Status
           <select name="status">
@@ -164,6 +168,7 @@ import MemberNav from '../../components/MemberNav.astro';
     location: string;
     starts_at: string;
     ends_at: string;
+    all_day: number;
     status: 'planned' | 'tentative' | 'canceled';
   }
 
@@ -195,6 +200,15 @@ import MemberNav from '../../components/MemberNav.astro';
   const eventSubmit = document.querySelector<HTMLButtonElement>(
     '[data-event-submit]',
   );
+  const startsAtInput = eventForm?.elements.namedItem(
+    'startsAt',
+  ) as HTMLInputElement | null;
+  const endsAtInput = eventForm?.elements.namedItem(
+    'endsAt',
+  ) as HTMLInputElement | null;
+  const allDayInput = eventForm?.elements.namedItem(
+    'allDay',
+  ) as HTMLInputElement | null;
   const eventCancel = document.querySelector<HTMLButtonElement>(
     '[data-event-cancel]',
   );
@@ -250,6 +264,21 @@ import MemberNav from '../../components/MemberNav.astro';
   function formatRange(event: CalendarEvent): string {
     const start = new Date(event.starts_at);
     const end = new Date(event.ends_at);
+    if (event.all_day === 1) {
+      const inclusiveEnd = new Date(end.getTime() - 1);
+      const formatter = new Intl.DateTimeFormat('en-US', {
+        weekday: 'short',
+        month: 'short',
+        day: 'numeric',
+        year: 'numeric',
+        timeZone: 'UTC',
+      });
+      const startDate = formatter.format(start);
+      const endDate = formatter.format(inclusiveEnd);
+      return startDate === endDate
+        ? `${startDate} · Date only`
+        : `${startDate}–${endDate} · All day`;
+    }
     const sameDay = start.toDateString() === end.toDateString();
     const date = new Intl.DateTimeFormat('en-US', {
       weekday: 'short',
@@ -278,6 +307,21 @@ import MemberNav from '../../components/MemberNav.astro';
     const date = new Date(value);
     const local = new Date(date.getTime() - date.getTimezoneOffset() * 60_000);
     return local.toISOString().slice(0, 16);
+  }
+
+  function inclusiveAllDayEnd(value: string): string {
+    return new Date(Date.parse(value) - 1).toISOString().slice(0, 10);
+  }
+
+  function setDateInputMode(allDay: boolean, convertValues = true) {
+    for (const input of [startsAtInput, endsAtInput]) {
+      if (!input) continue;
+      const date = input.value.slice(0, 10);
+      input.type = allDay ? 'date' : 'datetime-local';
+      if (convertValues && date) {
+        input.value = allDay ? date : `${date}T19:00`;
+      }
+    }
   }
 
   function renderEvents() {
@@ -357,23 +401,41 @@ import MemberNav from '../../components/MemberNav.astro';
   function resetEventForm() {
     editingId = '';
     eventForm?.reset();
+    setDateInputMode(false, false);
     if (editorTitle) editorTitle.textContent = 'Add an event';
     if (eventSubmit) eventSubmit.textContent = 'Add event';
     if (eventCancel) eventCancel.hidden = true;
     setStatus(editorStatus, '');
   }
 
+  allDayInput?.addEventListener('change', () => {
+    setDateInputMode(allDayInput.checked);
+  });
+
   eventForm?.addEventListener('submit', async (event) => {
     event.preventDefault();
     const form = new FormData(eventForm);
     const startsAt = String(form.get('startsAt') ?? '');
     const endsAt = String(form.get('endsAt') ?? '');
+    const allDay = form.get('allDay') === 'on';
+    const allDayEnd = endsAt
+      ? new Date(Date.parse(`${endsAt}T00:00:00.000Z`) + 86_400_000)
+      : null;
     const payload = {
       title: form.get('title'),
       description: form.get('description'),
       location: form.get('location'),
-      startsAt: startsAt ? new Date(startsAt).toISOString() : '',
-      endsAt: endsAt ? new Date(endsAt).toISOString() : '',
+      startsAt: startsAt
+        ? allDay
+          ? new Date(`${startsAt}T00:00:00.000Z`).toISOString()
+          : new Date(startsAt).toISOString()
+        : '',
+      endsAt: endsAt
+        ? allDay
+          ? allDayEnd?.toISOString()
+          : new Date(endsAt).toISOString()
+        : '',
+      allDay,
       status: form.get('status'),
     };
     const path = editingId
@@ -419,10 +481,19 @@ import MemberNav from '../../components/MemberNav.astro';
       editingId = id;
       (eventForm.elements.namedItem('title') as HTMLInputElement).value =
         selected.title;
-      (eventForm.elements.namedItem('startsAt') as HTMLInputElement).value =
-        localDateTimeValue(selected.starts_at);
-      (eventForm.elements.namedItem('endsAt') as HTMLInputElement).value =
-        localDateTimeValue(selected.ends_at);
+      const allDay = selected.all_day === 1;
+      if (allDayInput) allDayInput.checked = allDay;
+      setDateInputMode(allDay, false);
+      if (startsAtInput) {
+        startsAtInput.value = allDay
+          ? selected.starts_at.slice(0, 10)
+          : localDateTimeValue(selected.starts_at);
+      }
+      if (endsAtInput) {
+        endsAtInput.value = allDay
+          ? inclusiveAllDayEnd(selected.ends_at)
+          : localDateTimeValue(selected.ends_at);
+      }
       (eventForm.elements.namedItem('status') as HTMLSelectElement).value =
         selected.status;
       (eventForm.elements.namedItem('location') as HTMLInputElement).value =
@@ -725,6 +796,16 @@ import MemberNav from '../../components/MemberNav.astro';
     color: var(--color-green);
     font-size: 0.87rem;
     font-weight: 800;
+  }
+
+  .check-row {
+    display: flex;
+    align-items: center;
+  }
+
+  .check-row input {
+    width: auto;
+    min-height: auto;
   }
 
   .wide {
