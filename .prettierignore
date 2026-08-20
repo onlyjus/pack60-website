@@ -4,3 +4,5 @@ node_modules
 package-lock.json
 public/_headers
 public/robots.txt
+.dev.vars.example
+worker-configuration.d.ts

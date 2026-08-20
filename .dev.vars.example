@@ -1,0 +1,7 @@
+# Local-only Cloudflare Worker settings.
+# Copy to .dev.vars and replace the example email before running the private app.
+ENVIRONMENT=development
+LOCAL_AUTH_BYPASS=true
+LOCAL_AUTH_EMAIL=admin@example.com
+BOOTSTRAP_ADMIN_EMAIL=admin@example.com
+MEMBER_APP_ORIGIN=http://localhost:8788

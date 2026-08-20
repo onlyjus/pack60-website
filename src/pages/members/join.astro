@@ -1,0 +1,198 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+---
+
+<Layout
+  title="Accept Member Invitation"
+  description="Activate invited access to the private Pack 60 member area."
+  noindex
+>
+  <header class="page-header">
+    <div class="prose">
+      <Breadcrumbs
+        items={[
+          { href: '/members/', label: 'Members' },
+          { href: '/members/join/', label: 'Invitation' },
+        ]}
+      />
+      <p class="eyebrow">Secure member access</p>
+      <h1>Accept your invitation</h1>
+      <p class="lead">
+        Cloudflare has completed the secure sign-in. Activate the invitation to
+        give this email account access to the Pack 60 member area.
+      </p>
+    </div>
+  </header>
+
+  <section class="join-section">
+    <div class="join-card" data-join-card>
+      <div class="status-mark" aria-hidden="true">60</div>
+      <div>
+        <h2 data-title>Ready to activate</h2>
+        <p data-message>
+          Invitation links are single-use and tied to the email address selected
+          by a Pack 60 administrator.
+        </p>
+        <div class="actions">
+          <button type="button" data-redeem>Activate member access</button>
+          <a href="/cdn-cgi/access/logout">Use another email</a>
+        </div>
+        <p class="form-status" data-status role="status" aria-live="polite"></p>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<script>
+  const redeemButton =
+    document.querySelector<HTMLButtonElement>('[data-redeem]');
+  const title = document.querySelector<HTMLElement>('[data-title]');
+  const message = document.querySelector<HTMLElement>('[data-message]');
+  const status = document.querySelector<HTMLElement>('[data-status]');
+  const url = new URL(window.location.href);
+  const token = url.searchParams.get('token') ?? '';
+
+  if (token) {
+    window.history.replaceState({}, '', '/members/join/');
+  } else {
+    if (title) title.textContent = 'Invitation link needed';
+    if (message) {
+      message.textContent =
+        'Open the complete invitation link sent by a Pack 60 administrator. Ask for a replacement if the link was lost or already used.';
+    }
+    if (redeemButton) redeemButton.disabled = true;
+  }
+
+  redeemButton?.addEventListener('click', async () => {
+    redeemButton.disabled = true;
+    redeemButton.textContent = 'Activating…';
+    if (status) status.textContent = '';
+
+    try {
+      const response = await fetch('/api/members/invites/redeem', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'X-Requested-With': 'XMLHttpRequest',
+        },
+        body: JSON.stringify({ token }),
+      });
+      const data = (await response.json()) as { error?: string };
+
+      if (!response.ok) {
+        throw new Error(data.error ?? 'The invitation could not be activated.');
+      }
+
+      if (title) title.textContent = 'Access activated';
+      if (message) {
+        message.textContent =
+          'This account now has access to the private Pack 60 member area.';
+      }
+      redeemButton.remove();
+      const continueLink = document.createElement('a');
+      continueLink.className = 'primary-link';
+      continueLink.href = '/members/';
+      continueLink.textContent = 'Continue to member area';
+      document.querySelector('.actions')?.prepend(continueLink);
+      if (status) status.textContent = 'Your invitation was accepted.';
+    } catch (error) {
+      redeemButton.disabled = false;
+      redeemButton.textContent = 'Try again';
+      if (status) {
+        status.textContent =
+          error instanceof Error
+            ? error.message
+            : 'The invitation could not be activated.';
+        status.classList.add('error');
+      }
+    }
+  });
+</script>
+
+<style>
+  .join-section {
+    padding: 3rem 1rem 5rem;
+  }
+
+  .join-card {
+    display: grid;
+    width: min(720px, 100%);
+    grid-template-columns: auto minmax(0, 1fr);
+    gap: 1.25rem;
+    margin: 0 auto;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius);
+    background: #fff;
+    box-shadow: var(--shadow);
+    padding: clamp(1.25rem, 4vw, 2rem);
+  }
+
+  .status-mark {
+    display: grid;
+    width: 60px;
+    height: 60px;
+    place-items: center;
+    border-radius: 16px;
+    background: var(--color-green);
+    color: var(--color-gold);
+    font-weight: 900;
+  }
+
+  h2 {
+    margin: 0;
+    color: var(--color-green);
+    font-size: 1.6rem;
+  }
+
+  .join-card p {
+    color: var(--color-muted);
+  }
+
+  .actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.75rem;
+    margin-top: 1.25rem;
+  }
+
+  button,
+  .actions :global(.primary-link) {
+    min-height: 44px;
+    border: 0;
+    border-radius: 999px;
+    background: var(--color-green);
+    color: #fff;
+    cursor: pointer;
+    font: inherit;
+    font-weight: 800;
+    padding: 0.7rem 1rem;
+    text-decoration: none;
+  }
+
+  button:disabled {
+    cursor: not-allowed;
+    opacity: 0.55;
+  }
+
+  .actions > a:not(.primary-link) {
+    font-weight: 750;
+  }
+
+  .form-status {
+    min-height: 1.5rem;
+    margin: 1rem 0 0;
+    font-weight: 750;
+  }
+
+  .form-status.error {
+    color: #8f2f2a;
+  }
+
+  @media (max-width: 540px) {
+    .join-card {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

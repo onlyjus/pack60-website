@@ -41,6 +41,9 @@ const navItems = [
           </a>
         ))
       }
+      <a class="member-button" href="https://members.pack60.org/members/">
+        Member login
+      </a>
       <a
         class="donate-button"
         href="https://paypal.me/cubscoutpack60wv"
@@ -143,6 +146,18 @@ const navItems = [
     box-shadow: 0 4px 12px rgba(18, 60, 47, 0.14);
   }
 
+  .site-nav .member-button {
+    margin-left: 0.35rem;
+    border: 1px solid var(--color-green);
+    color: var(--color-green);
+  }
+
+  .site-nav .member-button:hover,
+  .site-nav .member-button[aria-current='page'] {
+    background: var(--color-green);
+    color: #fff;
+  }
+
   .site-nav .donate-button:hover {
     background: var(--color-green);
     color: #fff;
@@ -196,6 +211,11 @@ const navItems = [
     }
 
     .site-nav .donate-button {
+      margin-left: 0;
+      text-align: center;
+    }
+
+    .site-nav .member-button {
       margin-left: 0;
       text-align: center;
     }

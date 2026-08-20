@@ -1,8 +1,8 @@
 # Cub Scout Pack 60 Website
 
-This repository contains the public static website for Cub Scout Pack 60, serving families in the Morgantown, WV area.
+This repository contains the public website and protected member area for Cub Scout Pack 60, serving families in the Morgantown, WV area.
 
-The site is designed as a public front door for prospective families and community members. It intentionally does not include private pack operations, rosters, payment records, advancement data, private meeting links, or personal information.
+The public pages are a front door for prospective families and community members. The `/members/*` pages are guarded by Cloudflare Access plus an invite-only D1 member list. Private operational data belongs in D1 or another approved private service, never in the public Git repository.
 
 Production domain target: `pack60.org`
 
@@ -15,8 +15,13 @@ GitHub repository: `https://github.com/onlyjus/pack60-website`
 - Astro Content Collections
 - Markdown content files
 - Static site generation
+- Cloudflare Workers with static assets
+- Cloudflare Access SSO
+- Cloudflare D1 for member authorization and audit records
+- D1-backed private calendar and monthly budget reporting
+- Revocable iCalendar subscriptions for Google Calendar and compatible apps
 - Responsive CSS
-- Cloudflare Pages-compatible output
+- Cloudflare Workers-compatible output
 
 ## Local Development
 
@@ -43,6 +48,16 @@ Preview the production build:
 ```bash
 npm run preview
 ```
+
+Run the full private application locally:
+
+```powershell
+Copy-Item .dev.vars.example .dev.vars
+npm run db:migrate:local
+npm run dev:members
+```
+
+See `docs/CLOUDFLARE_ACCESS.md` before working with real member accounts.
 
 ## Editing Content
 
@@ -74,6 +89,12 @@ Run Astro checks:
 npm run check
 ```
 
+Check the Cloudflare Functions:
+
+```bash
+npm run check:functions
+```
+
 Run the full build:
 
 ```bash
@@ -82,19 +103,22 @@ npm run build
 
 ## Deployment
 
-This project is ready for Cloudflare Pages.
+This project deploys to the `pack60-website` Cloudflare Worker.
 
-- Framework preset: Astro
 - Build command: `npm run build`
 - Build output directory: `dist`
+- Deploy command: `npx wrangler deploy`
 - Production branch: `main`
+- Worker entry point: `worker/index.ts`
+- D1 binding: `DB`
+- Private custom domain: `members.pack60.org`
 
 See `docs/DEPLOYMENT.md` and `docs/DOMAIN_SETUP.md`.
 
 ## Public Content Safety
 
-This is a public website for a youth organization. The `/members/*` section is designed to be protected by Cloudflare Access, but private content should not be added until that protection has been configured and tested.
+This is a public repository for a youth organization. Member account records live in D1 and must not be committed. Private content should not be added until Cloudflare Access, D1 authorization, preview isolation, and direct-route tests have all passed.
 
 Do not add youth rosters, youth last names, parent contact information, medical forms, permission slips with personal data, private addresses, exact travel details, private meeting links, or any private Scoutbook data.
 
-When a fact is not approved for public posting, leave it off the live site and note it for human review. Keep all content public-safe.
+When a fact is not approved for public posting, leave it off the public pages and repository. Authentication is not permission to store highly sensitive youth or family records in this application.

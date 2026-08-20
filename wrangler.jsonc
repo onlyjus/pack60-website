@@ -1,0 +1,63 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "pack60-website",
+  "main": "worker/index.ts",
+  "compatibility_date": "2026-08-20",
+  "compatibility_flags": ["nodejs_compat"],
+  "keep_vars": true,
+  "assets": {
+    "directory": "./dist",
+    "binding": "ASSETS",
+    "run_worker_first": [
+      "/",
+      "/members/*",
+      "/api/members/*",
+      "/calendar/feed.ics",
+    ],
+  },
+  "routes": [
+    { "pattern": "pack60.org", "custom_domain": true },
+    { "pattern": "members.pack60.org", "custom_domain": true },
+  ],
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "pack60-members",
+      "database_id": "6d687729-48a7-47db-ba0b-4fc18f2cfd30",
+      "preview_database_id": "41327efe-5c61-45cd-b11e-18d8b9ecd77a",
+      "migrations_dir": "migrations",
+    },
+  ],
+  "vars": {
+    "ENVIRONMENT": "production",
+    "CF_ACCESS_TEAM_DOMAIN": "rough-brook-dfe1.cloudflareaccess.com",
+    "CF_ACCESS_AUD": "a02013dffd75af36ee66f5cc05b1ebb8e25eecbc478c81f60389c5d8b7a2f245",
+    "MEMBER_APP_ORIGIN": "https://members.pack60.org",
+  },
+  "observability": {
+    "enabled": true,
+    "logs": {
+      "enabled": true,
+      "invocation_logs": true,
+    },
+  },
+  "env": {
+    "preview": {
+      "name": "pack60-website-preview",
+      "d1_databases": [
+        {
+          "binding": "DB",
+          "database_name": "pack60-members-preview",
+          "database_id": "41327efe-5c61-45cd-b11e-18d8b9ecd77a",
+          "migrations_dir": "migrations",
+        },
+      ],
+      "vars": {
+        "ENVIRONMENT": "preview",
+        "CF_ACCESS_TEAM_DOMAIN": "rough-brook-dfe1.cloudflareaccess.com",
+        "CF_ACCESS_AUD": "a02013dffd75af36ee66f5cc05b1ebb8e25eecbc478c81f60389c5d8b7a2f245",
+        "MEMBER_APP_ORIGIN": "https://members.pack60.org",
+      },
+    },
+  },
+}

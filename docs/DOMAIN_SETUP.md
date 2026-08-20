@@ -10,7 +10,8 @@ Use a pack-owned account for domain registration, DNS, Cloudflare, and GitHub ac
 
 ## DNS overview
 
-DNS tells browsers where to find the website for a domain. Cloudflare can manage DNS and host the static site through Cloudflare Pages.
+DNS tells browsers where to find the website for a domain. Cloudflare manages
+DNS and hosts the site through a Worker with static assets.
 
 ## Cloudflare DNS setup
 
@@ -18,13 +19,18 @@ DNS tells browsers where to find the website for a domain. Cloudflare can manage
 2. Update nameservers at the domain registrar if needed.
 3. Confirm Cloudflare shows the domain as active.
 
-## Custom domain in Cloudflare Pages
+## Custom domains on the Cloudflare Worker
 
-1. Open the Cloudflare Pages project.
-2. Go to Custom domains.
-3. Add the chosen domain.
-4. Follow Cloudflare's DNS instructions.
-5. Confirm the domain resolves to the Pages project.
+1. Open the `pack60-website` Worker.
+2. Go to Settings > Domains & Routes.
+3. Confirm `pack60.org` serves the public site.
+4. Confirm `members.pack60.org` serves the private member application.
+5. Keep both custom domains declared in `wrangler.jsonc`.
+6. Confirm both domains resolve to the Worker.
+
+Protect the entire `members.pack60.org` hostname with Cloudflare Access. The
+application also checks its D1 member list on every private page and API request.
+See `docs/CLOUDFLARE_ACCESS.md` for the required policy and runtime settings.
 
 ## SSL note
 

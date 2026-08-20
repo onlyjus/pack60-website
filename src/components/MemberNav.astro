@@ -2,6 +2,7 @@
 const navItems = [
   { href: '/members/', label: 'Overview' },
   { href: '/members/calendar/', label: 'Calendar' },
+  { href: '/members/budget/', label: 'Budget' },
   { href: '/members/photos/', label: 'Photos' },
 ];
 ---
@@ -17,7 +18,30 @@ const navItems = [
       </a>
     ))
   }
+  <a class="admin-link" href="/members/admin/" hidden>Admin</a>
+  <a class="logout-link" href="/cdn-cgi/access/logout">Log out</a>
 </nav>
+
+<script>
+  interface MeResponse {
+    member: { role: 'member' | 'admin' };
+  }
+
+  const adminLink = document.querySelector<HTMLAnchorElement>('.admin-link');
+
+  fetch('/api/members/me', {
+    headers: { 'X-Requested-With': 'XMLHttpRequest' },
+  })
+    .then((response) =>
+      response.ok ? (response.json() as Promise<MeResponse>) : null,
+    )
+    .then((data) => {
+      if (data?.member?.role === 'admin' && adminLink) {
+        adminLink.hidden = false;
+      }
+    })
+    .catch(() => undefined);
+</script>
 
 <style>
   .member-nav {
@@ -48,5 +72,23 @@ const navItems = [
     border-color: var(--color-green);
     background: var(--color-green);
     color: #fff;
+  }
+
+  .logout-link {
+    margin-left: auto;
+    border-color: transparent;
+    background: transparent;
+  }
+
+  .logout-link:hover {
+    border-color: var(--color-border);
+    background: #fff;
+    color: var(--color-green);
+  }
+
+  @media (max-width: 560px) {
+    .logout-link {
+      margin-left: 0;
+    }
   }
 </style>

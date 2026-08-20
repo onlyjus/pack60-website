@@ -6,25 +6,12 @@ import Section from '../../components/Section.astro';
 import Card from '../../components/Card.astro';
 import CardGrid from '../../components/CardGrid.astro';
 import MemberNav from '../../components/MemberNav.astro';
-import {
-  formatAlbumDate,
-  formatShortEventDate,
-  isUpcomingEvent,
-  sortAlbumsDescending,
-  sortEventsAscending,
-} from '../../lib/memberContent';
-
-const events = (
-  await getCollection('member-events', ({ data }) => data.published)
-).sort(sortEventsAscending);
+import { formatAlbumDate, sortAlbumsDescending } from '../../lib/memberContent';
 
 const albums = (
   await getCollection('photo-albums', ({ data }) => data.published)
 ).sort(sortAlbumsDescending);
 
-const upcomingEvents = events
-  .filter((event) => isUpcomingEvent(event))
-  .slice(0, 3);
 const recentAlbums = albums.slice(0, 3);
 ---
 
@@ -43,6 +30,9 @@ const recentAlbums = albums.slice(0, 3);
         Pack 60 families and leaders.
       </p>
       <MemberNav />
+      <p class="session-note" data-session-note>
+        Secure member session verified by Cloudflare Access.
+      </p>
     </div>
   </header>
 
@@ -54,6 +44,17 @@ const recentAlbums = albums.slice(0, 3);
       <Card title="Photo albums" href="/members/photos/" meta="Photos">
         <p>Private event albums shared with registered families.</p>
       </Card>
+      <Card title="Pack budget" href="/members/budget/" meta="Finances">
+        <p>Current balances and category-level financial reporting.</p>
+      </Card>
+      <Card title="Bulletin board" meta="Coming next">
+        <p>Moderated announcements, reminders, and volunteer needs.</p>
+      </Card>
+      <div class="admin-card" data-admin-card hidden>
+        <Card title="Access administration" href="/members/admin/" meta="Admin">
+          <p>Invite members, review sign-ins, and remove access.</p>
+        </Card>
+      </div>
       <Card title="Public resources" href="/resources/" meta="Reference">
         <p>Public-safe checklists and guides for families and volunteers.</p>
       </Card>
@@ -61,25 +62,9 @@ const recentAlbums = albums.slice(0, 3);
   </Section>
 
   <Section variant="alt" title="Upcoming events">
-    {
-      upcomingEvents.length > 0 ? (
-        <div class="summary-list">
-          {upcomingEvents.map((event) => (
-            <article class="summary-item">
-              <p>{formatShortEventDate(event)}</p>
-              <h2>
-                <a href={`/members/events/${event.slug}/`}>
-                  {event.data.title}
-                </a>
-              </h2>
-              <span>{event.data.description}</span>
-            </article>
-          ))}
-        </div>
-      ) : (
-        <p class="empty-state">No private events are published yet.</p>
-      )
-    }
+    <div data-upcoming-events>
+      <p class="empty-state">Loading the private calendar…</p>
+    </div>
   </Section>
 
   <Section title="Recent albums">
@@ -105,7 +90,130 @@ const recentAlbums = albums.slice(0, 3);
   </Section>
 </Layout>
 
+<script>
+  interface MeResponse {
+    member: {
+      email: string;
+      display_name: string | null;
+      role: 'member' | 'admin';
+    };
+  }
+
+  interface CalendarEvent {
+    id: string;
+    title: string;
+    description: string;
+    location: string;
+    starts_at: string;
+    ends_at: string;
+    status: 'planned' | 'tentative' | 'canceled';
+  }
+
+  interface EventsResponse {
+    events: CalendarEvent[];
+  }
+
+  const sessionNote = document.querySelector<HTMLElement>(
+    '[data-session-note]',
+  );
+  const adminCard = document.querySelector<HTMLElement>('[data-admin-card]');
+  const upcomingEvents = document.querySelector<HTMLElement>(
+    '[data-upcoming-events]',
+  );
+
+  function escapeHtml(value: string): string {
+    return value
+      .replaceAll('&', '&amp;')
+      .replaceAll('<', '&lt;')
+      .replaceAll('>', '&gt;')
+      .replaceAll('"', '&quot;')
+      .replaceAll("'", '&#039;');
+  }
+
+  function formatEventDate(value: string): string {
+    return new Intl.DateTimeFormat('en-US', {
+      weekday: 'short',
+      month: 'short',
+      day: 'numeric',
+      hour: 'numeric',
+      minute: '2-digit',
+    }).format(new Date(value));
+  }
+
+  fetch('/api/members/me', {
+    headers: { 'X-Requested-With': 'XMLHttpRequest' },
+  })
+    .then((response) =>
+      response.ok ? (response.json() as Promise<MeResponse>) : null,
+    )
+    .then((data) => {
+      if (!data?.member) return;
+      const name = data.member.display_name || data.member.email;
+      if (sessionNote) {
+        sessionNote.textContent = `Signed in as ${name}. Secure session verified by Cloudflare Access.`;
+      }
+      if (data.member.role === 'admin' && adminCard) {
+        adminCard.hidden = false;
+      }
+    })
+    .catch(() => undefined);
+
+  fetch('/api/members/calendar/events', {
+    headers: { 'X-Requested-With': 'XMLHttpRequest' },
+  })
+    .then((response) =>
+      response.ok ? (response.json() as Promise<EventsResponse>) : null,
+    )
+    .then((data) => {
+      if (!upcomingEvents || !data) return;
+      const events = data.events
+        .filter(
+          (event) =>
+            event.status !== 'canceled' &&
+            new Date(event.ends_at).getTime() >= Date.now(),
+        )
+        .slice(0, 3);
+
+      if (events.length === 0) {
+        upcomingEvents.innerHTML =
+          '<p class="empty-state">No upcoming private events have been added yet. <a href="/members/calendar/">Open the calendar</a>.</p>';
+        return;
+      }
+
+      upcomingEvents.innerHTML = `<div class="summary-list">${events
+        .map(
+          (event) => `<article class="summary-item">
+            <p>${escapeHtml(formatEventDate(event.starts_at))}</p>
+            <h2><a href="/members/calendar/">${escapeHtml(event.title)}</a></h2>
+            <span>${escapeHtml(event.description || event.location || 'See the private calendar for details.')}</span>
+          </article>`,
+        )
+        .join('')}</div>`;
+    })
+    .catch(() => {
+      if (upcomingEvents) {
+        upcomingEvents.innerHTML =
+          '<p class="empty-state">The private calendar could not be loaded. <a href="/members/calendar/">Try the calendar page</a>.</p>';
+      }
+    });
+</script>
+
 <style>
+  .session-note {
+    margin: 1rem 0 0;
+    color: var(--color-muted);
+    font-size: 0.9rem;
+    font-weight: 700;
+  }
+
+  .admin-card {
+    display: contents;
+  }
+
+  .admin-card[hidden] {
+    display: none;
+  }
+
   .summary-list {
     display: grid;
     gap: 1rem;

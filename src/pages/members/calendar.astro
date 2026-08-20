@@ -1,35 +1,12 @@
 ---
-import { getCollection } from 'astro:content';
 import Layout from '../../layouts/Layout.astro';
 import Breadcrumbs from '../../components/Breadcrumbs.astro';
-import Section from '../../components/Section.astro';
 import MemberNav from '../../components/MemberNav.astro';
-import {
-  formatEventDateRange,
-  formatEventMonth,
-  isUpcomingEvent,
-  sortEventsAscending,
-  sortEventsDescending,
-  statusLabel,
-} from '../../lib/memberContent';
-
-const events = await getCollection(
-  'member-events',
-  ({ data }) => data.published,
-);
-
-const upcomingEvents = events
-  .filter((event) => isUpcomingEvent(event))
-  .sort(sortEventsAscending);
-
-const pastEvents = events
-  .filter((event) => !isUpcomingEvent(event))
-  .sort(sortEventsDescending);
 ---
 
 <Layout
   title="Member Calendar"
-  description="Private Pack 60 calendar details for registered families."
+  description="Private Pack 60 calendar for registered families."
   noindex
 >
   <header class="page-header">
@@ -41,187 +18,812 @@ const pastEvents = events
         ]}
       />
       <p class="eyebrow">Member calendar</p>
-      <h1>Private calendar</h1>
+      <h1>Pack calendar</h1>
       <p class="lead">
-        Event details, arrival notes, and related links for registered Pack 60
-        families and leaders.
+        Current event dates, locations, and planning notes for Pack 60 families
+        and leaders.
       </p>
       <MemberNav />
     </div>
   </header>
 
-  <Section title="Upcoming events">
-    {
-      upcomingEvents.length > 0 ? (
-        <div class="event-list">
-          {upcomingEvents.map((event) => (
-            <article class="event-card">
-              <div class="event-date">
-                <span>{formatEventMonth(event)}</span>
-                <strong>{formatEventDateRange(event)}</strong>
-              </div>
-              <div class="event-main">
-                <div class="event-heading">
-                  <h2>
-                    <a href={`/members/events/${event.slug}/`}>
-                      {event.data.title}
-                    </a>
-                  </h2>
-                  <span class:list={['status', event.data.status]}>
-                    {statusLabel(event.data.status)}
-                  </span>
-                </div>
-                <p>{event.data.description}</p>
-                {event.data.locationName && (
-                  <p class="event-meta">{event.data.locationName}</p>
-                )}
-              </div>
-            </article>
-          ))}
+  <div class="calendar-shell">
+    <section class="panel subscription-panel" aria-labelledby="subscribe-title">
+      <div class="panel-heading">
+        <div>
+          <p class="eyebrow">Keep it in sync</p>
+          <h2 id="subscribe-title">Subscribe from another calendar</h2>
         </div>
-      ) : (
-        <p class="empty-state">No private events are published yet.</p>
-      )
-    }
-  </Section>
+        <span class="subscription-state" data-subscription-state>Checking…</span
+        >
+      </div>
+      <p>
+        Create a private iCalendar link for Google Calendar, Apple Calendar, or
+        Outlook. Anyone with the link can read the pack calendar, so share it
+        only with your own calendar account.
+      </p>
+      <div class="button-row">
+        <button type="button" class="primary" data-create-subscription>
+          Create subscription link
+        </button>
+        <button type="button" class="danger" data-revoke-subscription hidden>
+          Revoke current link
+        </button>
+      </div>
+      <div class="subscription-result" data-subscription-result hidden>
+        <strong>Copy this link now</strong>
+        <p>It is displayed once. Rotating it disables the previous link.</p>
+        <div class="copy-row">
+          <input
+            type="text"
+            readonly
+            data-subscription-url
+            aria-label="Private calendar subscription URL"
+          />
+          <button type="button" class="primary" data-copy-subscription
+            >Copy</button
+          >
+        </div>
+      </div>
+      <details>
+        <summary>How to add the link</summary>
+        <p>
+          In Google Calendar choose <strong>Other calendars → From URL</strong>.
+          In Apple Calendar choose <strong
+            >File → New Calendar Subscription</strong
+          >. Calendar apps decide how frequently subscription feeds refresh.
+        </p>
+      </details>
+      <p
+        class="page-status"
+        data-subscription-status
+        role="status"
+        aria-live="polite"
+      >
+      </p>
+    </section>
 
-  <Section variant="alt" title="Past events">
-    {
-      pastEvents.length > 0 ? (
-        <div class="event-list">
-          {pastEvents.map((event) => (
-            <article class="event-card">
-              <div class="event-date">
-                <span>{formatEventMonth(event)}</span>
-                <strong>{formatEventDateRange(event)}</strong>
-              </div>
-              <div class="event-main">
-                <div class="event-heading">
-                  <h2>
-                    <a href={`/members/events/${event.slug}/`}>
-                      {event.data.title}
-                    </a>
-                  </h2>
-                  <span class:list={['status', event.data.status]}>
-                    {statusLabel(event.data.status)}
-                  </span>
-                </div>
-                <p>{event.data.description}</p>
-              </div>
-            </article>
-          ))}
+    <section
+      class="panel editor-panel"
+      data-event-editor
+      hidden
+      aria-labelledby="editor-title"
+    >
+      <div class="panel-heading">
+        <div>
+          <p class="eyebrow">Administrator</p>
+          <h2 id="editor-title" data-editor-title>Add an event</h2>
         </div>
-      ) : (
-        <p class="empty-state">No past private events are published yet.</p>
-      )
-    }
-  </Section>
+        <p>Changes appear in the member calendar and subscription feed.</p>
+      </div>
+      <form class="event-form" data-event-form>
+        <label class="wide">
+          Event title
+          <input name="title" maxlength="140" required />
+        </label>
+        <label>
+          Starts
+          <input name="startsAt" type="datetime-local" required />
+        </label>
+        <label>
+          Ends
+          <input name="endsAt" type="datetime-local" required />
+        </label>
+        <label>
+          Status
+          <select name="status">
+            <option value="planned">Planned</option>
+            <option value="tentative">Tentative</option>
+            <option value="canceled">Canceled</option>
+          </select>
+        </label>
+        <label class="wide">
+          Location
+          <input name="location" maxlength="200" autocomplete="off" />
+        </label>
+        <label class="full">
+          Details
+          <textarea name="description" maxlength="2000" rows="4"></textarea>
+        </label>
+        <div class="form-actions full">
+          <button type="submit" class="primary" data-event-submit
+            >Add event</button
+          >
+          <button type="button" data-event-cancel hidden>Cancel editing</button>
+        </div>
+      </form>
+      <p
+        class="page-status"
+        data-editor-status
+        role="status"
+        aria-live="polite"
+      >
+      </p>
+    </section>
+
+    <section class="panel events-panel" aria-labelledby="events-title">
+      <div class="panel-heading">
+        <div>
+          <p class="eyebrow">Schedule</p>
+          <h2 id="events-title">Events</h2>
+        </div>
+        <p data-event-count>Loading calendar…</p>
+      </div>
+      <div class="event-list" data-event-list>
+        <p class="empty-state">Loading calendar…</p>
+      </div>
+    </section>
+  </div>
 </Layout>
 
+<script>
+  interface CalendarEvent {
+    id: string;
+    title: string;
+    description: string;
+    location: string;
+    starts_at: string;
+    ends_at: string;
+    status: 'planned' | 'tentative' | 'canceled';
+  }
+
+  interface MeResponse {
+    member: { role: 'member' | 'admin' };
+  }
+
+  interface EventsResponse {
+    events: CalendarEvent[];
+  }
+
+  interface SubscriptionResponse {
+    subscription: {
+      active: boolean;
+      createdAt: string;
+      rotatedAt: string;
+    } | null;
+    feedUrl?: string;
+  }
+
+  const eventList = document.querySelector<HTMLElement>('[data-event-list]');
+  const eventCount = document.querySelector<HTMLElement>('[data-event-count]');
+  const editor = document.querySelector<HTMLElement>('[data-event-editor]');
+  const editorTitle = document.querySelector<HTMLElement>(
+    '[data-editor-title]',
+  );
+  const eventForm =
+    document.querySelector<HTMLFormElement>('[data-event-form]');
+  const eventSubmit = document.querySelector<HTMLButtonElement>(
+    '[data-event-submit]',
+  );
+  const eventCancel = document.querySelector<HTMLButtonElement>(
+    '[data-event-cancel]',
+  );
+  const editorStatus = document.querySelector<HTMLElement>(
+    '[data-editor-status]',
+  );
+  const createSubscription = document.querySelector<HTMLButtonElement>(
+    '[data-create-subscription]',
+  );
+  const revokeSubscription = document.querySelector<HTMLButtonElement>(
+    '[data-revoke-subscription]',
+  );
+  const subscriptionState = document.querySelector<HTMLElement>(
+    '[data-subscription-state]',
+  );
+  const subscriptionResult = document.querySelector<HTMLElement>(
+    '[data-subscription-result]',
+  );
+  const subscriptionUrl = document.querySelector<HTMLInputElement>(
+    '[data-subscription-url]',
+  );
+  const copySubscription = document.querySelector<HTMLButtonElement>(
+    '[data-copy-subscription]',
+  );
+  const subscriptionStatus = document.querySelector<HTMLElement>(
+    '[data-subscription-status]',
+  );
+
+  let events: CalendarEvent[] = [];
+  let isAdmin = false;
+  let editingId = '';
+
+  function escapeHtml(value: string): string {
+    return value
+      .replaceAll('&', '&amp;')
+      .replaceAll('<', '&lt;')
+      .replaceAll('>', '&gt;')
+      .replaceAll('"', '&quot;')
+      .replaceAll("'", '&#039;');
+  }
+
+  async function api<T>(path: string, init: RequestInit = {}): Promise<T> {
+    const headers = new Headers(init.headers);
+    headers.set('X-Requested-With', 'XMLHttpRequest');
+    const response = await fetch(path, { ...init, headers });
+    const data = (await response.json()) as T & { error?: string };
+    if (!response.ok) {
+      throw new Error(data.error ?? 'The request could not be completed.');
+    }
+    return data;
+  }
+
+  function formatRange(event: CalendarEvent): string {
+    const start = new Date(event.starts_at);
+    const end = new Date(event.ends_at);
+    const sameDay = start.toDateString() === end.toDateString();
+    const date = new Intl.DateTimeFormat('en-US', {
+      weekday: 'short',
+      month: 'short',
+      day: 'numeric',
+      year: 'numeric',
+    }).format(start);
+    const startTime = new Intl.DateTimeFormat('en-US', {
+      hour: 'numeric',
+      minute: '2-digit',
+    }).format(start);
+    const endValue = new Intl.DateTimeFormat('en-US', {
+      ...(sameDay
+        ? { hour: 'numeric', minute: '2-digit' }
+        : {
+            month: 'short',
+            day: 'numeric',
+            hour: 'numeric',
+            minute: '2-digit',
+          }),
+    }).format(end);
+    return `${date} · ${startTime}–${endValue}`;
+  }
+
+  function localDateTimeValue(value: string): string {
+    const date = new Date(value);
+    const local = new Date(date.getTime() - date.getTimezoneOffset() * 60_000);
+    return local.toISOString().slice(0, 16);
+  }
+
+  function renderEvents() {
+    if (!eventList || !eventCount) return;
+    const now = Date.now();
+    const upcoming = events.filter((event) => Date.parse(event.ends_at) >= now);
+    const past = events
+      .filter((event) => Date.parse(event.ends_at) < now)
+      .reverse();
+    const ordered = [...upcoming, ...past];
+    eventCount.textContent =
+      events.length === 1 ? '1 event' : `${events.length} events`;
+
+    if (ordered.length === 0) {
+      eventList.innerHTML =
+        '<p class="empty-state">No calendar events have been added yet.</p>';
+      return;
+    }
+
+    eventList.innerHTML = ordered
+      .map((event) => {
+        const isPast = Date.parse(event.ends_at) < now;
+        const controls = isAdmin
+          ? `<div class="event-actions">
+              <button type="button" data-edit-event="${escapeHtml(event.id)}">Edit</button>
+              <button type="button" class="danger" data-delete-event="${escapeHtml(event.id)}">Delete</button>
+            </div>`
+          : '';
+        return `<article class="event-card ${isPast ? 'past' : ''}">
+          <div class="event-date">${escapeHtml(formatRange(event))}</div>
+          <div class="event-copy">
+            <div class="event-heading">
+              <h3>${escapeHtml(event.title)}</h3>
+              <span class="status ${event.status}">${event.status}</span>
+            </div>
+            ${event.location ? `<p class="location">${escapeHtml(event.location)}</p>` : ''}
+            ${event.description ? `<p>${escapeHtml(event.description).replaceAll('\n', '<br>')}</p>` : ''}
+          </div>
+          ${controls}
+        </article>`;
+      })
+      .join('');
+  }
+
+  async function loadEvents() {
+    const data = await api<EventsResponse>('/api/members/calendar/events');
+    events = data.events;
+    renderEvents();
+  }
+
+  function updateSubscription(response: SubscriptionResponse) {
+    const active = response.subscription?.active === true;
+    if (subscriptionState) {
+      subscriptionState.textContent = active
+        ? 'Subscription active'
+        : 'No active link';
+      subscriptionState.classList.toggle('active', active);
+    }
+    if (createSubscription) {
+      createSubscription.textContent = active
+        ? 'Rotate subscription link'
+        : 'Create subscription link';
+    }
+    if (revokeSubscription) revokeSubscription.hidden = !active;
+  }
+
+  function setStatus(
+    target: HTMLElement | null,
+    message: string,
+    error = false,
+  ) {
+    if (!target) return;
+    target.textContent = message;
+    target.classList.toggle('error', error);
+  }
+
+  function resetEventForm() {
+    editingId = '';
+    eventForm?.reset();
+    if (editorTitle) editorTitle.textContent = 'Add an event';
+    if (eventSubmit) eventSubmit.textContent = 'Add event';
+    if (eventCancel) eventCancel.hidden = true;
+    setStatus(editorStatus, '');
+  }
+
+  eventForm?.addEventListener('submit', async (event) => {
+    event.preventDefault();
+    const form = new FormData(eventForm);
+    const startsAt = String(form.get('startsAt') ?? '');
+    const endsAt = String(form.get('endsAt') ?? '');
+    const payload = {
+      title: form.get('title'),
+      description: form.get('description'),
+      location: form.get('location'),
+      startsAt: startsAt ? new Date(startsAt).toISOString() : '',
+      endsAt: endsAt ? new Date(endsAt).toISOString() : '',
+      status: form.get('status'),
+    };
+    const path = editingId
+      ? `/api/members/admin/calendar/events/${encodeURIComponent(editingId)}`
+      : '/api/members/admin/calendar/events';
+
+    if (eventSubmit) eventSubmit.disabled = true;
+    try {
+      await api(path, {
+        method: editingId ? 'PATCH' : 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload),
+      });
+      resetEventForm();
+      await loadEvents();
+      setStatus(editorStatus, 'Calendar saved.');
+    } catch (error) {
+      setStatus(
+        editorStatus,
+        error instanceof Error ? error.message : 'Could not save the event.',
+        true,
+      );
+    } finally {
+      if (eventSubmit) eventSubmit.disabled = false;
+    }
+  });
+
+  eventCancel?.addEventListener('click', resetEventForm);
+
+  eventList?.addEventListener('click', async (event) => {
+    const target = event.target as HTMLElement;
+    const editButton = target.closest<HTMLButtonElement>('[data-edit-event]');
+    const deleteButton = target.closest<HTMLButtonElement>(
+      '[data-delete-event]',
+    );
+    const id =
+      editButton?.dataset.editEvent ?? deleteButton?.dataset.deleteEvent;
+    if (!id) return;
+    const selected = events.find((item) => item.id === id);
+    if (!selected) return;
+
+    if (editButton && eventForm) {
+      editingId = id;
+      (eventForm.elements.namedItem('title') as HTMLInputElement).value =
+        selected.title;
+      (eventForm.elements.namedItem('startsAt') as HTMLInputElement).value =
+        localDateTimeValue(selected.starts_at);
+      (eventForm.elements.namedItem('endsAt') as HTMLInputElement).value =
+        localDateTimeValue(selected.ends_at);
+      (eventForm.elements.namedItem('status') as HTMLSelectElement).value =
+        selected.status;
+      (eventForm.elements.namedItem('location') as HTMLInputElement).value =
+        selected.location;
+      (
+        eventForm.elements.namedItem('description') as HTMLTextAreaElement
+      ).value = selected.description;
+      if (editorTitle) editorTitle.textContent = 'Edit event';
+      if (eventSubmit) eventSubmit.textContent = 'Save changes';
+      if (eventCancel) eventCancel.hidden = false;
+      editor?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      return;
+    }
+
+    if (!window.confirm(`Delete “${selected.title}” from the calendar?`))
+      return;
+    if (deleteButton) deleteButton.disabled = true;
+    try {
+      await api(
+        `/api/members/admin/calendar/events/${encodeURIComponent(id)}`,
+        {
+          method: 'DELETE',
+          headers: { 'Content-Type': 'application/json' },
+          body: '{}',
+        },
+      );
+      await loadEvents();
+    } catch (error) {
+      setStatus(
+        editorStatus,
+        error instanceof Error ? error.message : 'Could not delete the event.',
+        true,
+      );
+      if (deleteButton) deleteButton.disabled = false;
+    }
+  });
+
+  createSubscription?.addEventListener('click', async () => {
+    createSubscription.disabled = true;
+    setStatus(subscriptionStatus, '');
+    try {
+      const data = await api<SubscriptionResponse>(
+        '/api/members/calendar/subscription',
+        {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: '{}',
+        },
+      );
+      updateSubscription(data);
+      if (subscriptionUrl && data.feedUrl) subscriptionUrl.value = data.feedUrl;
+      if (subscriptionResult) subscriptionResult.hidden = false;
+      setStatus(subscriptionStatus, 'Private subscription link created.');
+    } catch (error) {
+      setStatus(
+        subscriptionStatus,
+        error instanceof Error ? error.message : 'Could not create the link.',
+        true,
+      );
+    } finally {
+      createSubscription.disabled = false;
+    }
+  });
+
+  revokeSubscription?.addEventListener('click', async () => {
+    if (!window.confirm('Revoke the current calendar subscription link?'))
+      return;
+    revokeSubscription.disabled = true;
+    try {
+      await api('/api/members/calendar/subscription', {
+        method: 'DELETE',
+        headers: { 'Content-Type': 'application/json' },
+        body: '{}',
+      });
+      updateSubscription({ subscription: null });
+      if (subscriptionResult) subscriptionResult.hidden = true;
+      if (subscriptionUrl) subscriptionUrl.value = '';
+      setStatus(subscriptionStatus, 'The subscription link was revoked.');
+    } catch (error) {
+      setStatus(
+        subscriptionStatus,
+        error instanceof Error ? error.message : 'Could not revoke the link.',
+        true,
+      );
+    } finally {
+      revokeSubscription.disabled = false;
+    }
+  });
+
+  copySubscription?.addEventListener('click', async () => {
+    if (!subscriptionUrl?.value) return;
+    try {
+      await navigator.clipboard.writeText(subscriptionUrl.value);
+      copySubscription.textContent = 'Copied';
+      setTimeout(() => (copySubscription.textContent = 'Copy'), 1600);
+    } catch {
+      subscriptionUrl.select();
+      setStatus(
+        subscriptionStatus,
+        'The link is selected; copy it from your device menu.',
+      );
+    }
+  });
+
+  Promise.all([
+    api<MeResponse>('/api/members/me'),
+    api<SubscriptionResponse>('/api/members/calendar/subscription'),
+  ])
+    .then(([me, subscription]) => {
+      isAdmin = me.member.role === 'admin';
+      if (editor) editor.hidden = !isAdmin;
+      updateSubscription(subscription);
+      return loadEvents();
+    })
+    .catch((error) => {
+      if (eventList) {
+        eventList.innerHTML = `<p class="empty-state error">${escapeHtml(
+          error instanceof Error
+            ? error.message
+            : 'Could not load the calendar.',
+        )}</p>`;
+      }
+    });
+</script>
+
 <style>
+  .calendar-shell {
+    width: min(var(--max-width), calc(100% - 2rem));
+    margin: 0 auto;
+    padding: 3rem 0 5rem;
+  }
+
+  .panel {
+    margin-bottom: 1.25rem;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius);
+    background: #fff;
+    box-shadow: 0 10px 30px rgba(18, 60, 47, 0.06);
+    padding: clamp(1rem, 3vw, 1.5rem);
+  }
+
+  .subscription-panel {
+    border-top: 5px solid var(--color-gold);
+  }
+
+  .editor-panel {
+    border-top: 5px solid var(--color-green-2);
+  }
+
+  .editor-panel[hidden] {
+    display: none;
+  }
+
+  .panel-heading {
+    display: flex;
+    align-items: end;
+    justify-content: space-between;
+    gap: 1.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .panel-heading h2 {
+    margin: 0;
+    color: var(--color-green);
+    font-size: clamp(1.5rem, 4vw, 2.1rem);
+  }
+
+  .panel-heading > p,
+  .panel > p,
+  details p {
+    color: var(--color-muted);
+  }
+
+  .panel-heading > p {
+    max-width: 46ch;
+    margin: 0;
+  }
+
+  .subscription-state,
+  .status {
+    border-radius: 999px;
+    background: var(--color-surface-alt);
+    color: var(--color-muted);
+    font-size: 0.78rem;
+    font-weight: 850;
+    padding: 0.42rem 0.62rem;
+    text-transform: uppercase;
+  }
+
+  .subscription-state.active,
+  .status.planned {
+    color: var(--color-green);
+  }
+
+  .status.tentative {
+    background: #e8eef5;
+    color: var(--color-blue);
+  }
+
+  .status.canceled {
+    background: #f3e8e6;
+    color: #8f2f2a;
+  }
+
+  button,
+  input,
+  select,
+  textarea {
+    min-height: 44px;
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+    background: #fff;
+    color: var(--color-text);
+    font: inherit;
+  }
+
+  input,
+  select,
+  textarea {
+    width: 100%;
+    padding: 0.6rem 0.7rem;
+  }
+
+  textarea {
+    resize: vertical;
+  }
+
+  button {
+    cursor: pointer;
+    font-weight: 800;
+    padding: 0.6rem 0.85rem;
+  }
+
+  button:disabled {
+    cursor: not-allowed;
+    opacity: 0.55;
+  }
+
+  button.primary {
+    border-color: var(--color-green);
+    background: var(--color-green);
+    color: #fff;
+  }
+
+  button.danger {
+    border-color: #d8b7b3;
+    color: #8f2f2a;
+  }
+
+  .button-row,
+  .form-actions,
+  .event-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.65rem;
+  }
+
+  .subscription-result {
+    margin-top: 1rem;
+    border-radius: var(--radius);
+    background: var(--color-surface-alt);
+    padding: 1rem;
+  }
+
+  .subscription-result[hidden] {
+    display: none;
+  }
+
+  .subscription-result p {
+    margin: 0.2rem 0 0.8rem;
+    color: var(--color-muted);
+    font-size: 0.9rem;
+  }
+
+  .copy-row {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 0.5rem;
+  }
+
+  details {
+    margin-top: 1rem;
+  }
+
+  summary {
+    cursor: pointer;
+    color: var(--color-green);
+    font-weight: 800;
+  }
+
+  .event-form {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 0.85rem;
+  }
+
+  label {
+    display: grid;
+    gap: 0.35rem;
+    color: var(--color-green);
+    font-size: 0.87rem;
+    font-weight: 800;
+  }
+
+  .wide {
+    grid-column: span 2;
+  }
+
+  .full {
+    grid-column: 1 / -1;
+  }
+
   .event-list {
     display: grid;
-    gap: 1rem;
+    gap: 0.85rem;
   }
 
   .event-card {
     display: grid;
-    grid-template-columns: minmax(180px, 0.32fr) minmax(0, 1fr);
+    grid-template-columns: minmax(175px, 0.42fr) minmax(0, 1fr) auto;
     gap: 1rem;
-    border: 1px solid var(--color-border);
-    border-radius: var(--radius);
-    background: var(--color-surface);
-    box-shadow: 0 10px 30px rgba(18, 60, 47, 0.06);
-    padding: 1rem;
+    align-items: start;
+    border-top: 1px solid var(--color-border);
+    padding-top: 1rem;
   }
 
-  .event-date span {
-    display: block;
-    margin-bottom: 0.25rem;
-    color: var(--color-gold-dark);
-    font-size: 0.78rem;
+  .event-card:first-child {
+    border-top: 0;
+    padding-top: 0;
+  }
+
+  .event-card.past {
+    opacity: 0.7;
+  }
+
+  .event-date,
+  .location {
+    color: var(--color-green-2);
+    font-size: 0.9rem;
     font-weight: 800;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-  }
-
-  .event-date strong {
-    display: block;
-    color: var(--color-green);
-    font-size: 0.98rem;
-    line-height: 1.35;
   }
 
   .event-heading {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
-    justify-content: space-between;
-    gap: 0.75rem;
+    gap: 0.6rem;
   }
 
-  h2 {
+  .event-heading h3 {
     margin: 0;
     color: var(--color-green);
-    font-size: 1.28rem;
-    line-height: 1.2;
+    font-size: 1.25rem;
   }
 
-  h2 a {
-    color: inherit;
-    text-decoration: none;
-  }
-
-  h2 a:hover {
-    text-decoration: underline;
-    text-underline-offset: 0.18em;
-  }
-
-  .event-main p,
-  .empty-state {
+  .event-copy p {
+    margin: 0.35rem 0 0;
     color: var(--color-muted);
   }
 
-  .event-main p {
-    margin: 0.45rem 0 0;
+  .empty-state,
+  .page-status {
+    color: var(--color-muted);
   }
 
-  .event-meta {
-    font-weight: 700;
+  .page-status {
+    min-height: 1.4rem;
+    margin: 0.75rem 0 0;
+    font-size: 0.92rem;
+    font-weight: 750;
   }
 
-  .status {
-    border-radius: 999px;
-    color: #fff;
-    font-size: 0.78rem;
-    font-weight: 800;
-    line-height: 1;
-    padding: 0.42rem 0.58rem;
-    text-transform: uppercase;
+  .error,
+  .page-status.error {
+    color: #8f2f2a;
   }
 
-  .planned {
-    background: var(--color-green-2);
-  }
-
-  .tentative {
-    background: var(--color-blue);
-  }
-
-  .updated {
-    background: var(--color-gold-dark);
-  }
-
-  .canceled {
-    background: #8f2f2a;
-  }
-
-  .empty-state {
-    margin: 0;
-  }
-
-  @media (max-width: 720px) {
+  @media (max-width: 800px) {
+    .event-form,
     .event-card {
+      grid-template-columns: 1fr;
+    }
+
+    .wide,
+    .full {
+      grid-column: auto;
+    }
+
+    .panel-heading {
+      display: block;
+    }
+
+    .panel-heading > p,
+    .subscription-state {
+      display: inline-block;
+      margin-top: 0.65rem;
+    }
+  }
+
+  @media (max-width: 560px) {
+    .copy-row {
       grid-template-columns: 1fr;
     }
   }

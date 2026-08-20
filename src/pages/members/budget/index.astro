@@ -1,0 +1,771 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import Breadcrumbs from '../../../components/Breadcrumbs.astro';
+import MemberNav from '../../../components/MemberNav.astro';
+---
+
+<Layout
+  title="Pack Budget"
+  description="Private monthly Pack 60 budget and actual spending overview."
+  noindex
+>
+  <header class="page-header">
+    <div class="prose">
+      <Breadcrumbs
+        items={[
+          { href: '/members/', label: 'Members' },
+          { href: '/members/budget/', label: 'Budget' },
+        ]}
+      />
+      <p class="eyebrow">Pack finances</p>
+      <h1>Budget overview</h1>
+      <p class="lead">
+        Monthly budgeted and actual income and expenses for Pack 60 families and
+        leaders.
+      </p>
+      <MemberNav />
+    </div>
+  </header>
+
+  <div class="budget-shell">
+    <section class="period-bar" aria-label="Budget month">
+      <label>
+        Budget month
+        <input type="month" data-period min="2020-01" max="2100-12" />
+      </label>
+      <p>
+        This table is an operational summary. Do not enter bank account, card,
+        family payment, or reimbursement-document details.
+      </p>
+    </section>
+
+    <div class="summary-grid" aria-label="Budget summary">
+      <article>
+        <span>Actual income</span>
+        <strong data-income-actual>—</strong>
+        <small data-income-budget>Budget —</small>
+      </article>
+      <article>
+        <span>Actual expenses</span>
+        <strong data-expense-actual>—</strong>
+        <small data-expense-budget>Budget —</small>
+      </article>
+      <article>
+        <span>Actual net</span>
+        <strong data-net-actual>—</strong>
+        <small data-net-budget>Budget —</small>
+      </article>
+    </div>
+
+    <section
+      class="panel editor-panel"
+      data-budget-editor
+      hidden
+      aria-labelledby="editor-title"
+    >
+      <div class="panel-heading">
+        <div>
+          <p class="eyebrow">Administrator</p>
+          <h2 id="editor-title" data-editor-title>Add a budget row</h2>
+        </div>
+        <p>Enter whole dollar amounts or dollars and cents.</p>
+      </div>
+      <form class="budget-form" data-budget-form>
+        <label>
+          Type
+          <select name="kind">
+            <option value="expense">Expense</option>
+            <option value="income">Income</option>
+          </select>
+        </label>
+        <label>
+          Category
+          <input
+            name="category"
+            maxlength="80"
+            placeholder="Program supplies"
+            required
+          />
+        </label>
+        <label class="wide">
+          Description
+          <input
+            name="description"
+            maxlength="160"
+            placeholder="Monthly pack meeting materials"
+            required
+          />
+        </label>
+        <label>
+          Budgeted amount
+          <input
+            name="budgeted"
+            type="number"
+            min="0"
+            max="1000000"
+            step="0.01"
+            inputmode="decimal"
+            required
+          />
+        </label>
+        <label>
+          Actual amount
+          <input
+            name="actual"
+            type="number"
+            min="0"
+            max="1000000"
+            step="0.01"
+            inputmode="decimal"
+            required
+          />
+        </label>
+        <label class="wide">
+          Notes
+          <input
+            name="notes"
+            maxlength="500"
+            placeholder="Optional high-level note"
+          />
+        </label>
+        <div class="form-actions full">
+          <button type="submit" class="primary" data-budget-submit
+            >Add row</button
+          >
+          <button type="button" data-budget-cancel hidden>Cancel editing</button
+          >
+        </div>
+      </form>
+      <p
+        class="page-status"
+        data-editor-status
+        role="status"
+        aria-live="polite"
+      >
+      </p>
+    </section>
+
+    <section class="panel" aria-labelledby="table-title">
+      <div class="panel-heading">
+        <div>
+          <p class="eyebrow">Monthly detail</p>
+          <h2 id="table-title">Budget table</h2>
+        </div>
+        <p data-row-count>Loading budget…</p>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th scope="col">Type</th>
+              <th scope="col">Category / item</th>
+              <th scope="col">Budgeted</th>
+              <th scope="col">Actual</th>
+              <th scope="col">Variance</th>
+              <th scope="col">Notes</th>
+              <th scope="col"><span class="visually-hidden">Actions</span></th>
+            </tr>
+          </thead>
+          <tbody data-budget-body>
+            <tr><td colspan="7" class="empty-cell">Loading budget…</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="page-status" data-table-status role="status" aria-live="polite">
+      </p>
+    </section>
+  </div>
+</Layout>
+
+<script>
+  interface BudgetItem {
+    id: string;
+    period: string;
+    kind: 'income' | 'expense';
+    category: string;
+    description: string;
+    budgeted_cents: number;
+    actual_cents: number;
+    notes: string;
+  }
+
+  interface BudgetResponse {
+    period: string;
+    items: BudgetItem[];
+    summary: {
+      incomeBudgetedCents: number;
+      incomeActualCents: number;
+      expenseBudgetedCents: number;
+      expenseActualCents: number;
+      netBudgetedCents: number;
+      netActualCents: number;
+    };
+  }
+
+  interface MeResponse {
+    member: { role: 'member' | 'admin' };
+  }
+
+  const periodInput = document.querySelector<HTMLInputElement>('[data-period]');
+  const editor = document.querySelector<HTMLElement>('[data-budget-editor]');
+  const editorTitle = document.querySelector<HTMLElement>(
+    '[data-editor-title]',
+  );
+  const budgetForm =
+    document.querySelector<HTMLFormElement>('[data-budget-form]');
+  const budgetSubmit = document.querySelector<HTMLButtonElement>(
+    '[data-budget-submit]',
+  );
+  const budgetCancel = document.querySelector<HTMLButtonElement>(
+    '[data-budget-cancel]',
+  );
+  const editorStatus = document.querySelector<HTMLElement>(
+    '[data-editor-status]',
+  );
+  const tableStatus = document.querySelector<HTMLElement>(
+    '[data-table-status]',
+  );
+  const budgetBody =
+    document.querySelector<HTMLTableSectionElement>('[data-budget-body]');
+  const rowCount = document.querySelector<HTMLElement>('[data-row-count]');
+  const incomeActual = document.querySelector<HTMLElement>(
+    '[data-income-actual]',
+  );
+  const incomeBudget = document.querySelector<HTMLElement>(
+    '[data-income-budget]',
+  );
+  const expenseActual = document.querySelector<HTMLElement>(
+    '[data-expense-actual]',
+  );
+  const expenseBudget = document.querySelector<HTMLElement>(
+    '[data-expense-budget]',
+  );
+  const netActual = document.querySelector<HTMLElement>('[data-net-actual]');
+  const netBudget = document.querySelector<HTMLElement>('[data-net-budget]');
+
+  let items: BudgetItem[] = [];
+  let isAdmin = false;
+  let editingId = '';
+
+  function currentPeriod(): string {
+    const now = new Date();
+    return `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}`;
+  }
+
+  function escapeHtml(value: string): string {
+    return value
+      .replaceAll('&', '&amp;')
+      .replaceAll('<', '&lt;')
+      .replaceAll('>', '&gt;')
+      .replaceAll('"', '&quot;')
+      .replaceAll("'", '&#039;');
+  }
+
+  function money(cents: number): string {
+    return new Intl.NumberFormat('en-US', {
+      style: 'currency',
+      currency: 'USD',
+    }).format(cents / 100);
+  }
+
+  function cents(value: FormDataEntryValue | null): number {
+    const amount = Number(value);
+    return Number.isFinite(amount) ? Math.round(amount * 100) : -1;
+  }
+
+  async function api<T>(path: string, init: RequestInit = {}): Promise<T> {
+    const headers = new Headers(init.headers);
+    headers.set('X-Requested-With', 'XMLHttpRequest');
+    const response = await fetch(path, { ...init, headers });
+    const data = (await response.json()) as T & { error?: string };
+    if (!response.ok) {
+      throw new Error(data.error ?? 'The request could not be completed.');
+    }
+    return data;
+  }
+
+  function setStatus(
+    target: HTMLElement | null,
+    message: string,
+    error = false,
+  ) {
+    if (!target) return;
+    target.textContent = message;
+    target.classList.toggle('error', error);
+  }
+
+  function renderBudget(data: BudgetResponse) {
+    items = data.items;
+    if (incomeActual)
+      incomeActual.textContent = money(data.summary.incomeActualCents);
+    if (incomeBudget)
+      incomeBudget.textContent = `Budget ${money(data.summary.incomeBudgetedCents)}`;
+    if (expenseActual)
+      expenseActual.textContent = money(data.summary.expenseActualCents);
+    if (expenseBudget)
+      expenseBudget.textContent = `Budget ${money(data.summary.expenseBudgetedCents)}`;
+    if (netActual) {
+      netActual.textContent = money(data.summary.netActualCents);
+      netActual.classList.toggle('negative', data.summary.netActualCents < 0);
+    }
+    if (netBudget)
+      netBudget.textContent = `Budget ${money(data.summary.netBudgetedCents)}`;
+    if (rowCount)
+      rowCount.textContent =
+        items.length === 1 ? '1 row' : `${items.length} rows`;
+    if (!budgetBody) return;
+
+    if (items.length === 0) {
+      budgetBody.innerHTML =
+        '<tr><td colspan="7" class="empty-cell">No budget rows have been added for this month.</td></tr>';
+      return;
+    }
+
+    budgetBody.innerHTML = items
+      .map((item) => {
+        const variance =
+          item.kind === 'income'
+            ? item.actual_cents - item.budgeted_cents
+            : item.budgeted_cents - item.actual_cents;
+        const actions = isAdmin
+          ? `<div class="row-actions">
+              <button type="button" data-edit-item="${escapeHtml(item.id)}">Edit</button>
+              <button type="button" class="danger" data-delete-item="${escapeHtml(item.id)}">Delete</button>
+            </div>`
+          : '';
+        return `<tr>
+          <td><span class="kind ${item.kind}">${item.kind}</span></td>
+          <td><strong>${escapeHtml(item.category)}</strong><span>${escapeHtml(item.description)}</span></td>
+          <td>${escapeHtml(money(item.budgeted_cents))}</td>
+          <td>${escapeHtml(money(item.actual_cents))}</td>
+          <td class="${variance < 0 ? 'negative' : 'positive'}">${escapeHtml(money(variance))}</td>
+          <td>${item.notes ? escapeHtml(item.notes) : '—'}</td>
+          <td>${actions}</td>
+        </tr>`;
+      })
+      .join('');
+  }
+
+  async function loadBudget(): Promise<BudgetResponse> {
+    const period = periodInput?.value || currentPeriod();
+    setStatus(tableStatus, '');
+    const data = await api<BudgetResponse>(
+      `/api/members/budget?period=${encodeURIComponent(period)}`,
+    );
+    renderBudget(data);
+    return data;
+  }
+
+  function resetForm() {
+    editingId = '';
+    budgetForm?.reset();
+    if (editorTitle) editorTitle.textContent = 'Add a budget row';
+    if (budgetSubmit) budgetSubmit.textContent = 'Add row';
+    if (budgetCancel) budgetCancel.hidden = true;
+    setStatus(editorStatus, '');
+  }
+
+  periodInput?.addEventListener('change', () => {
+    resetForm();
+    loadBudget().catch((error) =>
+      setStatus(
+        tableStatus,
+        error instanceof Error ? error.message : 'Could not load the budget.',
+        true,
+      ),
+    );
+  });
+
+  budgetForm?.addEventListener('submit', async (event) => {
+    event.preventDefault();
+    const form = new FormData(budgetForm);
+    const payload = {
+      period: periodInput?.value,
+      kind: form.get('kind'),
+      category: form.get('category'),
+      description: form.get('description'),
+      budgetedCents: cents(form.get('budgeted')),
+      actualCents: cents(form.get('actual')),
+      notes: form.get('notes'),
+    };
+    const path = editingId
+      ? `/api/members/admin/budget/items/${encodeURIComponent(editingId)}`
+      : '/api/members/admin/budget/items';
+
+    if (budgetSubmit) budgetSubmit.disabled = true;
+    try {
+      await api(path, {
+        method: editingId ? 'PATCH' : 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload),
+      });
+      resetForm();
+      await loadBudget();
+      setStatus(editorStatus, 'Budget saved.');
+    } catch (error) {
+      setStatus(
+        editorStatus,
+        error instanceof Error ? error.message : 'Could not save the row.',
+        true,
+      );
+    } finally {
+      if (budgetSubmit) budgetSubmit.disabled = false;
+    }
+  });
+
+  budgetCancel?.addEventListener('click', resetForm);
+
+  budgetBody?.addEventListener('click', async (event) => {
+    const target = event.target as HTMLElement;
+    const editButton = target.closest<HTMLButtonElement>('[data-edit-item]');
+    const deleteButton =
+      target.closest<HTMLButtonElement>('[data-delete-item]');
+    const id = editButton?.dataset.editItem ?? deleteButton?.dataset.deleteItem;
+    if (!id) return;
+    const selected = items.find((item) => item.id === id);
+    if (!selected) return;
+
+    if (editButton && budgetForm) {
+      editingId = id;
+      (budgetForm.elements.namedItem('kind') as HTMLSelectElement).value =
+        selected.kind;
+      (budgetForm.elements.namedItem('category') as HTMLInputElement).value =
+        selected.category;
+      (budgetForm.elements.namedItem('description') as HTMLInputElement).value =
+        selected.description;
+      (budgetForm.elements.namedItem('budgeted') as HTMLInputElement).value = (
+        selected.budgeted_cents / 100
+      ).toFixed(2);
+      (budgetForm.elements.namedItem('actual') as HTMLInputElement).value = (
+        selected.actual_cents / 100
+      ).toFixed(2);
+      (budgetForm.elements.namedItem('notes') as HTMLInputElement).value =
+        selected.notes;
+      if (editorTitle) editorTitle.textContent = 'Edit budget row';
+      if (budgetSubmit) budgetSubmit.textContent = 'Save changes';
+      if (budgetCancel) budgetCancel.hidden = false;
+      editor?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      return;
+    }
+
+    if (!window.confirm(`Delete “${selected.description}” from this budget?`))
+      return;
+    if (deleteButton) deleteButton.disabled = true;
+    try {
+      await api(`/api/members/admin/budget/items/${encodeURIComponent(id)}`, {
+        method: 'DELETE',
+        headers: { 'Content-Type': 'application/json' },
+        body: '{}',
+      });
+      await loadBudget();
+    } catch (error) {
+      setStatus(
+        tableStatus,
+        error instanceof Error ? error.message : 'Could not delete the row.',
+        true,
+      );
+      if (deleteButton) deleteButton.disabled = false;
+    }
+  });
+
+  if (periodInput) periodInput.value = currentPeriod();
+  Promise.all([api<MeResponse>('/api/members/me'), loadBudget()])
+    .then(([me, budget]) => {
+      isAdmin = me.member.role === 'admin';
+      if (editor) editor.hidden = !isAdmin;
+      renderBudget(budget);
+    })
+    .catch((error) =>
+      setStatus(
+        tableStatus,
+        error instanceof Error ? error.message : 'Could not load the budget.',
+        true,
+      ),
+    );
+</script>
+
+<style>
+  .budget-shell {
+    width: min(1240px, calc(100% - 2rem));
+    margin: 0 auto;
+    padding: 3rem 0 5rem;
+  }
+
+  .period-bar,
+  .panel,
+  .summary-grid article {
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius);
+    background: #fff;
+    box-shadow: 0 10px 30px rgba(18, 60, 47, 0.06);
+  }
+
+  .period-bar {
+    display: flex;
+    align-items: end;
+    justify-content: space-between;
+    gap: 1.5rem;
+    border-top: 5px solid var(--color-gold);
+    padding: 1rem 1.25rem;
+  }
+
+  .period-bar p {
+    max-width: 66ch;
+    margin: 0;
+    color: var(--color-muted);
+    font-size: 0.9rem;
+  }
+
+  .summary-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1rem;
+    margin: 1rem 0;
+  }
+
+  .summary-grid article {
+    padding: 1.2rem;
+  }
+
+  .summary-grid span,
+  .summary-grid small {
+    display: block;
+    color: var(--color-muted);
+    font-weight: 750;
+  }
+
+  .summary-grid strong {
+    display: block;
+    margin: 0.25rem 0;
+    color: var(--color-green);
+    font-size: clamp(1.7rem, 4vw, 2.4rem);
+    line-height: 1.1;
+  }
+
+  .summary-grid strong.negative,
+  .negative {
+    color: #8f2f2a;
+  }
+
+  .positive {
+    color: var(--color-green-2);
+  }
+
+  .panel {
+    margin-top: 1rem;
+    padding: clamp(1rem, 3vw, 1.5rem);
+  }
+
+  .editor-panel {
+    border-top: 5px solid var(--color-green-2);
+  }
+
+  .editor-panel[hidden] {
+    display: none;
+  }
+
+  .panel-heading {
+    display: flex;
+    align-items: end;
+    justify-content: space-between;
+    gap: 1.5rem;
+    margin-bottom: 1.1rem;
+  }
+
+  .panel-heading h2 {
+    margin: 0;
+    color: var(--color-green);
+    font-size: clamp(1.5rem, 4vw, 2.1rem);
+  }
+
+  .panel-heading > p {
+    max-width: 44ch;
+    margin: 0;
+    color: var(--color-muted);
+  }
+
+  .budget-form {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 0.85rem;
+  }
+
+  label {
+    display: grid;
+    gap: 0.35rem;
+    color: var(--color-green);
+    font-size: 0.87rem;
+    font-weight: 800;
+  }
+
+  .wide {
+    grid-column: span 2;
+  }
+
+  .full {
+    grid-column: 1 / -1;
+  }
+
+  button,
+  input,
+  select {
+    min-height: 44px;
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+    background: #fff;
+    color: var(--color-text);
+    font: inherit;
+  }
+
+  input,
+  select {
+    padding: 0.6rem 0.7rem;
+  }
+
+  button {
+    cursor: pointer;
+    font-weight: 800;
+    padding: 0.55rem 0.75rem;
+  }
+
+  button:disabled {
+    cursor: not-allowed;
+    opacity: 0.55;
+  }
+
+  button.primary {
+    border-color: var(--color-green);
+    background: var(--color-green);
+    color: #fff;
+  }
+
+  button.danger {
+    border-color: #d8b7b3;
+    color: #8f2f2a;
+  }
+
+  .form-actions,
+  .row-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .table-wrap {
+    overflow-x: auto;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.88rem;
+  }
+
+  th,
+  td {
+    border-bottom: 1px solid var(--color-border);
+    padding: 0.75rem 0.6rem;
+    text-align: left;
+    vertical-align: middle;
+  }
+
+  th {
+    color: var(--color-muted);
+    font-size: 0.73rem;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+  }
+
+  td strong,
+  td span:not(.kind) {
+    display: block;
+  }
+
+  td span:not(.kind) {
+    color: var(--color-muted);
+    font-size: 0.8rem;
+  }
+
+  .kind {
+    display: inline-flex;
+    border-radius: 999px;
+    background: var(--color-surface-alt);
+    color: var(--color-green);
+    font-size: 0.73rem;
+    font-weight: 850;
+    padding: 0.38rem 0.52rem;
+    text-transform: uppercase;
+  }
+
+  .kind.expense {
+    background: #f3ece6;
+    color: #73503a;
+  }
+
+  .row-actions {
+    flex-wrap: nowrap;
+  }
+
+  .row-actions button {
+    min-height: 34px;
+    white-space: nowrap;
+    font-size: 0.78rem;
+    padding: 0.35rem 0.5rem;
+  }
+
+  .empty-cell {
+    color: var(--color-muted);
+    text-align: center;
+    padding: 2rem;
+  }
+
+  .page-status {
+    min-height: 1.4rem;
+    margin: 0.75rem 0 0;
+    color: var(--color-muted);
+    font-size: 0.92rem;
+    font-weight: 750;
+  }
+
+  .page-status.error {
+    color: #8f2f2a;
+  }
+
+  .visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    clip-path: inset(50%);
+    white-space: nowrap;
+  }
+
+  @media (max-width: 900px) {
+    .budget-form {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+
+  @media (max-width: 680px) {
+    .period-bar,
+    .panel-heading {
+      display: block;
+    }
+
+    .period-bar p,
+    .panel-heading > p {
+      margin-top: 0.7rem;
+    }
+
+    .summary-grid,
+    .budget-form {
+      grid-template-columns: 1fr;
+    }
+
+    .wide,
+    .full {
+      grid-column: auto;
+    }
+  }
+</style>

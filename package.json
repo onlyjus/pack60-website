@@ -5,20 +5,32 @@
   "type": "module",
   "scripts": {
     "dev": "astro dev",
+    "dev:members": "npm run build && wrangler dev --port 8788",
     "build": "astro check && astro build",
     "preview": "astro preview",
     "check": "astro check",
+    "check:functions": "tsc -p functions/tsconfig.json",
+    "deploy": "npm run build && wrangler deploy",
+    "deploy:preview": "npm run build && wrangler versions upload --env preview",
+    "db:generate": "drizzle-kit generate",
+    "db:migrate:local": "wrangler d1 migrations apply DB --local",
+    "db:migrate:remote": "wrangler d1 migrations apply DB --remote",
     "format": "prettier --write .",
     "format:check": "prettier --check ."
   },
   "dependencies": {
     "@astrojs/sitemap": "^3.6.0",
-    "astro": "^5.14.0"
+    "astro": "^5.14.0",
+    "drizzle-orm": "^0.45.2",
+    "jose": "^6.2.9"
   },
   "devDependencies": {
     "@astrojs/check": "^0.9.4",
+    "@cloudflare/workers-types": "^5.20260820.1",
+    "drizzle-kit": "^0.31.10",
     "prettier": "^3.6.2",
     "prettier-plugin-astro": "^0.14.1",
-    "typescript": "^5.9.3"
+    "typescript": "^5.9.3",
+    "wrangler": "^4.124.0"
   }
 }

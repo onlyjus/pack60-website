@@ -1,5 +1,24 @@
 # Private Member Area Plan
 
+## Implementation status
+
+The access foundation and first private application features are implemented:
+
+- Public **Member login** button targeting `members.pack60.org`
+- Cloudflare Access JWT signature, issuer, and audience validation
+- D1-backed active and removed member accounts
+- Single-use, expiring, email-bound invitation links
+- Administrator dashboard for invitations, roles, sign-in activity, and removal
+- Soft removal and access audit history
+- D1-backed shared calendar with administrator editing
+- Private, revocable iCalendar subscription links for external calendar apps
+- D1-backed monthly budget with budget-versus-actual summaries
+- Local Cloudflare/D1 development workflow
+
+Cloudflare Access, production and preview D1 databases, and Worker bindings are
+configured. The production sign-in checklist must still pass before sensitive
+private data is added. The bulletin board remains the next application phase.
+
 This plan describes how to add a private section for Pack 60 families and
 leaders while keeping the public website safe, simple, and maintainable.
 
@@ -17,7 +36,9 @@ instead of adding custom authentication code to the Astro site.
 
 ## Current Site Fit
 
-The site is currently a static Astro site deployed to Cloudflare Pages.
+The site uses Astro static assets behind a Cloudflare Worker. The Worker
+validates Cloudflare Access identity and applies the D1 member list to private
+routes and APIs.
 
 That is a good fit for:
 
@@ -26,15 +47,14 @@ That is a good fit for:
 - Markdown-driven event and album content
 - Low operational overhead
 
-It is not currently set up for:
+It is not yet set up for:
 
-- User accounts managed inside the website
 - Uploading photos through an admin dashboard
-- Per-user roles inside Astro
-- Database-backed calendars or RSVPs
+- RSVPs
+- Bulletin-board records
 
-Those features can be added later, but they are not required for the first
-useful private member area.
+Those features can be added later. Calendar and budget records now live in D1
+and are maintained through administrator-only controls in the member area.
 
 ## Recommended Architecture
 
@@ -329,8 +349,7 @@ The first launch is complete when:
 Possible later additions:
 
 - Cloudflare R2 for private photo storage
-- Calendar subscription feed
-- Google Calendar integration
+- Two-way Google Calendar integration
 - RSVP forms
 - Volunteer sign-up links
 - Role-based leader-only pages
