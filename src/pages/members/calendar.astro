@@ -133,7 +133,17 @@ import MemberNav from '../../components/MemberNav.astro';
           <button type="submit" class="primary" data-event-submit
             >Add event</button
           >
-          <button type="button" data-event-cancel hidden>Cancel editing</button>
+          <button
+            type="button"
+            class="icon-button cancel-button"
+            data-event-cancel
+            hidden
+          >
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M18 6 6 18M6 6l12 12"></path>
+            </svg>
+            <span>Cancel</span>
+          </button>
         </div>
       </form>
       <p
@@ -250,6 +260,20 @@ import MemberNav from '../../components/MemberNav.astro';
       .replaceAll("'", '&#039;');
   }
 
+  const calendarIcon = `<svg class="meta-icon" viewBox="0 0 24 24" aria-hidden="true">
+    <path d="M7 3v3M17 3v3M4 9h16M5 5h14a1 1 0 0 1 1 1v14H4V6a1 1 0 0 1 1-1Z"></path>
+  </svg>`;
+  const locationIcon = `<svg class="meta-icon" viewBox="0 0 24 24" aria-hidden="true">
+    <path d="M20 10c0 5-8 11-8 11S4 15 4 10a8 8 0 1 1 16 0Z"></path>
+    <circle cx="12" cy="10" r="2.5"></circle>
+  </svg>`;
+  const editIcon = `<svg viewBox="0 0 24 24" aria-hidden="true">
+    <path d="m4 20 4.5-1L19 8.5a2.8 2.8 0 0 0-4-4L4.5 15 4 20ZM13.5 6l4 4"></path>
+  </svg>`;
+  const deleteIcon = `<svg viewBox="0 0 24 24" aria-hidden="true">
+    <path d="M3 6h18M8 6V4h8v2M19 6l-1 14H6L5 6M10 11v5M14 11v5"></path>
+  </svg>`;
+
   async function api<T>(path: string, init: RequestInit = {}): Promise<T> {
     const headers = new Headers(init.headers);
     headers.set('X-Requested-With', 'XMLHttpRequest');
@@ -346,18 +370,24 @@ import MemberNav from '../../components/MemberNav.astro';
         const isPast = Date.parse(event.ends_at) < now;
         const controls = isAdmin
           ? `<div class="event-actions">
-              <button type="button" data-edit-event="${escapeHtml(event.id)}">Edit</button>
-              <button type="button" class="danger" data-delete-event="${escapeHtml(event.id)}">Delete</button>
+              <button type="button" class="event-action-button edit-action" aria-label="Edit ${escapeHtml(event.title)}" data-edit-event="${escapeHtml(event.id)}">
+                ${editIcon}<span>Edit</span>
+              </button>
+              <button type="button" class="event-action-button delete-action" aria-label="Delete ${escapeHtml(event.title)}" data-delete-event="${escapeHtml(event.id)}">
+                ${deleteIcon}<span>Delete</span>
+              </button>
             </div>`
           : '';
-        return `<article class="event-card ${isPast ? 'past' : ''}">
-          <div class="event-date">${escapeHtml(formatRange(event))}</div>
+        const statusLabel =
+          event.status.charAt(0).toUpperCase() + event.status.slice(1);
+        return `<article class="event-card status-${event.status} ${isPast ? 'past' : ''}">
+          <div class="event-date">${calendarIcon}<span>${escapeHtml(formatRange(event))}</span></div>
           <div class="event-copy">
             <div class="event-heading">
               <h3>${escapeHtml(event.title)}</h3>
-              <span class="status ${event.status}">${event.status}</span>
+              <span class="status ${event.status}">${statusLabel}</span>
             </div>
-            ${event.location ? `<p class="location">${escapeHtml(event.location)}</p>` : ''}
+            ${event.location ? `<p class="location">${locationIcon}<span>${escapeHtml(event.location)}</span></p>` : ''}
             ${event.description ? `<p>${escapeHtml(event.description).replaceAll('\n', '<br>')}</p>` : ''}
           </div>
           ${controls}
@@ -673,7 +703,7 @@ import MemberNav from '../../components/MemberNav.astro';
   }
 
   .subscription-state,
-  .status {
+  :global(.status) {
     border-radius: 999px;
     background: var(--color-surface-alt);
     color: var(--color-muted);
@@ -684,16 +714,16 @@ import MemberNav from '../../components/MemberNav.astro';
   }
 
   .subscription-state.active,
-  .status.planned {
+  :global(.status.planned) {
     color: var(--color-green);
   }
 
-  .status.tentative {
+  :global(.status.tentative) {
     background: #e8eef5;
     color: var(--color-blue);
   }
 
-  .status.canceled {
+  :global(.status.canceled) {
     background: #f3e8e6;
     color: #8f2f2a;
   }
@@ -727,6 +757,12 @@ import MemberNav from '../../components/MemberNav.astro';
     padding: 0.6rem 0.85rem;
   }
 
+  button:focus-visible,
+  :global(.event-action-button:focus-visible) {
+    outline: 3px solid rgba(24, 99, 68, 0.24);
+    outline-offset: 2px;
+  }
+
   button:disabled {
     cursor: not-allowed;
     opacity: 0.55;
@@ -743,9 +779,45 @@ import MemberNav from '../../components/MemberNav.astro';
     color: #8f2f2a;
   }
 
+  .icon-button,
+  :global(.event-action-button) {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.4rem;
+  }
+
+  .icon-button[hidden] {
+    display: none;
+  }
+
+  .icon-button svg,
+  :global(.event-action-button svg),
+  :global(.meta-icon) {
+    width: 1.05rem;
+    height: 1.05rem;
+    flex: 0 0 auto;
+    fill: none;
+    stroke: currentColor;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-width: 1.8;
+  }
+
+  .cancel-button {
+    border-color: #c8d2cd;
+    background: #f7f9f8;
+    color: var(--color-muted);
+  }
+
+  .cancel-button:hover {
+    border-color: var(--color-green-2);
+    color: var(--color-green);
+  }
+
   .button-row,
   .form-actions,
-  .event-actions {
+  :global(.event-actions) {
     display: flex;
     flex-wrap: wrap;
     gap: 0.65rem;
@@ -818,50 +890,140 @@ import MemberNav from '../../components/MemberNav.astro';
 
   .event-list {
     display: grid;
-    gap: 0.85rem;
-  }
-
-  .event-card {
-    display: grid;
-    grid-template-columns: minmax(175px, 0.42fr) minmax(0, 1fr) auto;
     gap: 1rem;
-    align-items: start;
-    border-top: 1px solid var(--color-border);
-    padding-top: 1rem;
   }
 
-  .event-card:first-child {
-    border-top: 0;
-    padding-top: 0;
-  }
-
-  .event-card.past {
-    opacity: 0.7;
-  }
-
-  .event-date,
-  .location {
-    color: var(--color-green-2);
-    font-size: 0.9rem;
+  [data-event-count] {
+    display: inline-flex;
+    align-items: center;
+    min-height: 34px;
+    border: 1px solid var(--color-border);
+    border-radius: 999px;
+    background: var(--color-surface-alt);
+    padding: 0.3rem 0.75rem;
+    font-size: 0.86rem;
     font-weight: 800;
   }
 
-  .event-heading {
+  .event-list :global(.event-card) {
+    position: relative;
+    display: grid;
+    grid-template-columns: minmax(205px, 0.44fr) minmax(0, 1fr) auto;
+    gap: 1.15rem;
+    align-items: start;
+    overflow: hidden;
+    border: 1px solid var(--color-border);
+    border-left: 5px solid var(--color-green-2);
+    border-radius: 14px;
+    background: linear-gradient(135deg, #fff 0%, #fbfcfb 100%);
+    box-shadow: 0 5px 18px rgba(18, 60, 47, 0.07);
+    padding: 1.05rem 1.1rem;
+    transition:
+      border-color 160ms ease,
+      box-shadow 160ms ease,
+      transform 160ms ease;
+  }
+
+  .event-list :global(.event-card:hover) {
+    border-color: #bad0c4;
+    box-shadow: 0 10px 26px rgba(18, 60, 47, 0.11);
+    transform: translateY(-1px);
+  }
+
+  .event-list :global(.event-card.status-tentative) {
+    border-left-color: var(--color-blue);
+  }
+
+  .event-list :global(.event-card.status-canceled) {
+    border-left-color: #a64740;
+  }
+
+  .event-list :global(.event-card.past) {
+    background: #fafafa;
+    box-shadow: none;
+    opacity: 0.72;
+  }
+
+  .event-list :global(.event-date),
+  .event-list :global(.location) {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.5rem;
+    color: var(--color-green-2);
+    font-size: 0.9rem;
+    font-weight: 800;
+    line-height: 1.45;
+  }
+
+  .event-list :global(.event-date) {
+    border-radius: 10px;
+    background: var(--color-surface-alt);
+    padding: 0.7rem 0.75rem;
+  }
+
+  .event-list :global(.event-date .meta-icon) {
+    margin-top: 0.08rem;
+  }
+
+  .event-list :global(.event-heading) {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
     gap: 0.6rem;
   }
 
-  .event-heading h3 {
+  .event-list :global(.event-heading h3) {
     margin: 0;
     color: var(--color-green);
     font-size: 1.25rem;
   }
 
-  .event-copy p {
+  .event-list :global(.event-copy p) {
     margin: 0.35rem 0 0;
     color: var(--color-muted);
+  }
+
+  .event-list :global(.location) {
+    margin-top: 0.55rem;
+  }
+
+  .event-list :global(.event-actions) {
+    justify-content: flex-end;
+    align-self: center;
+  }
+
+  .event-list :global(.event-action-button) {
+    min-height: 40px;
+    border: 1px solid #bfd0c7;
+    border-radius: 999px;
+    background: #fff;
+    color: var(--color-green);
+    cursor: pointer;
+    font: inherit;
+    font-size: 0.84rem;
+    font-weight: 850;
+    padding: 0.48rem 0.72rem;
+    transition:
+      background 150ms ease,
+      border-color 150ms ease,
+      color 150ms ease,
+      transform 150ms ease;
+  }
+
+  .event-list :global(.event-action-button:hover) {
+    border-color: var(--color-green-2);
+    background: var(--color-surface-alt);
+    transform: translateY(-1px);
+  }
+
+  .event-list :global(.event-action-button.delete-action) {
+    border-color: #dec3c0;
+    color: #8f2f2a;
+  }
+
+  .event-list :global(.event-action-button.delete-action:hover) {
+    border-color: #bd7771;
+    background: #fbf3f2;
   }
 
   .empty-state,
@@ -883,8 +1045,12 @@ import MemberNav from '../../components/MemberNav.astro';
 
   @media (max-width: 800px) {
     .event-form,
-    .event-card {
+    .event-list :global(.event-card) {
       grid-template-columns: 1fr;
+    }
+
+    .event-list :global(.event-actions) {
+      justify-content: flex-start;
     }
 
     .wide,
