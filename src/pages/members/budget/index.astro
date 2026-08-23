@@ -6,7 +6,7 @@ import MemberNav from '../../../components/MemberNav.astro';
 
 <Layout
   title="Pack Budget"
-  description="Private monthly Pack 60 budget and actual spending overview."
+  description="Private Pack 60 annual and monthly budget overview."
   noindex
 >
   <header class="page-header">
@@ -20,7 +20,7 @@ import MemberNav from '../../../components/MemberNav.astro';
       <p class="eyebrow">Pack finances</p>
       <h1>Budget overview</h1>
       <p class="lead">
-        Monthly budgeted and actual income and expenses for Pack 60 families and
+        Annual plans and monthly income and expenses for Pack 60 families and
         leaders.
       </p>
       <MemberNav />
@@ -28,30 +28,47 @@ import MemberNav from '../../../components/MemberNav.astro';
   </header>
 
   <div class="budget-shell">
-    <section class="period-bar" aria-label="Budget month">
+    <section class="period-bar" aria-label="Budget reporting period">
       <label>
-        Budget month
-        <input type="month" data-period min="2020-01" max="2100-12" />
+        View
+        <select data-period-kind>
+          <option value="program-year">Annual program year</option>
+          <option value="month">Month</option>
+        </select>
       </label>
-      <p>
-        This table is an operational summary. Do not enter bank account, card,
-        family payment, or reimbursement-document details.
-      </p>
+      <label>
+        <span data-period-label>Program year</span>
+        <select data-program-year></select>
+        <input
+          type="month"
+          data-budget-month
+          min="2020-01"
+          max="2100-12"
+          hidden
+        />
+      </label>
+      <div class="period-notes">
+        <p data-comparison-note></p>
+        <p>
+          This is an operational summary. Do not enter bank account, card,
+          family payment, or reimbursement-document details.
+        </p>
+      </div>
     </section>
 
     <div class="summary-grid" aria-label="Budget summary">
       <article>
-        <span>Actual income</span>
+        <span data-income-actual-label>Actual income</span>
         <strong data-income-actual>—</strong>
         <small data-income-budget>Budget —</small>
       </article>
       <article>
-        <span>Actual expenses</span>
+        <span data-expense-actual-label>Actual expenses</span>
         <strong data-expense-actual>—</strong>
         <small data-expense-budget>Budget —</small>
       </article>
       <article>
-        <span>Actual net</span>
+        <span data-net-actual-label>Actual net</span>
         <strong data-net-actual>—</strong>
         <small data-net-budget>Budget —</small>
       </article>
@@ -148,7 +165,7 @@ import MemberNav from '../../../components/MemberNav.astro';
     <section class="panel" aria-labelledby="table-title">
       <div class="panel-heading">
         <div>
-          <p class="eyebrow">Monthly detail</p>
+          <p class="eyebrow">Period detail</p>
           <h2 id="table-title">Budget table</h2>
         </div>
         <p data-row-count>Loading budget…</p>
@@ -159,8 +176,8 @@ import MemberNav from '../../../components/MemberNav.astro';
             <tr>
               <th scope="col">Type</th>
               <th scope="col">Category / item</th>
-              <th scope="col">Budgeted</th>
-              <th scope="col">Actual</th>
+              <th scope="col" data-budget-column>Budgeted</th>
+              <th scope="col" data-actual-column>Actual</th>
               <th scope="col">Variance</th>
               <th scope="col">Notes</th>
               <th scope="col"><span class="visually-hidden">Actions</span></th>
@@ -206,7 +223,20 @@ import MemberNav from '../../../components/MemberNav.astro';
     member: { role: 'member' | 'admin' };
   }
 
-  const periodInput = document.querySelector<HTMLInputElement>('[data-period]');
+  const periodKind =
+    document.querySelector<HTMLSelectElement>('[data-period-kind]');
+  const programYear = document.querySelector<HTMLSelectElement>(
+    '[data-program-year]',
+  );
+  const budgetMonth = document.querySelector<HTMLInputElement>(
+    '[data-budget-month]',
+  );
+  const periodLabel = document.querySelector<HTMLElement>(
+    '[data-period-label]',
+  );
+  const comparisonNote = document.querySelector<HTMLElement>(
+    '[data-comparison-note]',
+  );
   const editor = document.querySelector<HTMLElement>('[data-budget-editor]');
   const editorTitle = document.querySelector<HTMLElement>(
     '[data-editor-title]',
@@ -231,17 +261,32 @@ import MemberNav from '../../../components/MemberNav.astro';
   const incomeActual = document.querySelector<HTMLElement>(
     '[data-income-actual]',
   );
+  const incomeActualLabel = document.querySelector<HTMLElement>(
+    '[data-income-actual-label]',
+  );
   const incomeBudget = document.querySelector<HTMLElement>(
     '[data-income-budget]',
   );
   const expenseActual = document.querySelector<HTMLElement>(
     '[data-expense-actual]',
   );
+  const expenseActualLabel = document.querySelector<HTMLElement>(
+    '[data-expense-actual-label]',
+  );
   const expenseBudget = document.querySelector<HTMLElement>(
     '[data-expense-budget]',
   );
   const netActual = document.querySelector<HTMLElement>('[data-net-actual]');
+  const netActualLabel = document.querySelector<HTMLElement>(
+    '[data-net-actual-label]',
+  );
   const netBudget = document.querySelector<HTMLElement>('[data-net-budget]');
+  const budgetColumn = document.querySelector<HTMLElement>(
+    '[data-budget-column]',
+  );
+  const actualColumn = document.querySelector<HTMLElement>(
+    '[data-actual-column]',
+  );
 
   let items: BudgetItem[] = [];
   let isAdmin = false;
@@ -250,6 +295,59 @@ import MemberNav from '../../../components/MemberNav.astro';
   function currentPeriod(): string {
     const now = new Date();
     return `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}`;
+  }
+
+  function currentProgramYear(): string {
+    const now = new Date();
+    const startYear =
+      now.getMonth() >= 5 ? now.getFullYear() : now.getFullYear() - 1;
+    return `${startYear}-${startYear + 1}`;
+  }
+
+  function compactYear(startYear: number): string {
+    return `${startYear}\u2013${String(startYear + 1).slice(-2)}`;
+  }
+
+  function selectedPeriod(): string {
+    return periodKind?.value === 'month'
+      ? budgetMonth?.value || currentPeriod()
+      : programYear?.value || currentProgramYear();
+  }
+
+  function configurePeriodPicker() {
+    const isMonthly = periodKind?.value === 'month';
+    if (programYear) programYear.hidden = isMonthly;
+    if (budgetMonth) budgetMonth.hidden = !isMonthly;
+    if (periodLabel)
+      periodLabel.textContent = isMonthly ? 'Budget month' : 'Program year';
+  }
+
+  function configurePeriodLabels(period: string) {
+    const annual = /^(\d{4})-(\d{4})$/u.exec(period);
+    if (!annual) {
+      if (incomeActualLabel) incomeActualLabel.textContent = 'Actual income';
+      if (expenseActualLabel)
+        expenseActualLabel.textContent = 'Actual expenses';
+      if (netActualLabel) netActualLabel.textContent = 'Actual net';
+      if (budgetColumn) budgetColumn.textContent = 'Budgeted';
+      if (actualColumn) actualColumn.textContent = 'Actual';
+      if (comparisonNote) comparisonNote.textContent = '';
+      return;
+    }
+
+    const startYear = Number(annual[1]);
+    const budgetLabel = compactYear(startYear);
+    const actualLabel = compactYear(startYear - 1);
+    if (incomeActualLabel)
+      incomeActualLabel.textContent = `${actualLabel} actual income`;
+    if (expenseActualLabel)
+      expenseActualLabel.textContent = `${actualLabel} actual expenses`;
+    if (netActualLabel)
+      netActualLabel.textContent = `${actualLabel} actual net`;
+    if (budgetColumn) budgetColumn.textContent = `${budgetLabel} budget`;
+    if (actualColumn) actualColumn.textContent = `${actualLabel} actual`;
+    if (comparisonNote)
+      comparisonNote.textContent = `${budgetLabel} budget compared with ${actualLabel} actuals. Balance-forward amounts are kept outside operating totals.`;
   }
 
   function escapeHtml(value: string): string {
@@ -296,20 +394,25 @@ import MemberNav from '../../../components/MemberNav.astro';
 
   function renderBudget(data: BudgetResponse) {
     items = data.items;
+    configurePeriodLabels(data.period);
+    const annual = /^(\d{4})-(\d{4})$/u.exec(data.period);
+    const budgetPrefix = annual
+      ? `${compactYear(Number(annual[1]))} budget`
+      : 'Budget';
     if (incomeActual)
       incomeActual.textContent = money(data.summary.incomeActualCents);
     if (incomeBudget)
-      incomeBudget.textContent = `Budget ${money(data.summary.incomeBudgetedCents)}`;
+      incomeBudget.textContent = `${budgetPrefix} ${money(data.summary.incomeBudgetedCents)}`;
     if (expenseActual)
       expenseActual.textContent = money(data.summary.expenseActualCents);
     if (expenseBudget)
-      expenseBudget.textContent = `Budget ${money(data.summary.expenseBudgetedCents)}`;
+      expenseBudget.textContent = `${budgetPrefix} ${money(data.summary.expenseBudgetedCents)}`;
     if (netActual) {
       netActual.textContent = money(data.summary.netActualCents);
       netActual.classList.toggle('negative', data.summary.netActualCents < 0);
     }
     if (netBudget)
-      netBudget.textContent = `Budget ${money(data.summary.netBudgetedCents)}`;
+      netBudget.textContent = `${budgetPrefix} ${money(data.summary.netBudgetedCents)}`;
     if (rowCount)
       rowCount.textContent =
         items.length === 1 ? '1 row' : `${items.length} rows`;
@@ -317,7 +420,7 @@ import MemberNav from '../../../components/MemberNav.astro';
 
     if (items.length === 0) {
       budgetBody.innerHTML =
-        '<tr><td colspan="7" class="empty-cell">No budget rows have been added for this month.</td></tr>';
+        '<tr><td colspan="7" class="empty-cell">No budget rows have been added for this period.</td></tr>';
       return;
     }
 
@@ -347,7 +450,7 @@ import MemberNav from '../../../components/MemberNav.astro';
   }
 
   async function loadBudget(): Promise<BudgetResponse> {
-    const period = periodInput?.value || currentPeriod();
+    const period = selectedPeriod();
     setStatus(tableStatus, '');
     const data = await api<BudgetResponse>(
       `/api/members/budget?period=${encodeURIComponent(period)}`,
@@ -365,7 +468,7 @@ import MemberNav from '../../../components/MemberNav.astro';
     setStatus(editorStatus, '');
   }
 
-  periodInput?.addEventListener('change', () => {
+  function changePeriod() {
     resetForm();
     loadBudget().catch((error) =>
       setStatus(
@@ -374,13 +477,20 @@ import MemberNav from '../../../components/MemberNav.astro';
         true,
       ),
     );
+  }
+
+  periodKind?.addEventListener('change', () => {
+    configurePeriodPicker();
+    changePeriod();
   });
+  programYear?.addEventListener('change', changePeriod);
+  budgetMonth?.addEventListener('change', changePeriod);
 
   budgetForm?.addEventListener('submit', async (event) => {
     event.preventDefault();
     const form = new FormData(budgetForm);
     const payload = {
-      period: periodInput?.value,
+      period: selectedPeriod(),
       kind: form.get('kind'),
       category: form.get('category'),
       description: form.get('description'),
@@ -468,7 +578,22 @@ import MemberNav from '../../../components/MemberNav.astro';
     }
   });
 
-  if (periodInput) periodInput.value = currentPeriod();
+  if (programYear) {
+    const activeStartYear = Number(currentProgramYear().slice(0, 4));
+    for (
+      let startYear = activeStartYear + 2;
+      startYear >= 2020;
+      startYear -= 1
+    ) {
+      const option = document.createElement('option');
+      option.value = `${startYear}-${startYear + 1}`;
+      option.textContent = `${compactYear(startYear)} program year`;
+      programYear.append(option);
+    }
+    programYear.value = currentProgramYear();
+  }
+  if (budgetMonth) budgetMonth.value = currentPeriod();
+  configurePeriodPicker();
   Promise.all([api<MeResponse>('/api/members/me'), loadBudget()])
     .then(([me, budget]) => {
       isAdmin = me.member.role === 'admin';
@@ -501,9 +626,9 @@ import MemberNav from '../../../components/MemberNav.astro';
   }
 
   .period-bar {
-    display: flex;
+    display: grid;
+    grid-template-columns: minmax(10rem, auto) minmax(13rem, auto) 1fr;
     align-items: end;
-    justify-content: space-between;
     gap: 1.5rem;
     border-top: 5px solid var(--color-gold);
     padding: 1rem 1.25rem;
@@ -514,6 +639,20 @@ import MemberNav from '../../../components/MemberNav.astro';
     margin: 0;
     color: var(--color-muted);
     font-size: 0.9rem;
+  }
+
+  .period-notes {
+    display: grid;
+    gap: 0.35rem;
+  }
+
+  [data-comparison-note] {
+    color: var(--color-green) !important;
+    font-weight: 800;
+  }
+
+  [data-comparison-note]:empty {
+    display: none;
   }
 
   .summary-grid {
@@ -753,7 +892,8 @@ import MemberNav from '../../../components/MemberNav.astro';
       display: block;
     }
 
-    .period-bar p,
+    .period-bar label + label,
+    .period-notes,
     .panel-heading > p {
       margin-top: 0.7rem;
     }

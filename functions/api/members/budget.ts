@@ -5,7 +5,7 @@ import type { AppPagesFunction } from '../../_lib/types';
 export const onRequestGet: AppPagesFunction = async (context) => {
   const period = new URL(context.request.url).searchParams.get('period');
   if (!isBudgetPeriod(period)) {
-    return json({ error: 'Choose a valid budget month.' }, 400);
+    return json({ error: 'Choose a valid budget period.' }, 400);
   }
 
   const items = await listBudgetItems(context.env.DB, period);

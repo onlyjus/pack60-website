@@ -15,11 +15,20 @@ type ValidationResult =
   | { value?: never; error: string };
 
 export function isBudgetPeriod(value: unknown): value is string {
-  if (typeof value !== 'string' || !/^\d{4}-(0[1-9]|1[0-2])$/u.test(value)) {
-    return false;
+  if (typeof value !== 'string') return false;
+
+  const month = /^(\d{4})-(0[1-9]|1[0-2])$/u.exec(value);
+  if (month) {
+    const year = Number(month[1]);
+    return year >= 2020 && year <= 2100;
   }
-  const year = Number(value.slice(0, 4));
-  return year >= 2020 && year <= 2100;
+
+  const programYear = /^(\d{4})-(\d{4})$/u.exec(value);
+  if (!programYear) return false;
+
+  const startYear = Number(programYear[1]);
+  const endYear = Number(programYear[2]);
+  return startYear >= 2020 && endYear === startYear + 1 && endYear <= 2100;
 }
 
 function boundedString(value: unknown, maximum: number): string | undefined {
@@ -49,7 +58,7 @@ export function validateBudgetItemInput(
   const actualCents = body?.actualCents;
 
   if (!isBudgetPeriod(period)) {
-    return { error: 'Choose a valid budget month.' };
+    return { error: 'Choose a valid budget period.' };
   }
   if (kind !== 'income' && kind !== 'expense') {
     return { error: 'Choose income or expense.' };
