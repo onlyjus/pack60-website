@@ -4,11 +4,11 @@ description: 'A checklist for families getting started with Pack 60.'
 category: 'Families'
 order: 1
 public: true
-lastUpdated: '2026-08-22'
+lastUpdated: '2026-08-23'
 ---
 
 - Read the Join page.
-- Contact the pack at [membership@pack60.org](mailto:membership@pack60.org).
+- Contact the pack at [cubmaster.pack60wv@gmail.com](mailto:cubmaster.pack60wv@gmail.com?subject=Pack%2060%20membership%20question).
 - Ask about visiting a Tuesday 7:00 PM meeting at [Suncrest United Methodist Church](https://www.google.com/maps/search/?api=1&query=Suncrest+United+Methodist+Church%2C+Morgantown%2C+WV).
 - Use official registration links from pack leadership.
 - Review the [costs and financial assistance](/resources/costs-and-financial-assistance/) resource before registration.

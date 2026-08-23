@@ -4,14 +4,14 @@ description: 'Plan a visit and learn how your family can join Cub Scout Pack 60.
 navTitle: 'Join'
 order: 2
 public: true
-lastUpdated: '2026-08-22'
+lastUpdated: '2026-08-23'
 ---
 
 ## Who can join
 
 Pack 60 welcomes girls and boys in kindergarten through fifth grade. Families in the Morgantown, WV area can join a friendly program built around character, outdoor skills, service, creativity, and fun.
 
-**The best first step is to visit.** Email [membership@pack60.org](mailto:membership@pack60.org?subject=We%20would%20like%20to%20visit%20Pack%2060) and tell us your child's grade. A volunteer will help your family plan a Tuesday visit and connect you with the right den.
+**The best first step is to visit.** Email [cubmaster.pack60wv@gmail.com](mailto:cubmaster.pack60wv@gmail.com?subject=We%20would%20like%20to%20visit%20Pack%2060) and tell us your child's grade. A volunteer will help your family plan a Tuesday visit and connect you with the right den.
 
 ## Grade and den mapping
 
@@ -26,7 +26,7 @@ Pack 60 welcomes girls and boys in kindergarten through fifth grade. Families in
 
 Pack 60 meets Tuesdays at 7:00 PM at [Suncrest United Methodist Church, 479 Van Voorhis Road](https://www.google.com/maps/search/?api=1&query=479+Van+Voorhis+Rd%2C+Morgantown%2C+WV), in Morgantown, WV.
 
-Families interested in visiting should contact the pack first at [membership@pack60.org](mailto:membership@pack60.org?subject=We%20would%20like%20to%20visit%20Pack%2060). A volunteer can confirm that week's schedule, welcome your family when you arrive, and introduce your child to the right grade-level den.
+Families interested in visiting should contact the pack first at [cubmaster.pack60wv@gmail.com](mailto:cubmaster.pack60wv@gmail.com?subject=We%20would%20like%20to%20visit%20Pack%2060). A volunteer can confirm that week's schedule, welcome your family when you arrive, and introduce your child to the right grade-level den.
 
 Families can also follow the [Pack 60 Facebook page](https://www.facebook.com/pack60wv/) for current public announcements and a look at recent activities.
 
@@ -56,4 +56,4 @@ Pack 60 encourages scouts to wear a complete, neat, rank-appropriate field unifo
 
 ## Ready to take the next step?
 
-Email [membership@pack60.org](mailto:membership@pack60.org?subject=We%20would%20like%20to%20visit%20Pack%2060) to plan a visit, or view Pack 60's [official BeAScout listing](https://beascout.scouting.org/list/?zip=26505&program%5B0%5D=pack&cubFilter=all&miles=10&unitID=43232).
+Email [cubmaster.pack60wv@gmail.com](mailto:cubmaster.pack60wv@gmail.com?subject=We%20would%20like%20to%20visit%20Pack%2060) to plan a visit, or view Pack 60's [official BeAScout listing](https://beascout.scouting.org/list/?zip=26505&program%5B0%5D=pack&cubFilter=all&miles=10&unitID=43232).

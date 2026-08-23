@@ -10,7 +10,7 @@ arrivalTime: '6:50 PM'
 status: 'tentative'
 rsvpUrl: 'https://example.com/rsvp'
 signupUrl: 'https://example.com/signup'
-contactAlias: 'info@pack60.org'
+contactAlias: 'cubmaster.pack60wv@gmail.com'
 relatedAlbum: 'album-template'
 lastUpdated: '2026-07-06'
 ---

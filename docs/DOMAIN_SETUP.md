@@ -36,23 +36,8 @@ See `docs/CLOUDFLARE_ACCESS.md` for the required policy and runtime settings.
 
 Cloudflare provides HTTPS certificates for custom domains. Wait for certificate provisioning before announcing the public URL.
 
-## Email routing
+## Public email
 
-The website publishes these pack aliases:
-
-- `info@pack60.org`
-- `membership@pack60.org`
-- `webmaster@pack60.org`
-
-These addresses must be configured separately from the website. In the
-Cloudflare dashboard, open **Compute > Email Service > Email Routing**, onboard
-`pack60.org`, and let Cloudflare add the required mail DNS records. Add and
-verify an existing pack-owned inbox as a destination, then create one routing
-rule for each alias above.
-
-Cloudflare Email Routing forwards incoming messages to the verified destination
-inbox; it does not create a separate mailbox to check. Use a full email provider
-instead if pack volunteers need to send and reply directly as `@pack60.org`.
-
-After setup, send a test message to each alias from an unrelated email account
-and confirm that all three reach the intended destination.
+The website publishes the pack-owned inbox `cubmaster.pack60wv@gmail.com` for
+general, membership, and website questions. Cloudflare Email Routing is not
+required for this address.

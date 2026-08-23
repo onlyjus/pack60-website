@@ -4,7 +4,7 @@ description: 'How Pack 60 handles website photos, media consent, and content upd
 navTitle: 'Privacy'
 order: 9
 public: true
-lastUpdated: '2026-08-22'
+lastUpdated: '2026-08-23'
 ---
 
 ## Website content
@@ -33,4 +33,4 @@ If a parent, guardian, or pack leader asks for a photo or content item to be rem
 
 ## Contact for concerns
 
-Email [webmaster@pack60.org](mailto:webmaster@pack60.org) for public content concerns or removal requests.
+Email [cubmaster.pack60wv@gmail.com](mailto:cubmaster.pack60wv@gmail.com?subject=Pack%2060%20content%20or%20photo%20removal%20request) for public content concerns or removal requests.

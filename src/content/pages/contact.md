@@ -1,23 +1,23 @@
 ---
 title: 'Contact'
-description: 'Contact Cub Scout Pack 60 using pack email aliases.'
+description: 'Contact Cub Scout Pack 60 using the pack email address.'
 navTitle: 'Contact'
 order: 8
 public: true
-lastUpdated: '2026-07-22'
+lastUpdated: '2026-08-23'
 ---
 
 ## General contact
 
-For general questions, email [info@pack60.org](mailto:info@pack60.org).
+For general questions, email [cubmaster.pack60wv@gmail.com](mailto:cubmaster.pack60wv@gmail.com?subject=Pack%2060%20question).
 
 ## Membership questions
 
-For joining questions or to plan a Tuesday visit, email [membership@pack60.org](mailto:membership@pack60.org?subject=We%20would%20like%20to%20visit%20Pack%2060).
+For joining questions or to plan a Tuesday visit, email [cubmaster.pack60wv@gmail.com](mailto:cubmaster.pack60wv@gmail.com?subject=We%20would%20like%20to%20visit%20Pack%2060).
 
 ## Website updates
 
-For website corrections, public content concerns, or photo removal requests, email [webmaster@pack60.org](mailto:webmaster@pack60.org).
+For website corrections, public content concerns, or photo removal requests, email [cubmaster.pack60wv@gmail.com](mailto:cubmaster.pack60wv@gmail.com?subject=Pack%2060%20website%20request).
 
 ## Facebook updates
 

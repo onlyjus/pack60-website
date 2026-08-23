@@ -5,7 +5,7 @@ timeCommitment: 'Higher during recruiting season'
 description: 'Helps new families learn about the pack and supports the joining process.'
 order: 7
 public: true
-lastUpdated: '2026-05-19'
+lastUpdated: '2026-08-23'
 ---
 
 ## Typical responsibilities
@@ -17,4 +17,4 @@ lastUpdated: '2026-05-19'
 
 ## Helpful resources
 
-Use [membership@pack60.org](mailto:membership@pack60.org) for public joining questions and share official registration links directly with interested families.
+Use [cubmaster.pack60wv@gmail.com](mailto:cubmaster.pack60wv@gmail.com?subject=Pack%2060%20membership%20question) for public joining questions and share official registration links directly with interested families.

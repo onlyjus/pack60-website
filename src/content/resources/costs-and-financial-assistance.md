@@ -4,7 +4,7 @@ description: 'Public-safe guidance about Pack 60 costs, dues, uniforms, and assi
 category: 'Families'
 order: 3
 public: true
-lastUpdated: '2026-08-22'
+lastUpdated: '2026-08-23'
 ---
 
 Cub Scout costs can include national registration, local pack dues, uniform items, handbook materials, and optional activity expenses.
@@ -19,7 +19,7 @@ The scout uniform is a separate cost from registration and pack dues. Pack 60 en
 
 ## Assistance
 
-Pack 60 believes every child should have the opportunity to participate in Scouting. Financial issues will never prevent a child from participating. If cost is a concern, contact [membership@pack60.org](mailto:membership@pack60.org) or speak privately with a den leader, Cubmaster, or committee chair so the pack can help.
+Pack 60 believes every child should have the opportunity to participate in Scouting. Financial issues will never prevent a child from participating. If cost is a concern, contact [cubmaster.pack60wv@gmail.com](mailto:cubmaster.pack60wv@gmail.com?subject=Pack%2060%20financial%20assistance) or speak privately with a den leader, Cubmaster, or committee chair so the pack can help.
 
 ## Fundraising
 

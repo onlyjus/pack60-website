@@ -45,7 +45,7 @@ The public calendar should include only public-safe event information. Registere
 
 ## Contact information policy
 
-Use generic aliases such as `info@pack60.org`, `membership@pack60.org`, and `webmaster@pack60.org`. Do not publish personal phone numbers or private email addresses unless explicitly approved.
+Use the approved pack-owned inbox `cubmaster.pack60wv@gmail.com`. Do not publish personal phone numbers or other private email addresses unless explicitly approved.
 
 ## Private data policy
 

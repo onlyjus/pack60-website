@@ -4,7 +4,7 @@ description: 'Pack 60 field and activity uniform guidance, rank differences, and
 category: 'Families'
 order: 2
 public: true
-lastUpdated: '2026-08-22'
+lastUpdated: '2026-08-23'
 ---
 
 Pack 60 encourages every scout to wear a complete, neat, rank-appropriate uniform. The pack calls the official uniform the **field uniform** (formerly Class A) and the Pack 60 T-shirt the **activity uniform** (formerly Class B).
@@ -23,4 +23,4 @@ The official Scouting America [Cub Scout uniform page](https://www.scouting.org/
 
 Uniform costs and availability can change. Ask pack leadership before buying if you are unsure about a rank item or are using hand-me-down pieces.
 
-Financial issues will never prevent a child from participating in Pack 60. If your family needs help obtaining a uniform, contact [membership@pack60.org](mailto:membership@pack60.org) or speak privately with your den leader, Cubmaster, or committee chair.
+Financial issues will never prevent a child from participating in Pack 60. If your family needs help obtaining a uniform, contact [cubmaster.pack60wv@gmail.com](mailto:cubmaster.pack60wv@gmail.com?subject=Pack%2060%20uniform%20assistance) or speak privately with your den leader, Cubmaster, or committee chair.
