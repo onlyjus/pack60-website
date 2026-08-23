@@ -4,7 +4,7 @@ description: 'Plan a visit and learn how your family can join Cub Scout Pack 60.
 navTitle: 'Join'
 order: 2
 public: true
-lastUpdated: '2026-07-22'
+lastUpdated: '2026-08-22'
 ---
 
 ## Who can join
@@ -40,15 +40,19 @@ New families should expect a welcoming environment, age-appropriate activities, 
 
 You do not need to know anything about Scouting or outdoor activities before contacting us. Pack volunteers and other families help new scouts learn one step at a time.
 
+After joining, families complete the Pack 60 welcome forms, provide a frequently checked email address and cell phone number for each participating adult, and join the pack's GroupMe. GroupMe is Pack 60's primary channel for general announcements; pack leadership provides the current invitation directly to registered families.
+
+Each year, every Cub Scout also completes the exercises in Scouting America's [How to Protect Your Children from Child Abuse: A Parent's Guide](https://www.scouting.org/training/youth-protection/parents-guides/) with a parent or guardian as part of the Bobcat Adventure requirement.
+
 ## Estimated costs
 
-Costs may include national registration fees, local pack dues, a handbook, uniform items, and optional activity expenses. A recent Pack 60 welcome flyer listed an annual national registration fee and a local pack fee that helps cover awards, Pinewood Derby cars, and other pack expenses.
+Costs may include national registration fees, local pack dues, a handbook, uniform items, and optional activity expenses. Pack 60 dues help cover advancement awards, pack camping needs, Pinewood Derby cars, and basic pack expenses.
 
-Because fees can change by year and family situation, Pack 60 confirms current costs directly with interested families. If cost is a concern, let a pack volunteer know; Scouting assistance may be available through council channels.
+The current welcome packet also asks each family to make one annual fundraising commitment: participate in Pack 60 fundraising or make a one-time $250 donation for the Scout year. Because registration fees and dues can change, Pack 60 confirms those current amounts directly with interested families. If cost is a concern, let a pack volunteer know; financial issues will not prevent a child from participating, and the pack can help.
 
 ## Uniform basics
 
-Uniform expectations vary by rank and event. Families can start with the [Pack 60 uniform basics](/resources/uniform-basics/) resource and use Scouting America's [official Cub Scout uniform page](https://www.scouting.org/programs/cub-scouts/cub-scout-uniform/) for current rank-specific requirements. Before buying optional items, ask pack leadership what is needed for your scout's den.
+Pack 60 encourages scouts to wear a complete, neat, rank-appropriate field uniform. The [Pack 60 uniform basics](/resources/uniform-basics/) resource explains the blue Cub Scout uniform, the tan-and-green Arrow of Light uniform, insignia, and Pack 60 activity shirts. Before buying items, ask pack leadership what is appropriate for your scout's den and about help obtaining a uniform if needed.
 
 ## Ready to take the next step?
 

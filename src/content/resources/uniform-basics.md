@@ -1,24 +1,26 @@
 ---
 title: 'Uniform Basics'
-description: 'General Pack 60 uniform guidance with links to official Cub Scout uniform requirements.'
+description: 'Pack 60 field and activity uniform guidance, rank differences, and assistance.'
 category: 'Families'
 order: 2
 public: true
-lastUpdated: '2026-06-06'
+lastUpdated: '2026-08-22'
 ---
 
-Uniform expectations can vary by rank, event, and family situation. Pack 60 families should ask pack leadership before purchasing optional items, especially if they are joining mid-year or using hand-me-down uniform pieces.
+Pack 60 encourages every scout to wear a complete, neat, rank-appropriate uniform. The pack calls the official uniform the **field uniform** (formerly Class A) and the Pack 60 T-shirt the **activity uniform** (formerly Class B).
 
 The official Scouting America [Cub Scout uniform page](https://www.scouting.org/programs/cub-scouts/cub-scout-uniform/) lists rank-specific uniform parts for Lions, Tigers, Wolves, Bears, Webelos, and Arrow of Light scouts.
 
-Pack 60's welcome materials describe the uniform shirt as the minimum uniform item. Families should confirm current rank needs with pack leadership before buying hats, neckerchiefs, slides, pants, socks, or other optional items.
-
 ## Pack 60 quick guide
 
-- **Lions:** The official Lion t-shirt is the core uniform item.
-- **Tigers, Wolves, Bears, and Webelos:** Scouts generally use the blue Cub Scout uniform shirt with rank-specific hat, neckerchief, and slide.
-- **Arrow of Light:** Scouts generally use the tan uniform shirt with green uniform pieces as they prepare for Scouts BSA.
-- **Optional items:** Pants, shorts, skorts, socks, and some accessories may be optional or vary by rank.
-- **Where to buy:** Families can use the official Scout Shop online, a local Scout Shop, or ask the pack about used uniform options before buying everything new.
+- **Cub Scout ranks through Webelos:** Blue uniform shirt, proper insignia, rank-appropriate neckerchief and slide, blue pants or shorts, Cub Scout belt, and rank-appropriate hat. Blue pants or shorts do not have to be official Scout Shop items if they have a similar appearance.
+- **Insignia:** The welcome packet lists the World Crest emblem, red Pack 60 numerals, Mountaineer Area Council shoulder patch, and blue shoulder loops.
+- **Tiger, Wolf, and Bear:** Adventure loops are worn on the blue Cub Scout belt.
+- **Webelos:** Add Webelos colors on the right sleeve to hold earned adventure pins.
+- **Arrow of Light:** Wear the tan uniform shirt with green pants or shorts while preparing to move into Scouts BSA.
+- **Activity uniform:** Pack 60 may designate its pack T-shirt for some activities and shares ordering details separately.
+- **Where to buy:** Families can use the [official Scout Shop](https://www.scoutshop.org/), the Fairmont Scout Shop, or ask the pack about used uniform options.
 
-For the current official requirements, use Scouting America's [Cub Scout Uniform](https://www.scouting.org/programs/cub-scouts/cub-scout-uniform/) resource.
+Uniform costs and availability can change. Ask pack leadership before buying if you are unsure about a rank item or are using hand-me-down pieces.
+
+Financial issues will never prevent a child from participating in Pack 60. If your family needs help obtaining a uniform, contact [membership@pack60.org](mailto:membership@pack60.org) or speak privately with your den leader, Cubmaster, or committee chair.
