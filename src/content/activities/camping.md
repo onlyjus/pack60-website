@@ -6,12 +6,15 @@ category: 'Outdoor Adventure'
 image: '/images/activities/family-campsite.webp'
 imageAlt: 'Family tents beside a pond at a green woodland campsite'
 gallery:
+  - src: '/images/activities/fall-family-campout-2026-campfire.webp'
+    alt: 'Scouts and families gathered around a campfire during a fall family campout'
+    caption: 'Campfire time from the fall family campout recap shared September 20, 2026'
   - src: '/images/activities/camp-mountaineer-fall-campfire.webp'
     alt: 'Pack 60 families gathered around a campfire during a fall campout at Camp Mountaineer'
     caption: 'An evening campfire during Pack 60 fall camping at Camp Mountaineer'
 order: 1
 public: true
-lastUpdated: '2026-07-25'
+lastUpdated: '2026-09-20'
 ---
 
 ## What it is
@@ -25,6 +28,12 @@ Pack 60 usually plans two family campouts each year: one in the fall and one in 
 The fall campout is usually at [Camp Mountaineer](https://mountaineerscouting.org/camp-mountaineer/) in Morgantown. The spring campout is often at another family campground, such as [North Bend State Park](https://wvstateparks.com/park/north-bend-state-park/) in West Virginia.
 
 A recent [North Bend spring campout](https://www.facebook.com/pack60wv/posts/pfbid06Dt5t3JnPmw7muX97KF7mZjDVQuMknZyFxdNYWqt13ECSnkBFXvPaVCFoQPuxFokl) included trail exploration, games, s’mores, and a garden service project.
+
+## Recent campout
+
+In a [Facebook recap shared September 20, 2026](https://www.facebook.com/pack60wv/posts/pfbid0nZJeJy22KeARXbXD5wqxdGbiAGWBWuBwZqsGFBa6U47bwzoa7JgmPVMjJsGWWUXUl), Pack 60 celebrated a fall family campout at Camp Mountaineer. Families enjoyed nature scavenger hunts, flashlight walks, gaga ball and other games, making fudge, shared meals, and s’mores around the campfire. Families joined for an afternoon, one night, or both nights.
+
+The campfire photo above comes from that public Pack 60 Facebook post.
 
 ## Why scouts enjoy it
 
