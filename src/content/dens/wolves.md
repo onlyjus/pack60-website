@@ -5,7 +5,7 @@ rank: 'Wolf'
 order: 3
 description: 'The Wolf den helps second graders practice teamwork, outdoor awareness, and useful life skills.'
 public: true
-lastUpdated: '2026-05-19'
+lastUpdated: '2026-10-08'
 ---
 
 ## Grade level
@@ -27,6 +27,16 @@ The Wolf year adds more hands-on skills, simple leadership, service, and outdoor
 ## Parent involvement
 
 Parents and guardians support den activities, help scouts stay engaged, and assist leaders.
+
+## Recent activity
+
+In an [October 8, 2026 Facebook post](https://www.facebook.com/pack60wv/posts/pfbid0B7sWzCWBdQAd5qG1UE5bDgicwTNM13uJ1nPGTgL6bX3RRBkG9dphxQQh8N5meu4Tl), Pack 60 shared the Wolf den's lacrosse demonstration.
+
+![Scouts listening to a lacrosse demonstration with their sticks ready](/images/activities/wolf-lacrosse-2026-demo.webp)
+
+![Scouts practicing with lacrosse sticks during a Wolf den demo](/images/activities/wolf-lacrosse-2026-practice.webp)
+
+Both photos come from that public Pack 60 Facebook post.
 
 ## Official resources
 
