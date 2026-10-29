@@ -4,14 +4,27 @@ description: 'Regular gatherings where dens come together for activities, recogn
 season: 'School Year'
 category: 'Pack Program'
 image: '/images/illustrations/pack-meeting.svg'
+gallery:
+  - src: '/images/activities/halloween-2026-costumes.webp'
+    alt: 'Scouts gathered in Halloween costumes for a Pack 60 celebration'
+    caption: 'Costumes from the Halloween post shared October 28, 2026'
+  - src: '/images/activities/halloween-2026-group-activity.webp'
+    alt: 'Scouts taking part in a Halloween group activity with paper wrapping and glow accessories'
+    caption: 'Halloween group activity from the same public Facebook post'
 order: 9
 public: true
-lastUpdated: '2026-06-06'
+lastUpdated: '2026-10-28'
 ---
 
 ## What it is
 
 Pack meetings bring all dens together for activities, ceremonies, announcements, recognition, advancement celebrations, and family participation.
+
+## Recent pack activities
+
+In an [October 28, 2026 Facebook post](https://www.facebook.com/pack60wv/posts/pfbid02SQ1iLmo4f5Edzw69jsZUFdZEou8EJA9Bt3XHVW6J2dJAGbGrj2ogT5Hma49y8w67l), Pack 60 shared Halloween fun with costumes and group activities. The two Halloween photos above come from that public post.
+
+An earlier [September 23, 2026 Facebook recap](https://www.facebook.com/pack60wv/posts/pfbid023yxmWgxgUoeStpJVqi74LPSvh7TKGviTgTu1aNKYWZCgUx1Bf6PzEVAoukaBNxaCl) featured scouts racing boats made from recycled materials at the Raingutter Regatta.
 
 ## When it usually happens
 
