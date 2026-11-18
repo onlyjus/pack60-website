@@ -6,6 +6,9 @@ category: 'Community'
 image: '/images/activities/mosaic-workshop.jpg'
 imageAlt: 'Scouts gathered around a table during a mosaic art workshop'
 gallery:
+  - src: '/images/activities/veterans-day-parade-2026.webp'
+    alt: 'Pack 60 scouts and leaders gathered with flags at the parade'
+    caption: 'Pack 60 at the Morgantown Veterans Day Parade, shared November 17, 2026'
   - src: '/images/activities/mayor-webelos-discussion.webp'
     alt: 'Morgantown Mayor Daniel Trumble speaking with Pack 60 Webelos scouts'
     caption: 'Mayor Daniel Trumble discussed elections and local government with the Webelos den.'
@@ -14,7 +17,7 @@ gallery:
     caption: 'Scouts explored how elections and community decisions work.'
 order: 8
 public: true
-lastUpdated: '2026-07-25'
+lastUpdated: '2026-11-18'
 ---
 
 ## What it is
@@ -22,6 +25,10 @@ lastUpdated: '2026-07-25'
 Community events may include public ceremonies, recruiting tables, service events, parades, Scout nights, or approved local gatherings.
 
 Recent Pack 60 examples include a [Black Bears baseball overnight](https://www.facebook.com/pack60wv/posts/pfbid02mEc4B8QDh3RqnyJjnhvTXAYf6Mm4uM293k1vFqPziX1BkcPxRFikpvtpiaoYcKeJl), a [Tiger den mosaic art visit](https://www.facebook.com/pack60wv/posts/pfbid02Z1PpomWh21P6Zyc3w1FVmF6Agzho4j5oyTTgRhv9bAUPKUwSFvjykbCA1KzS5mpKl), and a program where visiting students helped scouts learn about ASL, braille, and accessibility.
+
+## Morgantown Veterans Day Parade
+
+Pack 60 took part in the Veterans Day parade in Morgantown. The pack shared the parade photo above in a [November 17, 2026 Facebook post](https://www.facebook.com/pack60wv/posts/pfbid0WcDf5GuukcA7umGUREEk5xRuT96NGpx8funbCxumGdhzX6QaiynPxKZbqDPTptVsl).
 
 ## Learning about local government
 
